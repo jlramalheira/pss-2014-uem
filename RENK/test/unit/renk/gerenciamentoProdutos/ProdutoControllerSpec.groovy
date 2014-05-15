@@ -1,13 +1,13 @@
-package renk
+package renk.gerenciamentoProdutos
 
 
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ClienteController)
-@Mock(Cliente)
-class ClienteControllerSpec extends Specification {
+@TestFor(ProdutoController)
+@Mock(Produto)
+class ProdutoControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class ClienteControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.clienteInstanceList
-            model.clienteInstanceCount == 0
+            !model.produtoInstanceList
+            model.produtoInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,32 +30,32 @@ class ClienteControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.clienteInstance!= null
+            model.produtoInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
-            def cliente = new Cliente()
-            cliente.validate()
-            controller.save(cliente)
+            def produto = new Produto()
+            produto.validate()
+            controller.save(produto)
 
         then:"The create view is rendered again with the correct model"
-            model.clienteInstance!= null
+            model.produtoInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            cliente = new Cliente(params)
+            produto = new Produto(params)
 
-            controller.save(cliente)
+            controller.save(produto)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/cliente/show/1'
+            response.redirectedUrl == '/produto/show/1'
             controller.flash.message != null
-            Cliente.count() == 1
+            Produto.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -67,11 +67,11 @@ class ClienteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def cliente = new Cliente(params)
-            controller.show(cliente)
+            def produto = new Produto(params)
+            controller.show(produto)
 
         then:"A model is populated containing the domain instance"
-            model.clienteInstance == cliente
+            model.produtoInstance == produto
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -83,11 +83,11 @@ class ClienteControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def cliente = new Cliente(params)
-            controller.edit(cliente)
+            def produto = new Produto(params)
+            controller.edit(produto)
 
         then:"A model is populated containing the domain instance"
-            model.clienteInstance == cliente
+            model.produtoInstance == produto
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class ClienteControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/cliente/index'
+            response.redirectedUrl == '/produto/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def cliente = new Cliente()
-            cliente.validate()
-            controller.update(cliente)
+            def produto = new Produto()
+            produto.validate()
+            controller.update(produto)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.clienteInstance == cliente
+            model.produtoInstance == produto
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            cliente = new Cliente(params).save(flush: true)
-            controller.update(cliente)
+            produto = new Produto(params).save(flush: true)
+            controller.update(produto)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/cliente/show/$cliente.id"
+            response.redirectedUrl == "/produto/show/$produto.id"
             flash.message != null
     }
 
@@ -127,23 +127,23 @@ class ClienteControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/cliente/index'
+            response.redirectedUrl == '/produto/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def cliente = new Cliente(params).save(flush: true)
+            def produto = new Produto(params).save(flush: true)
 
         then:"It exists"
-            Cliente.count() == 1
+            Produto.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(cliente)
+            controller.delete(produto)
 
         then:"The instance is deleted"
-            Cliente.count() == 0
-            response.redirectedUrl == '/cliente/index'
+            Produto.count() == 0
+            response.redirectedUrl == '/produto/index'
             flash.message != null
     }
 }

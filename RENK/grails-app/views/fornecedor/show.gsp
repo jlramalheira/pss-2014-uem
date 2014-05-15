@@ -1,5 +1,5 @@
 
-<%@ page import="renk.Fornecedor" %>
+<%@ page import="renk.gerenciamentoPessoas.Fornecedor" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -23,11 +23,11 @@
 			</g:if>
 			<ol class="property-list fornecedor">
 			
-				<g:if test="${fornecedorInstance?.celular}">
+				<g:if test="${fornecedorInstance?.nome}">
 				<li class="fieldcontain">
-					<span id="celular-label" class="property-label"><g:message code="fornecedor.celular.label" default="Celular" /></span>
+					<span id="nome-label" class="property-label"><g:message code="fornecedor.nome.label" default="Nome" /></span>
 					
-						<span class="property-value" aria-labelledby="celular-label"><g:fieldValue bean="${fornecedorInstance}" field="celular"/></span>
+						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${fornecedorInstance}" field="nome"/></span>
 					
 				</li>
 				</g:if>
@@ -41,15 +41,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${fornecedorInstance?.nome}">
-				<li class="fieldcontain">
-					<span id="nome-label" class="property-label"><g:message code="fornecedor.nome.label" default="Nome" /></span>
-					
-						<span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${fornecedorInstance}" field="nome"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${fornecedorInstance?.telefone}">
 				<li class="fieldcontain">
 					<span id="telefone-label" class="property-label"><g:message code="fornecedor.telefone.label" default="Telefone" /></span>
@@ -59,11 +50,22 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${fornecedorInstance?.tipoPessoa}">
+				<g:if test="${fornecedorInstance?.celular}">
 				<li class="fieldcontain">
-					<span id="tipoPessoa-label" class="property-label"><g:message code="fornecedor.tipoPessoa.label" default="Tipo Pessoa" /></span>
+					<span id="celular-label" class="property-label"><g:message code="fornecedor.celular.label" default="Celular" /></span>
 					
-						<span class="property-value" aria-labelledby="tipoPessoa-label"><g:fieldValue bean="${fornecedorInstance}" field="tipoPessoa"/></span>
+						<span class="property-value" aria-labelledby="celular-label"><g:fieldValue bean="${fornecedorInstance}" field="celular"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${fornecedorInstance?.enderecos}">
+				<li class="fieldcontain">
+					<span id="enderecos-label" class="property-label"><g:message code="fornecedor.enderecos.label" default="Enderecos" /></span>
+					
+						<g:each in="${fornecedorInstance.enderecos}" var="e">
+						<span class="property-value" aria-labelledby="enderecos-label"><g:link controller="endereco" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>

@@ -1,4 +1,4 @@
-package renk
+package renk.gerenciamentoProdutos
 
 enum Status{
     ativo, inativo

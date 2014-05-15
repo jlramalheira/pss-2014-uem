@@ -1,4 +1,4 @@
-package renk
+package renk.gerenciamentoPessoas
 
 
 
@@ -20,6 +20,8 @@ class ClienteController {
     }
 
     def create() {
+        params.pessoaFisicaInstance = new PessoaFisica()
+        params.pessoaJuridicaInstance = new PessoaJuridica()
         respond new Cliente(params)
     }
 
