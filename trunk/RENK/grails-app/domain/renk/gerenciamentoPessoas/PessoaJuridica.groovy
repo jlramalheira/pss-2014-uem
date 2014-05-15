@@ -1,4 +1,4 @@
-package renk
+package renk.gerenciamentoPessoas
 
 
 class PessoaJuridica extends TipoPessoa {

@@ -1,4 +1,4 @@
-<%@ page import="renk.Produto" %>
+<%@ page import="renk.gerenciamentoProdutos.Produto" %>
 <!DOCTYPE html>
 <html>
 	<head>

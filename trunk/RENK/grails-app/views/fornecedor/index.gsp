@@ -1,5 +1,5 @@
 
-<%@ page import="renk.Fornecedor" %>
+<%@ page import="renk.gerenciamentoPessoas.Fornecedor" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,15 +24,13 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="celular" title="${message(code: 'fornecedor.celular.label', default: 'Celular')}" />
+						<g:sortableColumn property="nome" title="${message(code: 'fornecedor.nome.label', default: 'Nome')}" />
 					
 						<g:sortableColumn property="email" title="${message(code: 'fornecedor.email.label', default: 'Email')}" />
 					
-						<g:sortableColumn property="nome" title="${message(code: 'fornecedor.nome.label', default: 'Nome')}" />
-					
 						<g:sortableColumn property="telefone" title="${message(code: 'fornecedor.telefone.label', default: 'Telefone')}" />
 					
-						<g:sortableColumn property="tipoPessoa" title="${message(code: 'fornecedor.tipoPessoa.label', default: 'Tipo Pessoa')}" />
+						<g:sortableColumn property="celular" title="${message(code: 'fornecedor.celular.label', default: 'Celular')}" />
 					
 					</tr>
 				</thead>
@@ -40,15 +38,13 @@
 				<g:each in="${fornecedorInstanceList}" status="i" var="fornecedorInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${fornecedorInstance.id}">${fieldValue(bean: fornecedorInstance, field: "celular")}</g:link></td>
+						<td><g:link action="show" id="${fornecedorInstance.id}">${fieldValue(bean: fornecedorInstance, field: "nome")}</g:link></td>
 					
 						<td>${fieldValue(bean: fornecedorInstance, field: "email")}</td>
 					
-						<td>${fieldValue(bean: fornecedorInstance, field: "nome")}</td>
-					
 						<td>${fieldValue(bean: fornecedorInstance, field: "telefone")}</td>
 					
-						<td>${fieldValue(bean: fornecedorInstance, field: "tipoPessoa")}</td>
+						<td>${fieldValue(bean: fornecedorInstance, field: "celular")}</td>
 					
 					</tr>
 				</g:each>

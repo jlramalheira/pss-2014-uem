@@ -1,5 +1,5 @@
 
-<%@ page import="renk.Cliente" %>
+<%@ page import="renk.gerenciamentoPessoas.Cliente" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -24,15 +24,15 @@
 			<thead>
 					<tr>
 					
-						<g:sortableColumn property="celular" title="${message(code: 'cliente.celular.label', default: 'Celular')}" />
-					
-						<g:sortableColumn property="email" title="${message(code: 'cliente.email.label', default: 'Email')}" />
+						<th><g:message code="cliente.tipoPessoa.label" default="Tipo Pessoa" /></th>
 					
 						<g:sortableColumn property="nome" title="${message(code: 'cliente.nome.label', default: 'Nome')}" />
 					
+						<g:sortableColumn property="email" title="${message(code: 'cliente.email.label', default: 'Email')}" />
+					
 						<g:sortableColumn property="telefone" title="${message(code: 'cliente.telefone.label', default: 'Telefone')}" />
 					
-						<g:sortableColumn property="tipoPessoa" title="${message(code: 'cliente.tipoPessoa.label', default: 'Tipo Pessoa')}" />
+						<g:sortableColumn property="celular" title="${message(code: 'cliente.celular.label', default: 'Celular')}" />
 					
 					</tr>
 				</thead>
@@ -40,15 +40,15 @@
 				<g:each in="${clienteInstanceList}" status="i" var="clienteInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
-						<td><g:link action="show" id="${clienteInstance.id}">${fieldValue(bean: clienteInstance, field: "celular")}</g:link></td>
-					
-						<td>${fieldValue(bean: clienteInstance, field: "email")}</td>
+						<td><g:link action="show" id="${clienteInstance.id}">${fieldValue(bean: clienteInstance, field: "tipoPessoa")}</g:link></td>
 					
 						<td>${fieldValue(bean: clienteInstance, field: "nome")}</td>
 					
+						<td>${fieldValue(bean: clienteInstance, field: "email")}</td>
+					
 						<td>${fieldValue(bean: clienteInstance, field: "telefone")}</td>
 					
-						<td>${fieldValue(bean: clienteInstance, field: "tipoPessoa")}</td>
+						<td>${fieldValue(bean: clienteInstance, field: "celular")}</td>
 					
 					</tr>
 				</g:each>

@@ -1,4 +1,4 @@
-<%@ page import="renk.PessoaJuridica" %>
+<%@ page import="renk.gerenciamentoPessoas.PessoaJuridica" %>
 
 
 

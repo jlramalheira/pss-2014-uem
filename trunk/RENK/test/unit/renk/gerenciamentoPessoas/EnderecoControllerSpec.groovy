@@ -1,13 +1,13 @@
-package renk
+package renk.gerenciamentoPessoas
 
 
 
 import grails.test.mixin.*
 import spock.lang.*
 
-@TestFor(ProdutoController)
-@Mock(Produto)
-class ProdutoControllerSpec extends Specification {
+@TestFor(EnderecoController)
+@Mock(Endereco)
+class EnderecoControllerSpec extends Specification {
 
     def populateValidParams(params) {
         assert params != null
@@ -21,8 +21,8 @@ class ProdutoControllerSpec extends Specification {
             controller.index()
 
         then:"The model is correct"
-            !model.produtoInstanceList
-            model.produtoInstanceCount == 0
+            !model.enderecoInstanceList
+            model.enderecoInstanceCount == 0
     }
 
     void "Test the create action returns the correct model"() {
@@ -30,32 +30,32 @@ class ProdutoControllerSpec extends Specification {
             controller.create()
 
         then:"The model is correctly created"
-            model.produtoInstance!= null
+            model.enderecoInstance!= null
     }
 
     void "Test the save action correctly persists an instance"() {
 
         when:"The save action is executed with an invalid instance"
             request.contentType = FORM_CONTENT_TYPE
-            def produto = new Produto()
-            produto.validate()
-            controller.save(produto)
+            def endereco = new Endereco()
+            endereco.validate()
+            controller.save(endereco)
 
         then:"The create view is rendered again with the correct model"
-            model.produtoInstance!= null
+            model.enderecoInstance!= null
             view == 'create'
 
         when:"The save action is executed with a valid instance"
             response.reset()
             populateValidParams(params)
-            produto = new Produto(params)
+            endereco = new Endereco(params)
 
-            controller.save(produto)
+            controller.save(endereco)
 
         then:"A redirect is issued to the show action"
-            response.redirectedUrl == '/produto/show/1'
+            response.redirectedUrl == '/endereco/show/1'
             controller.flash.message != null
-            Produto.count() == 1
+            Endereco.count() == 1
     }
 
     void "Test that the show action returns the correct model"() {
@@ -67,11 +67,11 @@ class ProdutoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the show action"
             populateValidParams(params)
-            def produto = new Produto(params)
-            controller.show(produto)
+            def endereco = new Endereco(params)
+            controller.show(endereco)
 
         then:"A model is populated containing the domain instance"
-            model.produtoInstance == produto
+            model.enderecoInstance == endereco
     }
 
     void "Test that the edit action returns the correct model"() {
@@ -83,11 +83,11 @@ class ProdutoControllerSpec extends Specification {
 
         when:"A domain instance is passed to the edit action"
             populateValidParams(params)
-            def produto = new Produto(params)
-            controller.edit(produto)
+            def endereco = new Endereco(params)
+            controller.edit(endereco)
 
         then:"A model is populated containing the domain instance"
-            model.produtoInstance == produto
+            model.enderecoInstance == endereco
     }
 
     void "Test the update action performs an update on a valid domain instance"() {
@@ -96,28 +96,28 @@ class ProdutoControllerSpec extends Specification {
             controller.update(null)
 
         then:"A 404 error is returned"
-            response.redirectedUrl == '/produto/index'
+            response.redirectedUrl == '/endereco/index'
             flash.message != null
 
 
         when:"An invalid domain instance is passed to the update action"
             response.reset()
-            def produto = new Produto()
-            produto.validate()
-            controller.update(produto)
+            def endereco = new Endereco()
+            endereco.validate()
+            controller.update(endereco)
 
         then:"The edit view is rendered again with the invalid instance"
             view == 'edit'
-            model.produtoInstance == produto
+            model.enderecoInstance == endereco
 
         when:"A valid domain instance is passed to the update action"
             response.reset()
             populateValidParams(params)
-            produto = new Produto(params).save(flush: true)
-            controller.update(produto)
+            endereco = new Endereco(params).save(flush: true)
+            controller.update(endereco)
 
         then:"A redirect is issues to the show action"
-            response.redirectedUrl == "/produto/show/$produto.id"
+            response.redirectedUrl == "/endereco/show/$endereco.id"
             flash.message != null
     }
 
@@ -127,23 +127,23 @@ class ProdutoControllerSpec extends Specification {
             controller.delete(null)
 
         then:"A 404 is returned"
-            response.redirectedUrl == '/produto/index'
+            response.redirectedUrl == '/endereco/index'
             flash.message != null
 
         when:"A domain instance is created"
             response.reset()
             populateValidParams(params)
-            def produto = new Produto(params).save(flush: true)
+            def endereco = new Endereco(params).save(flush: true)
 
         then:"It exists"
-            Produto.count() == 1
+            Endereco.count() == 1
 
         when:"The domain instance is passed to the delete action"
-            controller.delete(produto)
+            controller.delete(endereco)
 
         then:"The instance is deleted"
-            Produto.count() == 0
-            response.redirectedUrl == '/produto/index'
+            Endereco.count() == 0
+            response.redirectedUrl == '/endereco/index'
             flash.message != null
     }
 }
