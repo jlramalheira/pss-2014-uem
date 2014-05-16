@@ -2,43 +2,43 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} ">
 	<label for="nome">
 		<g:message code="fornecedor.nome.label" default="Nome" />
 		
 	</label>
-	<g:textField name="nome" value="${fornecedorInstance?.nome}"/>
+	<g:textField name="nome" value="${fornecedorInstance?.nome}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fornecedorInstance, field: 'email', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'email', 'error')} ">
 	<label for="email">
 		<g:message code="fornecedor.email.label" default="Email" />
 		
 	</label>
-	<g:field type="email" name="email" value="${fornecedorInstance?.email}"/>
+	<g:field type="email" name="email" value="${fornecedorInstance?.email}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fornecedorInstance, field: 'telefone', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'telefone', 'error')} ">
 	<label for="telefone">
 		<g:message code="fornecedor.telefone.label" default="Telefone" />
 		
 	</label>
-	<g:textField name="telefone" maxlength="15" value="${fornecedorInstance?.telefone}"/>
+	<g:textField name="telefone" maxlength="15" value="${fornecedorInstance?.telefone}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fornecedorInstance, field: 'celular', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'celular', 'error')} ">
 	<label for="celular">
 		<g:message code="fornecedor.celular.label" default="Celular" />
 		
 	</label>
-	<g:textField name="celular" maxlength="15" value="${fornecedorInstance?.celular}"/>
+	<g:textField name="celular" maxlength="15" value="${fornecedorInstance?.celular}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: fornecedorInstance, field: 'enderecos', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'enderecos', 'error')} ">
 	<label for="enderecos">
 		<g:message code="fornecedor.enderecos.label" default="Enderecos" />
 		
