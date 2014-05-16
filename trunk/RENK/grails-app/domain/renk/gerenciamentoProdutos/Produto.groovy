@@ -1,7 +1,7 @@
 package renk.gerenciamentoProdutos
 
 enum Status{
-    ativo, inativo
+    ATIVO, INATIVO
 }
 
 class Produto {
@@ -11,7 +11,7 @@ class Produto {
     int estoqueMinimo
     int estoqueDesejavel
     double valor
-    Status status = Status.ativo
+    Status status = Status.ATIVO
     
     static int saldo
     
@@ -23,5 +23,13 @@ class Produto {
         valor(min: 0d, scale: 2)
         status(display: false)
         saldo(display:false)
+    }
+    
+    void setInativo(){
+        this.status = Status.INATIVO
+    }
+    
+    void setInativo(){
+        this.status = Status.ATIVO
     }
 }
