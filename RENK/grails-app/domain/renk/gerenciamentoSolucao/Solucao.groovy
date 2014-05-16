@@ -4,7 +4,7 @@ import renk.gerenciamentoServicos.OrdemServico
 
 class Solucao {
     String descricao
-    OrdemServico ordemSevico
+    OrdemServico ordemServico
     
     static constraints = {
         descricao(format: 'textarea')

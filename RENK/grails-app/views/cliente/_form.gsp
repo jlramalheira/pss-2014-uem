@@ -3,17 +3,16 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: clienteInstance, field: 'tipoPessoa', 'error')} required">
-	<label for="tipoPessoa">
-		<g:message code="cliente.tipoPessoa.label" default="Tipo Pessoa" />
-		<span class="required-indicator">*</span>
-	</label>
-	<%--<g:select id="tipoPessoa" name="tipoPessoa.id" from="${renk.gerenciamentoPessoas.TipoPessoa.list()}" optionKey="id" required="" value="${clienteInstance?.tipoPessoa?.id}" class="many-to-one"/>--%>
-                <g:radioGroup name="tipoPessoa" 
-                    values="['${params.pessoaFisicaInstance?.id}','${params.pessoaJuridicaInstance?.id}']"
-                    labels="['Pessoa Física', 'Pessoa Jurídica']" 
-                    value="${params.pessoaFisicaInstance?.id}">
-                    ${it.label} ${it.radio}
-                    </g:radioGroup>
+    <label for="tipoPessoa">
+        <g:message code="cliente.tipoPessoa.label" default="Tipo Pessoa" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:radioGroup name="tipoPessoa" 
+        values="['fisica','juridica']"
+        labels="['Pessoa Física', 'Pessoa Jurídica']" 
+        value="fisica">
+        ${it.label} ${it.radio}
+    </g:radioGroup>
 
 </div>
 
@@ -31,7 +30,7 @@
 		<g:message code="cliente.email.label" default="Email" />
 		
 	</label>
-	<g:textField name="email" value="${clienteInstance?.email}"/>
+	<g:field type="email" name="email" value="${clienteInstance?.email}"/>
 
 </div>
 
@@ -40,7 +39,7 @@
 		<g:message code="cliente.telefone.label" default="Telefone" />
 		
 	</label>
-	<g:textField name="telefone" value="${clienteInstance?.telefone}"/>
+	<g:textField name="telefone" maxlength="15" value="${clienteInstance?.telefone}"/>
 
 </div>
 
@@ -49,7 +48,7 @@
 		<g:message code="cliente.celular.label" default="Celular" />
 		
 	</label>
-	<g:textField name="celular" value="${clienteInstance?.celular}"/>
+	<g:textField name="celular" maxlength="15" value="${clienteInstance?.celular}"/>
 
 </div>
 
@@ -58,9 +57,16 @@
 		<g:message code="cliente.enderecos.label" default="Enderecos" />
 		
 	</label>
-	<g:select name="enderecos" from="${renk.gerenciamentoPessoas.Endereco.list()}" multiple="multiple" optionKey="id" size="5" value="${clienteInstance?.enderecos*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${clienteInstance?.enderecos?}" var="e">
+    <li><g:link controller="endereco" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="endereco" action="create" params="['cliente.id': clienteInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 
-<g:render template="../pessoaFisica/form" />
-<g:render template="../pessoaJuridica/form" />

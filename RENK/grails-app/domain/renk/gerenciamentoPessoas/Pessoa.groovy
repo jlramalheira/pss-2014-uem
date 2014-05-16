@@ -1,5 +1,8 @@
 package renk.gerenciamentoPessoas
-
+enum Status {
+    ATIVA, 
+    INATIVA
+}
 abstract class Pessoa {
     
     static hasMany = [enderecos: Endereco]
@@ -9,14 +12,23 @@ abstract class Pessoa {
     String email
     String telefone
     String celular
-    
+    Status status = Status.ATIVA
     
     static constraints = {
         tipoPessoa()
         nome()
-        email()
-        telefone()
-        celular()    
+        email(email: true)
+        telefone(maxSize: 15)
+        celular(maxSize: 15)
         enderecos()
+        status(display: false)
+    }
+    
+    void setInativa() {
+        this.status = Status.INATIVA
+    }
+    
+    void setAtiva() {
+        this.status = Status.ATIVA
     }
 }

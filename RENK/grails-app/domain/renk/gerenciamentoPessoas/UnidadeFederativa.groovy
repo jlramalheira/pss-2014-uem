@@ -1,12 +1,17 @@
 package renk.gerenciamentoPessoas
 
 class UnidadeFederativa {
-    static belongsTo = [pais: Pais]
+    static belongsTo = [Pais]
     String nome
     String sigla
+    Pais pais
     static constraints = {
         pais()
         nome()
         sigla()
+    }
+    
+    String toString() {
+        "${sigla}"
     }
 }
