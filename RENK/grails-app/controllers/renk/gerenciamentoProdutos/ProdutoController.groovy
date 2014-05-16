@@ -74,19 +74,40 @@ class ProdutoController {
     }
 
     @Transactional
-    def delete(Produto produtoInstance) {
+    def inactivate(Produto produtoInstance) {
 
         if (produtoInstance == null) {
             notFound()
             return
         }
-
-        produtoInstance.delete flush:true
+        
+        produtoInstance.setInativo()
+        produtoInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'produto.inactivate.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
+                redirect produtoInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def activate(Produto produtoInstance) {
+
+        if (produtoInstance == null) {
+            notFound()
+            return
+        }
+        
+        produtoInstance.setAtivo()
+        produtoInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'produto.activate.message', args: [message(code: 'Produto.label', default: 'Produto'), produtoInstance.id])
+                redirect produtoInstance
             }
             '*'{ render status: NO_CONTENT }
         }
