@@ -9,7 +9,7 @@ class OrdemServico {
     static constraints = {
         servico()
         dataEmissao(display: false)
-        dataPrecisao(editable: false)
+        dataPrevisao(editable: false)
         dataConclusao(display: false)
     }
     

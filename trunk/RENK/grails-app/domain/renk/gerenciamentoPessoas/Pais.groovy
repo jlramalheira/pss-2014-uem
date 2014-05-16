@@ -7,4 +7,7 @@ class Pais {
         nome()
         sigla()
     }
+    String toString() {
+        "${nome} - ${sigla}"
+    }
 }

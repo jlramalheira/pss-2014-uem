@@ -1,19 +1,28 @@
 package renk.gerenciamentoPessoas
-
+enum TipoEndereco {
+    RESIDENCIAL,
+    COMERCIAL,
+    ENTREGA,
+    COBRANCA,
+    FERIAS
+}
 class Endereco {
-    static belongsTo = [cidade: Cidade]
+    static belongsTo = [Cidade, Pessoa]
     String logradouro
     String numero
     String complemento
     String bairro
     String cep
-    String tipo
+    Cidade cidade
+    Pessoa pessoa
+    TipoEndereco tipo = TipoEndereco.RESIDENCIAL
     static constraints = {
-        tipo(nullable: true, blank: true)
+        tipo()
         logradouro()
         numero(maxSize: 10)
         complemento(nullable: true, blank: true)
         bairro()        
         cep()
+        pessoa(nullable: true)
     }
 }

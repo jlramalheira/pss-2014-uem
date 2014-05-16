@@ -29,7 +29,7 @@ class Produto {
         this.status = Status.INATIVO
     }
     
-    void setInativo(){
+    void setAtivo(){
         this.status = Status.ATIVO
     }
 }

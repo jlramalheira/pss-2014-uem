@@ -56,15 +56,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'pessoa', 'error')} ">
-	<label for="pessoa">
-		<g:message code="endereco.pessoa.label" default="Pessoa" />
-		
-	</label>
-	<g:select id="pessoa" name="pessoa.id" from="${renk.gerenciamentoPessoas.Pessoa.list()}" optionKey="id" value="${enderecoInstance?.pessoa?.id}" class="many-to-one" noSelection="['null': '']"/>
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'cidade', 'error')} required">
 	<label for="cidade">
 		<g:message code="endereco.cidade.label" default="Cidade" />

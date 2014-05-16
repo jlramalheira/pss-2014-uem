@@ -16,7 +16,7 @@
 		<g:message code="fornecedor.email.label" default="Email" />
 		
 	</label>
-	<g:textField name="email" value="${fornecedorInstance?.email}"/>
+	<g:field type="email" name="email" value="${fornecedorInstance?.email}"/>
 
 </div>
 
@@ -25,7 +25,7 @@
 		<g:message code="fornecedor.telefone.label" default="Telefone" />
 		
 	</label>
-	<g:textField name="telefone" value="${fornecedorInstance?.telefone}"/>
+	<g:textField name="telefone" maxlength="15" value="${fornecedorInstance?.telefone}"/>
 
 </div>
 
@@ -34,7 +34,7 @@
 		<g:message code="fornecedor.celular.label" default="Celular" />
 		
 	</label>
-	<g:textField name="celular" value="${fornecedorInstance?.celular}"/>
+	<g:textField name="celular" maxlength="15" value="${fornecedorInstance?.celular}"/>
 
 </div>
 
@@ -43,8 +43,16 @@
 		<g:message code="fornecedor.enderecos.label" default="Enderecos" />
 		
 	</label>
-	<g:select name="enderecos" from="${renk.gerenciamentoPessoas.Endereco.list()}" multiple="multiple" optionKey="id" size="5" value="${fornecedorInstance?.enderecos*.id}" class="many-to-many"/>
+	
+<ul class="one-to-many">
+<g:each in="${fornecedorInstance?.enderecos?}" var="e">
+    <li><g:link controller="endereco" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></li>
+</g:each>
+<li class="add">
+<g:link controller="endereco" action="create" params="['fornecedor.id': fornecedorInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}</g:link>
+</li>
+</ul>
+
 
 </div>
 
-<g:render template="../pessoaJuridica/form" />
