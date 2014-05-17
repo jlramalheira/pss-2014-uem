@@ -2,7 +2,7 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'tipo', 'error')} required">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'tipo', 'error')} required">
 	<label for="tipo">
 		<g:message code="endereco.tipo.label" default="Tipo" />
 		<span class="required-indicator">*</span>
@@ -11,61 +11,52 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'logradouro', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'logradouro', 'error')} ">
 	<label for="logradouro">
 		<g:message code="endereco.logradouro.label" default="Logradouro" />
 		
 	</label>
-	<g:textField name="logradouro" value="${enderecoInstance?.logradouro}"/>
+	<g:textField name="logradouro" value="${enderecoInstance?.logradouro}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'numero', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'numero', 'error')} ">
 	<label for="numero">
 		<g:message code="endereco.numero.label" default="Numero" />
 		
 	</label>
-	<g:textField name="numero" maxlength="10" value="${enderecoInstance?.numero}"/>
+	<g:textField name="numero" maxlength="10" value="${enderecoInstance?.numero}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'complemento', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'complemento', 'error')} ">
 	<label for="complemento">
 		<g:message code="endereco.complemento.label" default="Complemento" />
 		
 	</label>
-	<g:textField name="complemento" value="${enderecoInstance?.complemento}"/>
+	<g:textField name="complemento" value="${enderecoInstance?.complemento}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'bairro', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'bairro', 'error')} ">
 	<label for="bairro">
 		<g:message code="endereco.bairro.label" default="Bairro" />
 		
 	</label>
-	<g:textField name="bairro" value="${enderecoInstance?.bairro}"/>
+	<g:textField name="bairro" value="${enderecoInstance?.bairro}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'cep', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'cep', 'error')} ">
 	<label for="cep">
 		<g:message code="endereco.cep.label" default="Cep" />
 		
 	</label>
-	<g:textField name="cep" value="${enderecoInstance?.cep}"/>
+	<g:textField name="cep" value="${enderecoInstance?.cep}"class="form-control" />
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'pessoa', 'error')} ">
-	<label for="pessoa">
-		<g:message code="endereco.pessoa.label" default="Pessoa" />
-		
-	</label>
-	<g:select id="pessoa" name="pessoa.id" from="${renk.gerenciamentoPessoas.Pessoa.list()}" optionKey="id" value="${enderecoInstance?.pessoa?.id}" class="many-to-one" noSelection="['null': '']"/>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: enderecoInstance, field: 'cidade', 'error')} required">
+<div class="fieldcontain form-group ${hasErrors(bean: enderecoInstance, field: 'cidade', 'error')} required">
 	<label for="cidade">
 		<g:message code="endereco.cidade.label" default="Cidade" />
 		<span class="required-indicator">*</span>

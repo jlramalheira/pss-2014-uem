@@ -8,6 +8,13 @@ if (typeof jQuery !== 'undefined') {
 	})(jQuery);
 }
 
+$(document).ready(function(){
+    $('select.many-to-one').addClass("form-control");
+});
+
+
+
+
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.

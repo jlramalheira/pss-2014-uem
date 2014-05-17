@@ -26,7 +26,10 @@
     <div id="spinner" class="spinner" style="display:none;">
         <g:message code="spinner.alt" default="Loading&hellip;"/>
     </div>
-
+    
+    <footer class="main-footer margin-top-sm">
+        RENK - Sistema de Controle de Vendas e Serviços. Por RENK Sollutions, 2014.
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <r:layoutResources />
 </body>

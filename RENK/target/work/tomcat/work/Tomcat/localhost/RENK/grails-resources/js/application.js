@@ -7,3 +7,10 @@ if (typeof jQuery !== 'undefined') {
 		});
 	})(jQuery);
 }
+
+$(document).ready(function(){
+    $('select.many-to-one').addClass("form-control");
+});
+
+
+

@@ -1,10 +1,9 @@
-<%@ page import="renk.gerenciamentoProdutos.Produto" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'produto.label', default: 'Produto')}" />
-        <title><g:message code="default.edit.label" args="[entityName]" /></title>
+        <g:set var="entityName" value="${message(code: 'pessoa.label', default: 'Pessoa')}" />
+        <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
         <g:render template="nav-main"/>
@@ -15,31 +14,32 @@
                     <g:render template="nav-sub"/>
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div id="edit-produto" class="scaffold-edit" role="main">
-                       <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+                    <div id="create-pessoa" class="scaffold-create" role="main">
+                        <h1><g:message code="default.create.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
                             <div class="message" role="status">${flash.message}</div>
                         </g:if>
-                        <g:hasErrors bean="${produtoInstance}">
+                        <g:hasErrors bean="${pessoaInstance}">
                             <ul class="errors" role="alert">
-                                <g:eachError bean="${produtoInstance}" var="error">
+                                <g:eachError bean="${pessoaInstance}" var="error">
                                     <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                                     </g:eachError>
                                     </ul>
                                 </g:hasErrors>
-                                <g:form url="[resource:produtoInstance, action:'update']"
-                                    method="PUT" >
-                                    <g:hiddenField name="version" value="${produtoInstance?.version}" />
+                                <g:form url="[resource:pessoaInstance, action:'save']"
+                                    >
                                     <fieldset class="form">
-                                        <g:render template="form"/>
+                                    <g:render template="form"/>
                                     </fieldset>
                                     <fieldset class="buttons">
-                                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                        <g:submitButton name="create" class="btn btn-lg btn-default" 
+                                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
                                     </fieldset>
                                 </g:form>
-                                </div>                    
-                </section>
-            </div>
-        </div>
-</body>
-</html>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+
+            </body>
+        </html>

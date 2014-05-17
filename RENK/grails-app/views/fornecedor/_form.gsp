@@ -2,12 +2,12 @@
 
 
 
-<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} ">
+<div class="fieldcontain form-group ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} required">
 	<label for="nome">
 		<g:message code="fornecedor.nome.label" default="Nome" />
-		
+		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="nome" value="${fornecedorInstance?.nome}"class="form-control" />
+	<g:textField name="nome" required="" value="${fornecedorInstance?.nome}"class="form-control" />
 
 </div>
 
