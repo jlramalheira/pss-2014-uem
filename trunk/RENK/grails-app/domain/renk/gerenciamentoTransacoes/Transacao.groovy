@@ -20,4 +20,8 @@ abstract class Transacao {
         
     }
     
+    void cancelar(){
+        
+    }
+    
 }

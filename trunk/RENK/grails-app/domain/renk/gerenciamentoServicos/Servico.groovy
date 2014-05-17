@@ -2,9 +2,6 @@ package renk.gerenciamentoServicos
 
 import groovy.time.Duration
 
-enum Status {
-    ATIVO, INATIVO
-}
 
 class Servico {
         String nome
@@ -12,13 +9,25 @@ class Servico {
         int hora
         int minutos
         double valor
-        Status status = Status.ATIVO
+        boolean ativo = true
         
     static constraints = {
         nome(blank: false)
         descricao(widget: 'textarea')
         hora(min: 0)
         minutos(min: 0)
-        status(display:false)
+        ativo(display:false)
+    }
+    
+    void setAtivar(){
+        ativo = true
+    }
+    
+    void setInativar(){
+        ativo = false
+    }
+    
+    boolean isAtivo(){
+        return ativo
     }
 }

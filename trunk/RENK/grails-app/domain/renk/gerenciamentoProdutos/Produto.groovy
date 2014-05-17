@@ -1,9 +1,5 @@
 package renk.gerenciamentoProdutos
 
-enum Status{
-    ATIVO, INATIVO
-}
-
 class Produto {
     
     String nome
@@ -11,8 +7,7 @@ class Produto {
     int estoqueMinimo
     int estoqueDesejavel
     double valor
-    Status status = Status.ATIVO
-    
+    boolean ativo = true
     int saldo
     
     static constraints = {
@@ -21,15 +16,15 @@ class Produto {
         estoqueMinimo(min: 0)
         estoqueDesejavel(min: 0)
         valor(min: 0d, scale: 2)
-        status(display: false)
+        ativo(display: false)
         saldo()
     }
     
     void setInativo(){
-        this.status = Status.INATIVO
+        ativo = false
     }
     
     void setAtivo(){
-        this.status = Status.ATIVO
+        ativo = true
     }
 }
