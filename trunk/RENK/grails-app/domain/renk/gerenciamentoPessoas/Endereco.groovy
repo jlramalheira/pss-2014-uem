@@ -23,6 +23,6 @@ class Endereco {
         complemento(nullable: true, blank: true)
         bairro()        
         cep()
-        pessoa(nullable: true)
+        pessoa(nullable: true, display: false)
     }
 }

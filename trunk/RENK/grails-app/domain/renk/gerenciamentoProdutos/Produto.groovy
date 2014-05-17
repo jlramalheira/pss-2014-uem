@@ -13,7 +13,7 @@ class Produto {
     double valor
     Status status = Status.ATIVO
     
-    static int saldo
+    int saldo
     
     static constraints = {
         nome(blank: false)
@@ -22,7 +22,7 @@ class Produto {
         estoqueDesejavel(min: 0)
         valor(min: 0d, scale: 2)
         status(display: false)
-        saldo(display:false)
+        saldo()
     }
     
     void setInativo(){

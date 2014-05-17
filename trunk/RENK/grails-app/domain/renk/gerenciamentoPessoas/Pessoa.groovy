@@ -16,7 +16,7 @@ abstract class Pessoa {
     
     static constraints = {
         tipoPessoa()
-        nome()
+        nome(blank: false)
         email(email: true)
         telefone(maxSize: 15)
         celular(maxSize: 15)

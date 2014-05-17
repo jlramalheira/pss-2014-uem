@@ -77,15 +77,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${enderecoInstance?.pessoa}">
-				<li class="fieldcontain">
-					<span id="pessoa-label" class="property-label"><g:message code="endereco.pessoa.label" default="Pessoa" /></span>
-					
-						<span class="property-value" aria-labelledby="pessoa-label"><g:link controller="pessoa" action="show" id="${enderecoInstance?.pessoa?.id}">${enderecoInstance?.pessoa?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${enderecoInstance?.cidade}">
 				<li class="fieldcontain">
 					<span id="cidade-label" class="property-label"><g:message code="endereco.cidade.label" default="Cidade" /></span>
