@@ -13,7 +13,7 @@ class OrdemServico {
         dataConclusao(display: false)
     }
     
-    def escalonarTecnico(){
+    void escalonarTecnico(){
         
     }
 }
