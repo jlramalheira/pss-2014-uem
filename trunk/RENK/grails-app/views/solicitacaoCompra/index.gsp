@@ -29,13 +29,25 @@
                                     
                                         <g:sortableColumn property="dataSolicitacao" title="${message(code: 'solicitacaoCompra.dataSolicitacao.label', default: 'Data Solicitacao')}" />
                                         
+                                        <g:sortableColumn property="status" title="${message(code: 'solicitacaoCompra.status.label', default: 'Status')}" />
+                                        
                                 </tr>
                             </thead>
                             <tbody>
                                 <g:each in="${solicitacaoCompraInstanceList}" status="i" var="solicitacaoCompraInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${solicitacaoCompraInstance.id}">${fieldValue(bean: solicitacaoCompraInstance, field: "dataSolicitacao")}</g:link></td>
+                                        <td><g:link action="show" id="${solicitacaoCompraInstance.id}"><g:formatDate format="dd/MM/yyyy" date="${solicitacaoCompraInstance?.dataSolicitacao}" /></g:link></td>
+                                        
+                                        <td><g:if test="${solicitacaoCompraInstance.isEmAberto()}">
+                                        <span class="label label-warning">${solicitacaoCompraInstance.getStatusStr()}</span>
+                                </g:if>
+                                <g:if test="${solicitacaoCompraInstance.isCancelada()}">
+                                        <span class="label label-danger">${solicitacaoCompraInstance.getStatusStr()}</span>
+                                </g:if>
+                                <g:if test="${solicitacaoCompraInstance.isConcluida()}">
+                                        <span class="label label-success">${solicitacaoCompraInstance.getStatusStr()}</span>
+                                </g:if></td>
                                         
                                     </tr>
                                 </g:each>
