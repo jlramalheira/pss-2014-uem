@@ -8,7 +8,7 @@
             <g:message code="venda.dataTransacao.label" default="Data Transacao" />
             <span class="required-indicator">*</span>
         </label>
-        ${vendaInstance?.dataTransacao?.toString()}
+        <g:datePicker name="dataTransacao" precision="day"  value="${vendaInstance?.dataTransacao}"  />
 
     </div>
 </div>
@@ -41,7 +41,7 @@
             <g:message code="venda.status.label" default="Status" />
             <span class="required-indicator">*</span>
         </label>
-        <g:select  class="form-control"  name="status" from="${renk.gerenciamentoTransacoes.Status?.values()}" keys="${renk.gerenciamentoTransacoes.Status.values()*.name()}" required="" value="${vendaInstance?.status?.name()}" />
+        <g:select  class="form-control"  name="status" from="${renk.gerenciamentoTransacoes.Venda$Status?.values()}" keys="${renk.gerenciamentoTransacoes.Venda$Status.values()*.name()}" required="" value="${vendaInstance?.status?.name()}" />
 
     </div>
 </div>
