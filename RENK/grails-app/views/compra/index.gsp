@@ -27,6 +27,8 @@
                             <thead>
                                 <tr>
                                     
+                                    <th><g:message code="compra.pessoa.label" default="Pessoa" /></th>
+                                        
                                         <g:sortableColumn property="dataTransacao" title="${message(code: 'compra.dataTransacao.label', default: 'Data Transacao')}" />
                                         
                                         <g:sortableColumn property="quantidadeTotal" title="${message(code: 'compra.quantidadeTotal.label', default: 'Quantidade Total')}" />
@@ -41,7 +43,9 @@
                                 <g:each in="${compraInstanceList}" status="i" var="compraInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${compraInstance.id}">${fieldValue(bean: compraInstance, field: "dataTransacao")}</g:link></td>
+                                        <td><g:link action="show" id="${compraInstance.id}">${fieldValue(bean: compraInstance, field: "pessoa")}</g:link></td>
+                                        
+                                        <td><g:formatDate date="${compraInstance.dataTransacao}" /></td>
                                         
                                         <td>${fieldValue(bean: compraInstance, field: "quantidadeTotal")}</td>
                                         
