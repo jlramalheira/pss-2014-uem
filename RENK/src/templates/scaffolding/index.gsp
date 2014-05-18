@@ -18,7 +18,10 @@
                     <div id="list-${domainClass.propertyName}" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:if test="\${flash.message}">
-                        <div class="message" role="status">\${flash.message}</div>
+                        <div  class="alert alert-info alert-dismissable" role="status">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            \${flash.message}
+                        </div>
                         </g:if>
                         <table class="table table-hover table-striped table-responsive">
                             <thead>
