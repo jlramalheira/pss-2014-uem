@@ -34,6 +34,10 @@
                                     <fieldset class="buttons">
                                         <g:submitButton name="create" class="btn btn-lg btn-primary" 
                                         value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                        <g:link controller="index"  resource="${produtoInstance}" 
+                                             class="btn btn-lg btn-danger">
+                                             Cancelar
+                                        </g:link>
                                     </fieldset>
                                 </g:form>
                                 </div>

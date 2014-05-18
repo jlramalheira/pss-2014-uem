@@ -17,7 +17,7 @@ class Produto {
         estoqueDesejavel(min: 0)
         valor(min: 0d, scale: 2)
         ativo(display: false)
-        saldo()
+        saldo(display: false)
     }
     
     void setInativo(){

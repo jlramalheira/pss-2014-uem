@@ -34,8 +34,6 @@
                                         
                                         <g:sortableColumn property="valor" title="${message(code: 'produto.valor.label', default: 'Valor')}" />
                                         
-                                        <g:sortableColumn property="saldo" title="${message(code: 'produto.saldo.label', default: 'Saldo')}" />
-                                        
                                 </tr>
                             </thead>
                             <tbody>
@@ -51,8 +49,6 @@
                                         <td>${fieldValue(bean: produtoInstance, field: "estoqueDesejavel")}</td>
                                         
                                         <td>${fieldValue(bean: produtoInstance, field: "valor")}</td>
-                                        
-                                        <td>${fieldValue(bean: produtoInstance, field: "saldo")}</td>
                                         
                                     </tr>
                                 </g:each>
