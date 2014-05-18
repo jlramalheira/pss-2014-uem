@@ -41,7 +41,7 @@
             <g:message code="compra.status.label" default="Status" />
             <span class="required-indicator">*</span>
         </label>
-        <g:select  class="form-control"  name="status" from="${renk.gerenciamentoTransacoes.Status?.values()}" keys="${renk.gerenciamentoTransacoes.Status.values()*.name()}" required="" value="${compraInstance?.status?.name()}" />
+        <g:select  class="form-control"  name="status" from="${renk.gerenciamentoTransacoes.Compra$Status?.values()}" keys="${renk.gerenciamentoTransacoes.Compra$Status.values()*.name()}" required="" value="${compraInstance?.status?.name()}" />
 
     </div>
 </div>

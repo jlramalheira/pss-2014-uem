@@ -1,10 +1,10 @@
 package renk.gerenciamentoTransacoes
 
-enum Status{
-    ABERTA, CANCELADA, FINALIZADA
-}
 
 class Venda extends Transacao{
+    enum Status{
+        ABERTA, CANCELADA, FINALIZADA
+    }
     
     Status status
 

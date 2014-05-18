@@ -1,11 +1,9 @@
 package renk.gerenciamentoTransacoes
 
-enum Status{
-    ABERTA, FINALIZADA, RECEBIDA, CANCELADA
-}
-
 class Compra extends Transacao{
-    
+    enum Status{
+        ABERTA, FINALIZADA, RECEBIDA, CANCELADA
+    }
     Status status
 
     static constraints = {
