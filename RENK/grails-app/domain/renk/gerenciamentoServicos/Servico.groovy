@@ -13,8 +13,8 @@ class Servico {
     static constraints = {
         nome(blank: false)
         descricao(widget: 'textarea',blank: true, nullable: true)
-        hora(max: 24, min: 0)
-        minutos(max: 60, min: 0)
+        hora(min: 0)
+        minutos(min: 0)
         valor()
         ativo(display:false)
     }
