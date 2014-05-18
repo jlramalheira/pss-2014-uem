@@ -4,8 +4,12 @@ class Compra extends Transacao{
     enum Status{
         ABERTA, FINALIZADA, RECEBIDA, CANCELADA
     }
-    Status status
+    Status status = Status.ABERTA
 
     static constraints = {
+    }
+    
+    void setAberta(){
+        this.status = Status.ABERTA
     }
 }

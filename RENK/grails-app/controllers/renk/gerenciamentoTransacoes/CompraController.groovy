@@ -20,7 +20,9 @@ class CompraController {
     }
 
     def create() {
-        respond new Compra(params)
+        def compra = new Compra(params)
+        compra.setAberta()
+        respond compra
     }
 
     @Transactional
