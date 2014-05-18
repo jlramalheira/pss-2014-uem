@@ -9,7 +9,7 @@ abstract class Transacao {
     double valorTotal = 0
     
     static constraints = {
-        pessoa()
+        pessoa(nullable:true)
         dataTransacao()
         quantidadeTotal(editable: false)
         valorTotal(editable: false)

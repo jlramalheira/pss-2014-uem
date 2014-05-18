@@ -5,10 +5,10 @@
 <div class="row">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: compraInstance, field: 'pessoa', 'error')} required">
         <label for="pessoa">
-            <g:message code="compra.pessoa.label" default="Pessoa" />
+            Fornecedor <%--<g:message code="compra.pessoa.label" default="Pessoa" />--%>
             <span class="required-indicator">*</span>
         </label>
-        <g:select class="form-control" id="pessoa" name="pessoa.id" from="${renk.gerenciamentoPessoas.Pessoa.list()}" optionKey="id" required="" value="${compraInstance?.pessoa?.id}" class="many-to-one"/>
+        <g:select class="form-control" id="pessoa" name="pessoa.id" from="${renk.gerenciamentoPessoas.Pessoa.list()}" optionKey="id" value="${compraInstance?.pessoa?.id}" class="many-to-one"/>
 
     </div>
 </div>
@@ -28,30 +28,6 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: compraInstance, field: 'quantidadeTotal', 'error')} required">
-        <label for="quantidadeTotal">
-            <g:message code="compra.quantidadeTotal.label" default="Quantidade Total" />
-            <span class="required-indicator">*</span>
-        </label>
-        <g:field  class="form-control" name="quantidadeTotal" type="number" 
-        value="${compraInstance.quantidadeTotal}" required="" disabled="disabled" />
-
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: compraInstance, field: 'valorTotal', 'error')} required">
-        <label for="valorTotal">
-            <g:message code="compra.valorTotal.label" default="Valor Total" />
-            <span class="required-indicator">*</span>
-        </label>
-        <g:field  class="form-control" name="valorTotal" 
-        value="${fieldValue(bean: compraInstance, field: 'valorTotal')}" 
-            required=""  disabled="disabled" />
-
-    </div>
-</div>
 
 <!--<div class="row">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: compraInstance, field: 'status', 'error')} required">
@@ -218,7 +194,7 @@
                         Total
                     </th>
                     <th>
-                        5
+                        15
                     </th>
                     <th colspan="2">
                         R$ 300,00
