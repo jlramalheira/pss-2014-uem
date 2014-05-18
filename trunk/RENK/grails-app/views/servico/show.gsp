@@ -79,6 +79,25 @@
 
                                 </dd>
                             </g:if>
+                            
+                            <g:if test="${servicoInstance}">
+                                <g:if test="${servicoInstance.ativo}">
+                                    <dt id="valor-label" class="property-label">
+                                            <g:message code="servico.ativo.label" default="Status" />
+                                    </dt>
+                                    <dd class="property-value" aria-labelledby="valor-label">
+                                            <span class="label label-success">Ativo</span>
+                                    </dd>
+                                </g:if>
+                              <g:else>
+                                    <dt id="valor-label" class="property-label">
+                                            <g:message code="servico.ativo.label" default="Status" />
+                                    </dt>
+                                    <dd class="property-value" aria-labelledby="valor-label">
+                                            <span class="label label-danger">Inativo</span>
+                                    </dd>
+                              </g:else>
+                            </g:if>
 
                         </dl>
                         <g:form url="[resource:servicoInstance, action:'delete']" method="DELETE">
@@ -91,7 +110,7 @@
                                     onclick="return confirm('${message(code: 'default.button.inativate.confirm.message.servico', default: 'Are you sure?')}');" />
                                 </g:if>
                                 <g:if test="${!servicoInstance?.ativo}">
-                                    <g:actionSubmit class="btn btn-lg btn-default" action="ativate" 
+                                    <g:actionSubmit class="btn btn-lg btn-success" action="ativate" 
                                     value="${message(code: 'default.button.ativate.label', default: 'Ativar')}"
                                     onclick="return confirm('${message(code: 'default.button.ativate.confirm.message.servico', default: 'Are you sure?')}');" />
                                 </g:if>
