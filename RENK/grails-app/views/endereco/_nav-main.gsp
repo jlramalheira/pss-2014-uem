@@ -1,7 +1,7 @@
 <a href="#list-endereco" class="sr-only">
             <g:message code="default.link.skip.label" default="Skip to content&hellip;"/>
         </a>
-        <nav class="navbar navbar-default" role="navigation">
+        <nav class="navbar navbar-inverse" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
@@ -11,7 +11,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="${createLink(uri: '/')}">
-                        RENK
+                       <strong>RENK</strong>
                     </a>
                 </div>
                 <div class="collapse navbar-collapse" id="main-navigation">

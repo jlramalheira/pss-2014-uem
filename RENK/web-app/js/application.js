@@ -9,7 +9,7 @@ if (typeof jQuery !== 'undefined') {
 }
 
 $(document).ready(function(){
-    $('select.many-to-one').addClass("form-control");
+    $('.form-group select').addClass("form-control");
 });
 
 

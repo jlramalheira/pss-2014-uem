@@ -10,10 +10,10 @@
 
         <div class="container-fluid">
             <div class="row">
-                <nav class="subnav col-xs-12 col-sm-2 col-md-2 col-lg-2">
-
+                <nav class="subnav col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <g:render template="nav-sub"/>
                 </nav>
-                <section class="content col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div id="create-fornecedor" class="scaffold-create" role="main">
                         <h1><g:message code="default.create.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
@@ -26,14 +26,18 @@
                                     </g:eachError>
                                     </ul>
                                 </g:hasErrors>
-                                <g:form url="[resource:fornecedorInstance, action:'save']" class="teste"
+                                <g:form url="[resource:fornecedorInstance, action:'save']"
                                     >
                                     <fieldset class="form">
                                     <g:render template="form"/>
                                     </fieldset>
                                     <fieldset class="buttons">
-                                        <g:submitButton name="create" class="btn btn-lg btn-default" 
+                                        <g:submitButton name="create" class="btn btn-lg btn-primary" 
                                         value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                        <g:link controller="index"  resource="${fornecedorInstance}" 
+                                             class="btn btn-lg btn-danger">
+                                             Cancelar
+                                        </g:link>
                                     </fieldset>
                                 </g:form>
                                 </div>

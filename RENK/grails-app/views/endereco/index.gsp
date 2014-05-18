@@ -11,10 +11,10 @@
         <g:render template="nav-main"/>
         <div class="container-fluid">
             <div class="row">
-                <nav class="subnav col-xs-12 col-sm-2 col-md-2 col-lg-2">
-
+                <nav class="subnav col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                    <g:render template="nav-sub"/>
                 </nav>
-                <section class="content col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div id="list-endereco" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
@@ -63,12 +63,7 @@
                         </div>
                     </div>
                 </section>
-
-
             </div>
         </div>
-
-
-
     </body>
-                        </html>
+ </html>

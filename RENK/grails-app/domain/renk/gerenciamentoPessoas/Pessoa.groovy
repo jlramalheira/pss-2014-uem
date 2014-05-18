@@ -1,34 +1,30 @@
 package renk.gerenciamentoPessoas
-enum Status {
-    ATIVA, 
-    INATIVA
-}
-abstract class Pessoa {
+import java.util.ArrayList
+import java.util.List
+class Pessoa {
     
     static hasMany = [enderecos: Endereco]
-    
-    TipoPessoa tipoPessoa        
+    List<Endereco> enderecos = new ArrayList<Endereco>()
     String nome
     String email
     String telefone
     String celular
-    Status status = Status.ATIVA
+    boolean ativo = true
     
     static constraints = {
-        tipoPessoa()
         nome(blank: false)
         email(email: true)
         telefone(maxSize: 15)
-        celular(maxSize: 15)
+        celular(maxSize: 15, blank: true)
         enderecos()
-        status(display: false)
+        ativo(display: false)
     }
     
     void setInativa() {
-        this.status = Status.INATIVA
+        this.ativo = false
     }
     
     void setAtiva() {
-        this.status = Status.ATIVA
+        this.ativo = true
     }
 }

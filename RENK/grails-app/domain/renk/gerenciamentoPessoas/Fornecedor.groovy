@@ -2,8 +2,10 @@ package renk.gerenciamentoPessoas
 
 
 class Fornecedor extends Pessoa {
+    
+    PessoaJuridica pessoaJuridica
 
     static constraints = {
-        tipoPessoa display: false
+        pessoaJuridica(display:false)
     }
 }
