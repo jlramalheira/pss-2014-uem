@@ -25,6 +25,19 @@
                         </g:if>
                         <dl class="dl-horizontal property-list compra">
                             
+                            <g:if test="${compraInstance?.pessoa}">
+                                <dt id="pessoa-label" class="property-label">
+                                        <g:message code="compra.pessoa.label" default="Pessoa" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="pessoa-label">
+                                    
+                                        <g:link controller="pessoa" action="show" id="${compraInstance?.pessoa?.id}">
+                                            ${compraInstance?.pessoa?.encodeAsHTML()}
+                                        </g:link>
+                                    
+                                </dd>
+                            </g:if>
+                            
                             <g:if test="${compraInstance?.dataTransacao}">
                                 <dt id="dataTransacao-label" class="property-label">
                                         <g:message code="compra.dataTransacao.label" default="Data Transacao" />
