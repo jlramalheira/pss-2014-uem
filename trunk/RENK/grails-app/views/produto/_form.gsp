@@ -57,14 +57,3 @@
     </div>
 </div>
 
-    <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'saldo', 'error')} required">
-        <label for="saldo">
-            <g:message code="produto.saldo.label" default="Saldo" />
-            <span class="required-indicator">*</span>
-        </label>
-        <g:field  class="form-control" name="saldo" type="number" value="${produtoInstance.saldo}" required=""/>
-
-    </div>
-</div>
-
