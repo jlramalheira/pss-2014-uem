@@ -74,19 +74,42 @@ class SolicitacaoCompraController {
     }
 
     @Transactional
-    def delete(SolicitacaoCompra solicitacaoCompraInstance) {
+    def complete(SolicitacaoCompra solicitacaoCompraInstance) {
+
+        if (solicitacaoCompraInstance == null) {
+            notFound()
+            return
+        }
+        
+        solicitacaoCompraInstance.setConcluida()
+        
+        solicitacaoCompraInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Solicitacao concluida', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
+                redirect solicitacaoCompraInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def cancel(SolicitacaoCompra solicitacaoCompraInstance) {
 
         if (solicitacaoCompraInstance == null) {
             notFound()
             return
         }
 
-        solicitacaoCompraInstance.delete flush:true
+        solicitacaoCompraInstance.setCancelada()
+        
+        solicitacaoCompraInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = message(code: 'Solicitacao cancelada', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
+                redirect solicitacaoCompraInstance
             }
             '*'{ render status: NO_CONTENT }
         }
