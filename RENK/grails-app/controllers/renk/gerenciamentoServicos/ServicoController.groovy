@@ -12,7 +12,7 @@ class ServicoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Servico.list(params), model:[servicoInstanceCount: Servico.count()]
+        respond Servico.list(params), model:[servicoInstanceCount: Servico.count()]// Servico.findAllByAtivo()
     }
 
     def show(Servico servicoInstance) {
@@ -73,19 +73,38 @@ class ServicoController {
         }
     }
 
-    @Transactional
-    def delete(Servico servicoInstance) {
+    def inativate(Servico servicoInstance) {
 
         if (servicoInstance == null) {
             notFound()
             return
         }
 
-        servicoInstance.delete flush:true
+        servicoInstance.setInativar()
+        servicoInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Servico.label', default: 'Servico'), servicoInstance.id])
+                flash.message = message(code: 'default.inativated.message', args: [message(code: 'Servico.label', default: 'Servico'), servicoInstance.id])
+                redirect action:"index", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    def ativate(Servico servicoInstance) {
+
+        if (servicoInstance == null) {
+            notFound()
+            return
+        }
+
+        servicoInstance.setAtivar()
+        servicoInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.ativated.message', args: [message(code: 'Servico.label', default: 'Servico'), servicoInstance.id])
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
