@@ -43,6 +43,11 @@ body{
     padding-top: 20px;
 }
 
+.form-group-data select{
+    display: inline-block;
+    width: 15%;
+}
+
 /* FOOTER 
    ---------------------------------------------------------------------------*/
 .main-footer{
