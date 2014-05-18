@@ -6,7 +6,7 @@ class Venda extends Transacao{
         ABERTA, CANCELADA, FINALIZADA
     }
     
-    StatusVenda status
+    Status status
 
     static constraints = {
     }
