@@ -18,7 +18,10 @@
                     <div id="list-produto" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
-                        <div class="message" role="status">${flash.message}</div>
+                        <div  class="alert alert-info alert-dismissable" role="status">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            ${flash.message}
+                        </div>
                         </g:if>
                         <table class="table table-hover table-striped table-responsive">
                             <thead>
@@ -33,6 +36,7 @@
                                         <g:sortableColumn property="estoqueDesejavel" title="${message(code: 'produto.estoqueDesejavel.label', default: 'Estoque Desejavel')}" />
                                         
                                         <g:sortableColumn property="valor" title="${message(code: 'produto.valor.label', default: 'Valor')}" />
+                                        <g:sortableColumn property="ativo" title="${message(code: 'produto.ativo.label', default: 'Status')}" />
                                         
                                 </tr>
                             </thead>
@@ -49,7 +53,14 @@
                                         <td>${fieldValue(bean: produtoInstance, field: "estoqueDesejavel")}</td>
                                         
                                         <td>${fieldValue(bean: produtoInstance, field: "valor")}</td>
-                                        
+                                        <td>
+                                            <g:if test="${produtoInstance.ativo}">
+                                                <span class="label label-success">Ativo</span>
+                                            </g:if>
+                                            <g:else>
+                                                <span class="label label-danger">Inativo</span>
+                                            </g:else>
+                                        </td>                                        
                                     </tr>
                                 </g:each>
                             </tbody>
