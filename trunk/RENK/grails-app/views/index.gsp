@@ -1,84 +1,112 @@
 <!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+        <title>RENK : Sistema de Controle de Vendas e Serviços</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon"/>
+        <link rel="apple-touch-icon" href="${resource(dir: 'images', file: 'apple-touch-icon.png')}">
+        <link rel="apple-touch-icon" sizes="114x114" href="${resource(dir: 'images', file: 'apple-touch-icon-retina.png')}"/>
+        <g:javascript library="application"/>		
+    <r:layoutResources />
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    
+    <a href="#list-fornecedor" class="sr-only">
+            <g:message code="default.link.skip.label" default="Skip to content&hellip;"/>
+        </a>
+        <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="${createLink(uri: '/')}">
+                       <strong>RENK</strong>
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-navigation">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <g:link controller="venda" action="index">
+                                Vendas
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link controller="compra" action="index">
+                                Compras
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link controller="produto" action="index">
+                                Produtos
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link controller="cliente" action="index">
+                                Clientes
+                            </g:link>
+                        </li>
+                        <li>
+                            <g:link controller="fornecedor" action="index">
+                                Fornecedores
+                            </g:link>                            
+                        </li>
+                        <li>
+                            <g:link controller="servico" action="index">
+                                Serviços
+                            </g:link>
+                        </li>                     
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#">RH</a>
+                        </li>                    
+                        <li><a href="#">Sair</a></li>                     
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    
+    <div class="container-fluid">
+        <div class="jumbotron">
+            <h1>Bem-vindo!</h1>
+            <p>
+                O <strong>RENK</strong> SCVS é um sistema de controle de vendas e de serviço.
+            </p>
+        </div>
+    
+    </div>
+    
+    <div class="footer" role="contentinfo">
+
+    </div>
+    
+    
+    <footer class="main-footer margin-top-sm">
+        RENK - Sistema de Controle de Vendas e Serviços. Por RENK Sollutions, 2014.
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <r:layoutResources />
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
-
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
-
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
-
-			#status li {
-				line-height: 1.3;
-			}
-
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
-
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
-
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
-
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
-
-			#controller-list ul {
-				list-style-position: inside;
-			}
-
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
-
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
-
-				#page-body {
-					margin: 0 1em 1em;
-				}
-
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
+		<title>Welcome to Grails</title>		
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -119,4 +147,4 @@
 			</div>
 		</div>
 	</body>
-</html>
+</html>-->
