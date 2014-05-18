@@ -1,10 +1,10 @@
 
-<%@ page import="renk.gerenciamentoSolucao.Solucao" %>
+<%@ page import="renk.gerenciamentoTransacoes.SolicitacaoCompra" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'solucao.label', default: 'Solucao')}" />
+        <g:set var="entityName" value="${message(code: 'solicitacaoCompra.label', default: 'SolicitacaoCompra')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -15,7 +15,7 @@
                     <g:render template="nav-sub"/>
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div id="list-solucao" role="main">
+                    <div id="list-solicitacaoCompra" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
                         <div  class="alert alert-info alert-dismissable" role="status">
@@ -27,26 +27,22 @@
                             <thead>
                                 <tr>
                                     
-                                        <g:sortableColumn property="descricao" title="${message(code: 'solucao.descricao.label', default: 'Descricao')}" />
-                                        
-                                    <th><g:message code="solucao.ordemServico.label" default="Ordem Servico" /></th>
+                                        <g:sortableColumn property="dataSolicitacao" title="${message(code: 'solicitacaoCompra.dataSolicitacao.label', default: 'Data Solicitacao')}" />
                                         
                                 </tr>
                             </thead>
                             <tbody>
-                                <g:each in="${solucaoInstanceList}" status="i" var="solucaoInstance">
+                                <g:each in="${solicitacaoCompraInstanceList}" status="i" var="solicitacaoCompraInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${solucaoInstance.id}">${fieldValue(bean: solucaoInstance, field: "descricao")}</g:link></td>
-                                        
-                                        <td>${fieldValue(bean: solucaoInstance, field: "ordemServico")}</td>
+                                        <td><g:link action="show" id="${solicitacaoCompraInstance.id}">${fieldValue(bean: solicitacaoCompraInstance, field: "dataSolicitacao")}</g:link></td>
                                         
                                     </tr>
                                 </g:each>
                             </tbody>
                         </table>
                         <div class="pagination">
-                            <g:paginate total="${solucaoInstanceCount ?: 0}" />
+                            <g:paginate total="${solicitacaoCompraInstanceCount ?: 0}" />
                         </div>
                     </div>
                 </section>

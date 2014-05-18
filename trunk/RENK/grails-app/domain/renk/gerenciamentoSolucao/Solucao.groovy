@@ -7,7 +7,6 @@ class Solucao {
     OrdemServico ordemServico
     
     static constraints = {
-        descricao(format: 'textarea')
-        ordemServico(display: false)
+        descricao(widget: 'textarea')
     }
 }

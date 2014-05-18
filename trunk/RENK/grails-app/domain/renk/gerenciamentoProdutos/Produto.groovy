@@ -12,7 +12,7 @@ class Produto {
     
     static constraints = {
         nome(blank: false)
-        descricao(widget: 'textarea')
+        descricao(nullable: true,widget: 'textarea')
         estoqueMinimo(min: 0)
         estoqueDesejavel(min: 0)
         valor(min: 0d, scale: 2)

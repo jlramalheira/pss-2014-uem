@@ -1,10 +1,10 @@
 
-<%@ page import="renk.gerenciamentoSolucao.Solucao" %>
+<%@ page import="renk.gerenciamentoTransacoes.SolicitacaoCompra" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'solucao.label', default: 'Solucao')}" />
+        <g:set var="entityName" value="${message(code: 'solicitacaoCompra.label', default: 'SolicitacaoCompra')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -15,7 +15,7 @@
                     <g:render template="nav-sub"/>
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div id="show-solucao" class="scaffold-show" role="main">
+                    <div id="show-solicitacaoCompra" class="scaffold-show" role="main">
                         <h1><g:message code="default.show.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
                             <div class="alert alert-info alert-dismissable" role="status">
@@ -23,37 +23,24 @@
                                 ${flash.message}
                             </div>
                         </g:if>
-                        <dl class="dl-horizontal property-list solucao">
+                        <dl class="dl-horizontal property-list solicitacaoCompra">
                             
-                            <g:if test="${solucaoInstance?.descricao}">
-                                <dt id="descricao-label" class="property-label">
-                                        <g:message code="solucao.descricao.label" default="Descricao" />
+                            <g:if test="${solicitacaoCompraInstance?.dataSolicitacao}">
+                                <dt id="dataSolicitacao-label" class="property-label">
+                                        <g:message code="solicitacaoCompra.dataSolicitacao.label" default="Data Solicitacao" />
                                 </dt>
-                                <dd class="property-value" aria-labelledby="descricao-label">
+                                <dd class="property-value" aria-labelledby="dataSolicitacao-label">
                                     
-                                        <g:fieldValue bean="${solucaoInstance}" field="descricao"/>
-                                    
-                                </dd>
-                            </g:if>
-                            
-                            <g:if test="${solucaoInstance?.ordemServico}">
-                                <dt id="ordemServico-label" class="property-label">
-                                        <g:message code="solucao.ordemServico.label" default="Ordem Servico" />
-                                </dt>
-                                <dd class="property-value" aria-labelledby="ordemServico-label">
-                                    
-                                        <g:link controller="ordemServico" action="show" id="${solucaoInstance?.ordemServico?.id}">
-                                            ${solucaoInstance?.ordemServico?.encodeAsHTML()}
-                                        </g:link>
+                                        <g:formatDate date="${solicitacaoCompraInstance?.dataSolicitacao}" />
                                     
                                 </dd>
                             </g:if>
                             
                         </dl>
-                        <g:form url="[resource:solucaoInstance, action:'delete']" method="DELETE">
+                        <g:form url="[resource:solicitacaoCompraInstance, action:'delete']" method="DELETE">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${solucaoInstance}">
+                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${solicitacaoCompraInstance}">
                                     <g:message code="default.button.edit.label" default="Edit" />
                                 </g:link>
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
