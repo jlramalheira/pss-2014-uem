@@ -34,16 +34,28 @@ class EnderecoController {
             respond enderecoInstance.errors, view:'create'
             return
         }
-
+        
         enderecoInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'enderecoInstance.label', default: 'Endereco'), enderecoInstance.id])
-                redirect enderecoInstance
-            }
-            '*' { respond enderecoInstance, [status: CREATED] }
+        
+        def fornecedor = Fornecedor.get(params.fornecedor.id)
+        if (fornecedor == null){
+            notFound()
+            return
         }
+        
+        fornecedor.enderecos.add(enderecoInstance)
+        fornecedor.save(flush:true)
+        
+        redirect(action:"show",controller:"fornecedor", id:fornecedor.id)
+        return
+        
+//        request.withFormat {
+//            form multipartForm {
+//                flash.message = message(code: 'default.created.message', args: [message(code: 'enderecoInstance.label', default: 'Endereco'), enderecoInstance.id])
+//                redirect enderecoInstance
+//            }
+//            '*' { respond enderecoInstance, [status: CREATED] }
+//        }
     }
 
     def edit(Endereco enderecoInstance) {

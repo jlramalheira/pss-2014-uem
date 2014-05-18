@@ -20,6 +20,8 @@ class FornecedorController {
     }
 
     def create() {
+        params.tipoPessoa = new PessoaJuridica()
+        params.enderecos = new ArrayList<Endereco>()
         respond new Fornecedor(params)
     }
 
@@ -29,14 +31,23 @@ class FornecedorController {
             notFound()
             return
         }
-
+        
+        if (!fornecedorInstance.validate()) {
+            fornecedorInstance.errors.each {
+                println it
+            }
+        }
+        def pessoaJuridica = fornecedorInstance.pessoaJuridica;
+        pessoaJuridica.save(flush:true)
+        
+        
         if (fornecedorInstance.hasErrors()) {
             respond fornecedorInstance.errors, view:'create'
             return
         }
-
+        
         fornecedorInstance.save flush:true
-
+        
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'fornecedorInstance.label', default: 'Fornecedor'), fornecedorInstance.id])
