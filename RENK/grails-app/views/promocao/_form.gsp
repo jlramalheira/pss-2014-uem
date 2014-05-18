@@ -1,18 +1,39 @@
-<%@ page import="renk.gerenciamentoTransacoes.SolicitacaoCompra" %>
+<%@ page import="renk.gerenciamentoProdutos.Promocao" %>
 
 
 
     <div class="row">
-    <div class="form-group form-group-data col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: solicitacaoCompraInstance, field: 'dataSolicitacao', 'error')} ">
-        <label for="dataSolicitacao">
-            <g:message code="solicitacaoCompra.dataSolicitacao.label" default="Data Solicitacao" />
-            
-        </label><br/>
-        <g:datePicker name="dataSolicitacao" precision="day"  value="${solicitacaoCompraInstance?.dataSolicitacao}" default="none" noSelection="['': '']" />
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: promocaoInstance, field: 'nome', 'error')} required">
+        <label for="nome">
+            <g:message code="promocao.nome.label" default="Nome" />
+            <span class="required-indicator">*</span>
+        </label>
+        <g:textField name="nome" required="" value="${promocaoInstance?.nome}"class="form-control" />
 
     </div>
 </div>
-<div class="row margin-top-sm">
+
+    <div class="row">
+    <div class="form-group form-group-data col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: promocaoInstance, field: 'dataInicio', 'error')} required">
+        <label for="dataInicio">
+            <g:message code="promocao.dataInicio.label" default="Data Inicio" />
+            <span class="required-indicator">*</span>
+        </label><br/>
+        <g:datePicker name="dataInicio" precision="day"  value="${promocaoInstance?.dataInicio}"  />
+
+    </div>
+</div>
+
+    <div class="row">
+    <div class="form-group form-group-data col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: promocaoInstance, field: 'dataFim', 'error')} required">
+        <label for="dataFim">
+            <g:message code="promocao.dataFim.label" default="Data Fim" />
+            <span class="required-indicator">*</span>
+        </label><br/>
+        <g:datePicker name="dataFim" precision="day"  value="${promocaoInstance?.dataFim}"  />
+
+    </div>
+      <div class="row margin-top-sm">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <table class="table table-hover table-striped table-responsive">
             <caption class="row">
@@ -50,7 +71,7 @@
                                 <div class="row">
                                     <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: compraInstance, field: 'valorTotal', 'error')} required">
                                         <label for="valorTotal">
-                                            Quantidade
+                                            Desconto
                                             <span class="required-indicator">*</span>
                                         </label>
                                         <input type="number" class="form-control"/>
@@ -76,10 +97,10 @@
                         Preço do produto
                     </th>
                     <th>
-                        Quantidade
+                        Desconto
                     </th>
                     <th colspan="2">
-                        Total
+                        Preço com desconto
                     </th>
                 </tr>
             </thead>
@@ -92,10 +113,10 @@
                         R$ 20,00
                     </td>
                     <td>
-                        5
+                        5%
                     </td>
                     <td>
-                        R$ 100,00
+                        R$ 19,00
                     </td>
                     <td class="text-right">
                         <button type="button" class="btn btn-sm btn-primary"
@@ -116,10 +137,10 @@
                         R$ 20,00
                     </td>
                     <td>
-                        5
+                        10%
                     </td>
                     <td>
-                        R$ 100,00
+                        R$ 18,00
                     </td>
                     <td class="text-right">
                         <button type="button" class="btn btn-sm btn-primary"
@@ -141,10 +162,10 @@
                         R$ 20,00
                     </td>
                     <td>
-                        5
+                        15%
                     </td>
                     <td>
-                        R$ 100,00
+                        R$ 17,00
                     </td>
                     <td class="text-right">
                         <button type="button" class="btn btn-sm btn-primary"
@@ -159,19 +180,6 @@
 
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="2">
-                        Total
-                    </th>
-                    <th>
-                        15
-                    </th>
-                    <th colspan="2">
-                        R$ 300,00
-                    </th>
-                </tr>
-            </tfoot>
         </table>
     </div>
 </div>

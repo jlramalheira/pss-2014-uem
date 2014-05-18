@@ -1,9 +1,10 @@
+<%@ page import="renk.gerenciamentoProdutos.Promocao" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'solicitacaoCompra.label', default: 'Solicitacao Compra')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <g:set var="entityName" value="${message(code: 'promocao.label', default: 'Promocao')}" />
+        <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
     <body>
         <g:render template="nav-main"/>
@@ -14,36 +15,36 @@
                     <g:render template="nav-sub"/>
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
-                    <div id="create-solicitacaoCompra" class="scaffold-create" role="main">
-                        <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+                    <div id="edit-promocao" class="scaffold-edit" role="main">
+                       <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
                             <div class="message" role="status">${flash.message}</div>
                         </g:if>
-                        <g:hasErrors bean="${solicitacaoCompraInstance}">
+                        <g:hasErrors bean="${promocaoInstance}">
                             <ul class="errors" role="alert">
-                                <g:eachError bean="${solicitacaoCompraInstance}" var="error">
+                                <g:eachError bean="${promocaoInstance}" var="error">
                                     <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                                     </g:eachError>
                                     </ul>
                                 </g:hasErrors>
-                                <g:form url="[resource:solicitacaoCompraInstance, action:'save']"
-                                    >
+                                <g:form url="[resource:promocaoInstance, action:'update']"
+                                    method="PUT" >
+                                    <g:hiddenField name="version" value="${promocaoInstance?.version}" />
                                     <fieldset class="form">
-                                    <g:render template="form"/>
+                                        <g:render template="form"/>
                                     </fieldset>
                                     <fieldset class="buttons">
-                                        <g:submitButton name="create" class="btn btn-lg btn-primary" 
-                                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-                                        <g:link controller="index"  resource="${solicitacaoCompraInstance}" 
+                                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" 
+                                        value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                        <g:link controller="show"  resource="${promocaoInstance}" 
                                              class="btn btn-lg btn-danger">
                                              Cancelar
                                         </g:link>
                                     </fieldset>
                                 </g:form>
-                                </div>
-                            </section>
-                        </div>
-                    </div>
-
-            </body>
-        </html>
+                                </div>                    
+                </section>
+            </div>
+        </div>
+</body>
+</html>
