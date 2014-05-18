@@ -113,8 +113,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                <button type="button" class="btn btn-primary">Salvar</button>
                             </div>
                         </div>
                     </div>
@@ -131,7 +131,7 @@
                     <th>
                         Quantidade
                     </th>
-                    <th>
+                    <th colspan="2">
                         Total
                     </th>
                 </tr>
@@ -149,7 +149,17 @@
                     </td>
                     <td>
                         R$ 100,00
-                    </td>                        
+                    </td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-sm btn-primary"
+                         data-toggle="modal" data-target="#modal-novo-produto">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Tem certeza disso?');">
+                            Excluir
+                        </button>
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -163,7 +173,18 @@
                     </td>
                     <td>
                         R$ 100,00
-                    </td>                        
+                    </td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-sm btn-primary"
+                         data-toggle="modal" data-target="#modal-novo-produto">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Tem certeza disso?');">
+                            Excluir
+                        </button>
+                            
+                    </td>
                 </tr>
                 <tr>
                     <td>
@@ -177,15 +198,29 @@
                     </td>
                     <td>
                         R$ 100,00
-                    </td>                        
+                    </td>
+                    <td class="text-right">
+                        <button type="button" class="btn btn-sm btn-primary"
+                         data-toggle="modal" data-target="#modal-novo-produto">
+                            Editar
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                        onclick="return confirm('Tem certeza disso?');">
+                            Excluir
+                        </button>
+                    </td>
+
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <th class="text-right" colspan="3">
+                    <th colspan="2">
                         Total
                     </th>
                     <th>
+                        5
+                    </th>
+                    <th colspan="2">
                         R$ 300,00
                     </th>
                 </tr>
