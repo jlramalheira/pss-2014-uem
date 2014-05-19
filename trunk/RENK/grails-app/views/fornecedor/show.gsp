@@ -25,6 +25,22 @@
                         </g:if>
                         <dl class="dl-horizontal property-list fornecedor">
 
+                            <dt>
+                                Status
+                            </dt>
+                            <dd>
+                                <g:if test="${fornecedorInstance.isAtivo()}">
+                                    <span class="label label-primary">
+                                        Ativo
+                                    </span>
+                                </g:if>
+                                <g:else>
+                                    <span class="label label-danger">
+                                        Inativo
+                                    </span>
+                                </g:else>
+                            </dd>
+
                             <g:if test="${fornecedorInstance?.nome}">
                                 <dt id="nome-label" class="property-label">
                                 <g:message code="fornecedor.nome.label" default="Nome" />
@@ -35,26 +51,26 @@
 
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${fornecedorInstance?.pessoaJuridica?.cnpj}">
-                                    
+
                                 <dt id="cnpj-label" class="property-label">
-                                        <g:message code="pessoaJuridica.cnpj.label" default="CNPJ" />
+                                <g:message code="pessoaJuridica.cnpj.label" default="CNPJ" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="cnpj-label">
 
-                                        <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="cnpj"/>
+                                    <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="cnpj"/>
 
                                 </dd>
                             </g:if>
-                            <g:if test="${fornecedorInstance?.inscricaoEstadual}">
+                            <g:if test="${fornecedorInstance?.pessoaJuridica?.inscricaoEstadual}">
 
                                 <dt id="inscricaoEstadual-label" class="property-label">
-                                        <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscrição Estadual" />
+                                <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscrição Estadual" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="inscricaoEstadual-label">
 
-                                        <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="inscricaoEstadual"/>
+                                    <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="inscricaoEstadual"/>
 
                                 </dd>
                             </g:if>
@@ -107,21 +123,33 @@
                                 </dd>
                             </g:if>                            
                         </dl>
-                        
-                        
+
+                        <g:if test="${fornecedorInstance.isAtivo()}">
                         <g:link controller="endereco" action="create" class="btn btn-default"
                             params="['fornecedor.id': fornecedorInstance?.id]">
                             ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
                         </g:link>
+                        </g:if>
+                                
+                                
                         <g:form url="[resource:fornecedorInstance, action:'delete']" method="DELETE">
                             <fieldset class="buttons">
-                                <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${fornecedorInstance}">
-                                    <g:message code="default.button.edit.label" default="Edit" />
-                                </g:link>
-                                <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <g:if test="${fornecedorInstance.isAtivo()}">
+                                    <legend>Opções</legend>
+                                    <g:link class="btn btn-lg btn-primary"  action="edit" resource="${fornecedorInstance}">
+                                        <g:message code="default.button.edit.label" default="Edit" />
+                                    </g:link>
+                                </g:if>
+                                <g:if test="${fornecedorInstance.isAtivo()}">
+                                    <g:actionSubmit class="btn btn-lg btn-danger" action="inactivate" 
+                                    value="${message(code: 'default.button.inativate.label', default: 'Inactivate')}"
+                                    onclick="return confirm('${message(code: 'default.button.inativate.confirm.message.cliente', default: 'Are you sure?')}');" />
+                                </g:if>
+                                <g:else>
+                                    <g:actionSubmit class="btn btn-lg btn-danger" action="activate" 
+                                    value="${message(code: 'default.button.ativate.label', default: 'Activate')}"
+                                    onclick="return confirm('${message(code: 'default.button.ativate.confirm.message.cliente', default: 'Are you sure?')}');" />                                    
+                                </g:else>
                             </fieldset>
                         </g:form>
                     </div>

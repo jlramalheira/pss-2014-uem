@@ -102,6 +102,46 @@ class FornecedorController {
             '*'{ render status: NO_CONTENT }
         }
     }
+    
+    @Transactional
+    def inactivate(Fornecedor fornecedorInstance) {
+
+        if (fornecedorInstance == null) {
+            notFound()
+            return
+        }
+        
+        fornecedorInstance.setAtivo(false)
+        fornecedorInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Fornecedor inativado', args: [message(code: 'fornecedor.label', default: 'fornecedor'), fornecedorInstance.id])
+                redirect fornecedorInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def activate(Fornecedor fornecedorInstance) {
+
+        if (fornecedorInstance == null) {
+            notFound()
+            return
+        }
+        
+        fornecedorInstance.setAtivo(true)
+        fornecedorInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Fornecedor ativado', args: [message(code: 'Fornecedor.label', default: 'Fornecedor'), fornecedorInstance.id])
+                redirect fornecedorInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
 
     protected void notFound() {
         request.withFormat {
