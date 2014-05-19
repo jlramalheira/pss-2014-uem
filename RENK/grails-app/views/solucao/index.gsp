@@ -28,8 +28,8 @@
                                 <tr>
                                     
                                         <g:sortableColumn property="descricao" title="${message(code: 'solucao.descricao.label', default: 'Descricao')}" />
+                                        <g:sortableColumn property="ordemServico" title="${message(code: 'solucao.ordemServico.label', default: 'Ordem de Servico')}" />
                                         
-                                    <th><g:message code="solucao.ordemServico.label" default="Ordem Servico" /></th>
                                         
                                 </tr>
                             </thead>
@@ -39,7 +39,7 @@
                                         
                                         <td><g:link action="show" id="${solucaoInstance.id}">${fieldValue(bean: solucaoInstance, field: "descricao")}</g:link></td>
                                         
-                                        <td>${fieldValue(bean: solucaoInstance, field: "ordemServico")}</td>
+                                        <td><g:link controller="ordemServico" action="show" id="${solucaoInstance.ordemServico.id}">${fieldValue(bean: solucaoInstance, field: "ordemServico")}</g:link></td>
                                         
                                     </tr>
                                 </g:each>

@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta name="layout" content="main">
-        <g:set var="entityName" value="${message(code: 'solicitacaoCompra.label', default: 'SolicitacaoCompra')}" />
+        <g:set var="entityName" value="${message(code: 'solicitacaoCompra.label', default: 'Solicitacao Compra')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -40,7 +40,7 @@
                                 </dt>
                                 <dd class="property-value" aria-labelledby="status-label">
                                 <g:if test="${solicitacaoCompraInstance.isEmAberto()}">
-                                        <span class="label label-warning">${solicitacaoCompraInstance.getStatusStr()}</span>
+                                        <span class="label label-info">${solicitacaoCompraInstance.getStatusStr()}</span>
                                 </g:if>
                                 <g:if test="${solicitacaoCompraInstance.isCancelada()}">
                                         <span class="label label-danger">${solicitacaoCompraInstance.getStatusStr()}</span>
