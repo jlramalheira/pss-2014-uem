@@ -26,6 +26,10 @@
                                     
                                         <g:sortableColumn property="nome" title="${message(code: 'fornecedor.nome.label', default: 'Nome')}" />
                                         
+                                        <th><g:message code="pessoaJuridica.cnpj.label" default="CNPJ" /></th>                                        
+                                        
+                                        <th><g:message code="pessoaJuridica.cnpj.label" default="Inscricao Estadual" /></th> 
+                                        
                                         <g:sortableColumn property="email" title="${message(code: 'fornecedor.email.label', default: 'Email')}" />
                                         
                                         <g:sortableColumn property="telefone" title="${message(code: 'fornecedor.telefone.label', default: 'Telefone')}" />
@@ -40,6 +44,10 @@
                                         
                                         <td><g:link action="show" id="${fornecedorInstance.id}">${fieldValue(bean: fornecedorInstance, field: "nome")}</g:link></td>
                                         
+                                        <td>${fieldValue(bean: fornecedorInstance.pessoaJuridica, field: "cnpj")}</td>
+                                        
+                                        <td>${fieldValue(bean: fornecedorInstance.pessoaJuridica, field: "inscricaoEstadual")}</td>
+                                            
                                         <td>${fieldValue(bean: fornecedorInstance, field: "email")}</td>
                                         
                                         <td>${fieldValue(bean: fornecedorInstance, field: "telefone")}</td>

@@ -103,6 +103,46 @@ class ClienteController {
         }
     }
 
+    @Transactional
+    def inactivate(Cliente clienteInstance) {
+
+        if (clienteInstance == null) {
+            notFound()
+            return
+        }
+        
+        clienteInstance.setAtivo(false)
+        clienteInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'cliente.inactivate.message', args: [message(code: 'Cliente.label', default: 'Cliente'), clienteInstance.id])
+                redirect clienteInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def activate(Cliente clienteInstance) {
+
+        if (clienteInstance == null) {
+            notFound()
+            return
+        }
+        
+        clienteInstance.setAtivo(true)
+        clienteInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'cliente.activate.message', args: [message(code: 'Cliente.label', default: 'Cliente'), clienteInstance.id])
+                redirect clienteInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+
     protected void notFound() {
         request.withFormat {
             form multipartForm {
