@@ -30,7 +30,7 @@
             <g:message code="produto.estoqueMinimo.label" default="Estoque Minimo" />
             <span class="required-indicator">*</span>
         </label>
-        <g:field  class="form-control" name="estoqueMinimo" type="number" min="0" value="${produtoInstance.estoqueMinimo}" required=""/>
+        <g:field  class="form-control" name="estoqueMinimo" type="number" min="0" value="${produtoInstance?.estoqueMinimo}" required=""/>
 
     </div>
 </div>
@@ -41,7 +41,7 @@
             <g:message code="produto.estoqueDesejavel.label" default="Estoque Desejavel" />
             <span class="required-indicator">*</span>
         </label>
-        <g:field  class="form-control" name="estoqueDesejavel" type="number" min="0" value="${produtoInstance.estoqueDesejavel}" required=""/>
+        <g:field  class="form-control" name="estoqueDesejavel" type="number" min="0" value="${produtoInstance?.estoqueDesejavel}" required=""/>
 
     </div>
 </div>

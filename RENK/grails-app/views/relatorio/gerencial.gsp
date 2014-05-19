@@ -90,7 +90,19 @@
                                         <input type="radio" name="entidade" value="Produto" />
                                         Funcionário
                                     </label>
-                                </div>                            
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="entidade" value="Produto" />
+                                        Receitas
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label>
+                                        <input type="radio" name="entidade" value="Produto" />
+                                        Despesas
+                                    </label>
+                                </div> 
                             </div>
 
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
