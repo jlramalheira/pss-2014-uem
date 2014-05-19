@@ -19,22 +19,33 @@ class ClienteController {
         respond clienteInstance
     }
 
-    def create() {
+    def create() {        
         respond new Cliente(params)
     }
 
     @Transactional
-    def save(Cliente clienteInstance) {
+    def save(Cliente clienteInstance) {        
         if (clienteInstance == null) {
             notFound()
             return
         }
-
-        if (clienteInstance.hasErrors()) {
+        TipoPessoa tp
+        if (params.pessoaTipo == "fisica") {
+            tp = new PessoaFisica(params.pessoaFisica)
+        } else {
+            tp = new PessoaJuridica(params.pessoaJuridica)
+        }
+        tp.save(flush: true) 
+        clienteInstance.tipoPessoa = tp        
+        if (!clienteInstance.validate()) {
+            clienteInstance.errors.each {
+                println it
+            }
+        }        
+        if (clienteInstance.hasErrors()) {            
             respond clienteInstance.errors, view:'create'
             return
         }
-
         clienteInstance.save flush:true
 
         request.withFormat {

@@ -12,9 +12,9 @@ class Pessoa {
     boolean ativo = true
     
     static constraints = {
-        nome(blank: false)
-        email(email: true)
-        telefone(maxSize: 15)
+        nome(blank: false, minSize: 3)
+        email(nullable:true, email: true)
+        telefone(nullable:true, maxSize: 15)
         celular(maxSize: 15, blank: true)
         enderecos()
         ativo(display: false)

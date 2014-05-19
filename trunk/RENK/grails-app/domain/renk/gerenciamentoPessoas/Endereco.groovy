@@ -1,12 +1,13 @@
 package renk.gerenciamentoPessoas
-enum TipoEndereco {
-    RESIDENCIAL,
-    COMERCIAL,
-    ENTREGA,
-    COBRANCA,
-    FERIAS
-}
+
 class Endereco {
+    enum TipoEndereco {
+        RESIDENCIAL,
+        COMERCIAL,
+        ENTREGA,
+        COBRANCA,
+        FERIAS
+    }
     static belongsTo = [Cidade, Pessoa]
     String logradouro
     String numero
@@ -27,7 +28,8 @@ class Endereco {
     }
     
     String toString(){
-        "${logradouro}, ${numero}, ${bairro} - ${complemento}\n ${cep}, ${cidade}"
+        if (!complemento) { complemento = "" } else { complemento += ',' }
+        "${logradouro}, ${numero}, ${complemento} ${bairro} - \n ${cep}, ${cidade}"
     }
     
 }

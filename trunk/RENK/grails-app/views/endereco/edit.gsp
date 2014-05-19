@@ -30,6 +30,8 @@
                                 <g:form url="[resource:enderecoInstance, action:'update']"
                                     method="PUT" >
                                     <g:hiddenField name="version" value="${enderecoInstance?.version}" />
+                                    <input type="hidden" name="fornecedor.id" value="${params.fornecedor?.id}"/>
+                                    <input type="hidden" name="cliente.id" value="${params.cliente?.id}"/>
                                     <fieldset class="form">
                                         <g:render template="form"/>
                                     </fieldset>
