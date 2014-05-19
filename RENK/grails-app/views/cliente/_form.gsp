@@ -114,22 +114,3 @@
         </g:if>
     </div>
 </div>    
-<script type="text/javascript">
-    window.onload = function() {                
-	if ($(':input[name="pessoaTipo"]:checked').val() === "fisica") {
-            $("#juridica").addClass("hidden");
-        } else {
-            $("#fisica").addClass("hidden");
-        }
-    }    
-    
-    function muda() {
-        if ($("#juridica").hasClass("hidden")) {            
-            $("#fisica").addClass("hidden");
-            $("#juridica").removeClass("hidden");
-        } else {
-            $("#juridica").addClass("hidden");
-            $("#fisica").removeClass("hidden");
-        }
-    };
-</script>

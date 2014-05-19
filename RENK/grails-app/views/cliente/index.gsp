@@ -42,7 +42,7 @@
                                         
                                         <g:sortableColumn property="celular" title="${message(code: 'cliente.celular.label', default: 'Celular')}" />
                                                                             
-                                        
+                                        <g:sortableColumn property="ativo" title="${message(code: 'cliente.ativo.label', default: 'Status')}" />
                                 </tr>
                             </thead>
                             <tbody>
@@ -71,6 +71,14 @@
                                         
                                         <td>${fieldValue(bean: clienteInstance, field: "celular")}</td>                                        
                                         
+                                        <td>
+                                            <g:if test="${clienteInstance.isAtivo()}">
+                                                <span class="label label-success">Ativo</span>
+                                            </g:if>
+                                            <g:else>
+                                                <span class="label label-danger">Inativo</span>
+                                            </g:else>
+                                        </td>
                                     </tr>
                                 </g:each>
                             </tbody>

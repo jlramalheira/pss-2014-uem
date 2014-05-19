@@ -123,23 +123,25 @@
                             </g:if>                                                        
                             
                         </dl>
-                        <g:link controller="endereco" action="create" class="btn btn-default"
-                            params="['cliente.id': clienteInstance?.id]">
-                            ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
-                        </g:link>
+                        <g:if test="${clienteInstance.isAtivo()}">
+                            <g:link controller="endereco" action="create" class="btn btn-default"
+                                params="['cliente.id': clienteInstance?.id]">
+                                ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
+                            </g:link>
+                        </g:if>
                         <g:form url="[resource:clienteInstance, action:'inactivate']" method="PUT">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${clienteInstance}">
-                                    <g:message code="default.button.edit.label" default="Edit" />
-                                </g:link>
                                 <g:if test="${clienteInstance.isAtivo()}">
+                                    <g:link class="btn btn-lg btn-primary"  action="edit" resource="${clienteInstance}">
+                                        <g:message code="default.button.edit.label" default="Edit" />
+                                    </g:link>
                                     <g:actionSubmit class="btn btn-lg btn-danger" action="inactivate" 
                                     value="${message(code: 'default.button.inativate.label', default: 'Inactivate')}"
                                     onclick="return confirm('${message(code: 'default.button.inativate.confirm.message.cliente', default: 'Are you sure?')}');" />
                                 </g:if>
                                 <g:else>
-                                    <g:actionSubmit class="btn btn-lg btn-danger" action="activate" 
+                                    <g:actionSubmit class="btn btn-lg btn-success" action="activate" 
                                     value="${message(code: 'default.button.ativate.label', default: 'Activate')}"
                                     onclick="return confirm('${message(code: 'default.button.ativate.confirm.message.cliente', default: 'Are you sure?')}');" />                                    
                                 </g:else>
