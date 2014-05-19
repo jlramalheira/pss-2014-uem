@@ -1,4 +1,4 @@
-<div class="well well-sm">
+<%--<div class="well well-sm">
     <h1><g:message code="default.name" args="[entityName]" /></h1>
     <ul class="nav nav-pills nav-stacked">
         <li>
@@ -14,4 +14,4 @@
     </ul>
 
 
-</div>
+</div>--%>
