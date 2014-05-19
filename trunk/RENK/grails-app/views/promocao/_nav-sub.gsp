@@ -1,17 +1,28 @@
 <div class="well well-sm">
-    <h1><g:message code="default.name" args="[entityName]" /></h1>
+    <h1>Opções de Produto</h1>
     <ul class="nav nav-pills nav-stacked">
         <li>
-            <g:link action="create">
-                <g:message code="default.new.label" args="[entityName]" />
+            <g:link controller="produto" action="create">
+                Novo Produto
             </g:link>
         </li>
         <li>
-            <g:link action="index">
-                <g:message code="default.list.label" args="[entityName]" />
+            <g:link controller="produto" action="index">
+                Produto Listagem
             </g:link>
         </li>
     </ul>
-
-
+    <h1>Opções de Promocao</h1>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <g:link controller="promocao" action="create">
+                Nova Promoção
+            </g:link>
+        </li>
+        <li>
+            <g:link controller="promocao" action="index">
+                Promoção Listagem
+            </g:link>
+        </li>
+    </ul>
 </div>

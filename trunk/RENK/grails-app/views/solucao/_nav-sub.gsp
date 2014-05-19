@@ -1,17 +1,42 @@
 <div class="well well-sm">
-    <h1><g:message code="default.name" args="[entityName]" /></h1>
+    <h1>Opções de Serviço</h1>
     <ul class="nav nav-pills nav-stacked">
         <li>
-            <g:link action="create">
-                <g:message code="default.new.label" args="[entityName]" />
+            <g:link controller="servico" action="create">
+                Novo Serviço
             </g:link>
         </li>
         <li>
-            <g:link action="index">
-                <g:message code="default.list.label" args="[entityName]" />
+            <g:link  controller="servico" action="index">
+                Serviço Listagem
             </g:link>
         </li>
     </ul>
-
+    <h1>Opções de Ordem de Serviço</h1>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <g:link controller="ordemServico" action="create">
+                Nova Ordem de Serviço
+            </g:link>
+        </li>
+        <li>
+            <g:link  controller="ordemServico" action="index">
+                Ordem de Serviço Listagem
+            </g:link>
+        </li>
+    </ul>
+    <h1>Opções de Solução</h1>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <g:link controller="solucao" action="create">
+                Nova Solução
+            </g:link>
+        </li>
+        <li>
+            <g:link  controller="solucao" action="index">
+                Solução Listagem
+            </g:link>
+        </li>
+    </ul>
 
 </div>
