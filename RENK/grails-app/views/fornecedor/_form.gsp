@@ -3,7 +3,7 @@
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance?.pessoaJuridica, field: 'tipoPessoa.cnpj', 'error')} ">
         <label for="cnpj">
             <g:message code="pessoaJuridica.cnpj.label" default="Cnpj" />
-
+            <span class="required-indicator">*</span>
         </label>
         <g:textField name="pessoaJuridica.cnpj" value="${fornecedorInstance?.pessoaJuridica?.cnpj}"class="form-control" />
 

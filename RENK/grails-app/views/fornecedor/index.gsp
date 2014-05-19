@@ -36,6 +36,7 @@
                                         
                                         <g:sortableColumn property="celular" title="${message(code: 'fornecedor.celular.label', default: 'Celular')}" />
                                         
+                                        <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -53,6 +54,19 @@
                                         <td>${fieldValue(bean: fornecedorInstance, field: "telefone")}</td>
                                         
                                         <td>${fieldValue(bean: fornecedorInstance, field: "celular")}</td>
+                                        
+                                        <td>
+                                            <g:if test="${fornecedorInstance.isAtivo()}">
+                                                <span class="label label-primary">
+                                                    Ativo
+                                                </span>
+                                            </g:if>
+                                            <g:else>
+                                                <span class="label label-danger">
+                                                    Inativo
+                                                </span>
+                                            </g:else>
+                                        </td>
                                         
                                     </tr>
                                 </g:each>
