@@ -1,5 +1,7 @@
 
 <%@ page import="renk.gerenciamentoPessoas.Cliente" %>
+<%@ page import="renk.gerenciamentoPessoas.PessoaFisica" %>
+<%@ page import="renk.gerenciamentoPessoas.PessoaJuridica" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,71 +20,119 @@
                     <div id="show-cliente" class="scaffold-show" role="main">
                         <h1><g:message code="default.show.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
-                            <div class="message" role="status">${flash.message}</div>
+                            <div class="alert alert-info alert-dismissable" role="status">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                ${flash.message}
+                            </div>
                         </g:if>
-                        <ol class="property-list cliente">
-                            
-                            <g:if test="${clienteInstance?.tipoPessoa}">
-                                <li class="fieldcontain">
-                                    <span id="tipoPessoa-label" class="property-label"><g:message code="cliente.tipoPessoa.label" default="Tipo Pessoa" /></span>
-                                    
-                                    <span class="property-value" aria-labelledby="tipoPessoa-label"><g:link controller="tipoPessoa" action="show" id="${clienteInstance?.tipoPessoa?.id}">${clienteInstance?.tipoPessoa?.encodeAsHTML()}</g:link></span>
-                                    
-                                </li>
-                            </g:if>
+                        <dl class="dl-horizontal property-list cliente">
                             
                             <g:if test="${clienteInstance?.nome}">
-                                <li class="fieldcontain">
-                                    <span id="nome-label" class="property-label"><g:message code="cliente.nome.label" default="Nome" /></span>
+                                <dt id="nome-label" class="property-label">
+                                        <g:message code="cliente.nome.label" default="Nome" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="nome-label">
                                     
-                                    <span class="property-value" aria-labelledby="nome-label"><g:fieldValue bean="${clienteInstance}" field="nome"/></span>
+                                        <g:fieldValue bean="${clienteInstance}" field="nome"/>
                                     
-                                </li>
+                                </dd>
+                            </g:if>
+                            <g:if test="${clienteInstance?.tipoPessoa instanceof PessoaFisica}">
+                                <dt id="cpf-label" class="property-label">
+                                        <g:message code="pessoaFisica.cpf.label" default="CPF" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="cpf-label">
+                                    
+                                        <g:fieldValue bean="${clienteInstance.tipoPessoa}" field="cpf"/>
+                                    
+                                </dd>
+                            </g:if>
+                            <g:if test="${clienteInstance?.tipoPessoa instanceof PessoaJuridica}">
+                                <g:if test="${clienteInstance?.tipoPessoa?.cnpj}">
+                                    
+                                    <dt id="cnpj-label" class="property-label">
+                                            <g:message code="pessoaJuridica.cnpj.label" default="CNPJ" />
+                                    </dt>
+                                    <dd class="property-value" aria-labelledby="cnpj-label">
+
+                                            <g:fieldValue bean="${clienteInstance.tipoPessoa}" field="cnpj"/>
+
+                                    </dd>
+                                </g:if>
+                                <g:if test="${clienteInstance?.tipoPessoa?.inscricaoEstadual}">
+                                    
+                                    <dt id="inscricaoEstadual-label" class="property-label">
+                                            <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscrição Estadual" />
+                                    </dt>
+                                    <dd class="property-value" aria-labelledby="inscricaoEstadual-label">
+
+                                            <g:fieldValue bean="${clienteInstance.tipoPessoa}" field="inscricaoEstadual"/>
+
+                                    </dd>
+                                </g:if>
                             </g:if>
                             
                             <g:if test="${clienteInstance?.email}">
-                                <li class="fieldcontain">
-                                    <span id="email-label" class="property-label"><g:message code="cliente.email.label" default="Email" /></span>
+                                <dt id="email-label" class="property-label">
+                                        <g:message code="cliente.email.label" default="Email" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="email-label">
                                     
-                                    <span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${clienteInstance}" field="email"/></span>
+                                        <g:fieldValue bean="${clienteInstance}" field="email"/>
                                     
-                                </li>
+                                </dd>
                             </g:if>
                             
                             <g:if test="${clienteInstance?.telefone}">
-                                <li class="fieldcontain">
-                                    <span id="telefone-label" class="property-label"><g:message code="cliente.telefone.label" default="Telefone" /></span>
+                                <dt id="telefone-label" class="property-label">
+                                        <g:message code="cliente.telefone.label" default="Telefone" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="telefone-label">
                                     
-                                    <span class="property-value" aria-labelledby="telefone-label"><g:fieldValue bean="${clienteInstance}" field="telefone"/></span>
+                                        <g:fieldValue bean="${clienteInstance}" field="telefone"/>
                                     
-                                </li>
+                                </dd>
                             </g:if>
                             
                             <g:if test="${clienteInstance?.celular}">
-                                <li class="fieldcontain">
-                                    <span id="celular-label" class="property-label"><g:message code="cliente.celular.label" default="Celular" /></span>
+                                <dt id="celular-label" class="property-label">
+                                        <g:message code="cliente.celular.label" default="Celular" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="celular-label">
                                     
-                                    <span class="property-value" aria-labelledby="celular-label"><g:fieldValue bean="${clienteInstance}" field="celular"/></span>
+                                        <g:fieldValue bean="${clienteInstance}" field="celular"/>
                                     
-                                </li>
+                                </dd>
                             </g:if>
                             
                             <g:if test="${clienteInstance?.enderecos}">
-                                <li class="fieldcontain">
-                                    <span id="enderecos-label" class="property-label"><g:message code="cliente.enderecos.label" default="Enderecos" /></span>
+                                <dt id="enderecos-label" class="property-label">
+                                        <g:message code="cliente.enderecos.label" default="Enderecos" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="enderecos-label">
                                     
-                                    <g:each in="${clienteInstance.enderecos}" var="e">
-                                        <span class="property-value" aria-labelledby="enderecos-label"><g:link controller="endereco" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></span>
-                                    </g:each>
+                                        <g:each in="${clienteInstance.enderecos}" var="e">
+                                           <g:link controller="endereco" action="show" id="${e.id}"
+                                               params="['cliente.id': clienteInstance?.id]">
+                                               ${e?.encodeAsHTML()}
+                                           </g:link>
+                                           <br/>
+                                        </g:each>
                                     
-                                </li>
-                            </g:if>
+                                </dd>
+                            </g:if>                                                        
                             
-                        </ol>
+                        </dl>
+                        <g:link controller="endereco" action="create" class="btn btn-default"
+                            params="['cliente.id': clienteInstance?.id]">
+                            ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
+                        </g:link>
                         <g:form url="[resource:clienteInstance, action:'delete']" method="DELETE">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-info"  action="edit" resource="${clienteInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${clienteInstance}">
+                                    <g:message code="default.button.edit.label" default="Edit" />
+                                </g:link>
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

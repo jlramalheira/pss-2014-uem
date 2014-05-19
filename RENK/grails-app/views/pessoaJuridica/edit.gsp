@@ -34,7 +34,12 @@
                                         <g:render template="form"/>
                                     </fieldset>
                                     <fieldset class="buttons">
-                                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" 
+                                        value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                        <g:link controller="show"  resource="${pessoaJuridicaInstance}" 
+                                             class="btn btn-lg btn-danger">
+                                             Cancelar
+                                        </g:link>
                                     </fieldset>
                                 </g:form>
                                 </div>                    

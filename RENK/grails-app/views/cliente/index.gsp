@@ -1,5 +1,6 @@
 
 <%@ page import="renk.gerenciamentoPessoas.Cliente" %>
+<%@ page import="renk.gerenciamentoPessoas.PessoaFisica" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,21 +19,29 @@
                     <div id="list-cliente" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
-                        <div class="message" role="status">${flash.message}</div>
+                        <div  class="alert alert-info alert-dismissable" role="status">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            ${flash.message}
+                        </div>
                         </g:if>
                         <table class="table table-hover table-striped table-responsive">
                             <thead>
                                 <tr>
                                     
-                                    <th><g:message code="cliente.tipoPessoa.label" default="Tipo Pessoa" /></th>
+                                        <g:sortableColumn property="nome" title="${message(code: 'cliente.nome.label', default: 'Nome')}" />                                                                                                                                                               
                                         
-                                        <g:sortableColumn property="nome" title="${message(code: 'cliente.nome.label', default: 'Nome')}" />
+                                        <th><g:message code="pessoaFisica.cpf.label" default="CPF" /></th>                                        
+                                        
+                                        <th><g:message code="pessoaJuridica.cnpj.label" default="CNPJ" /></th>                                        
+                                        
+                                        <th><g:message code="pessoaJuridica.cnpj.label" default="Inscricao Estadual" /></th>                                        
                                         
                                         <g:sortableColumn property="email" title="${message(code: 'cliente.email.label', default: 'Email')}" />
                                         
                                         <g:sortableColumn property="telefone" title="${message(code: 'cliente.telefone.label', default: 'Telefone')}" />
                                         
                                         <g:sortableColumn property="celular" title="${message(code: 'cliente.celular.label', default: 'Celular')}" />
+                                                                            
                                         
                                 </tr>
                             </thead>
@@ -40,15 +49,27 @@
                                 <g:each in="${clienteInstanceList}" status="i" var="clienteInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${clienteInstance.id}">${fieldValue(bean: clienteInstance, field: "tipoPessoa")}</g:link></td>
+                                        <td><g:link action="show" id="${clienteInstance.id}">${fieldValue(bean: clienteInstance, field: "nome")}</g:link></td>
                                         
-                                        <td>${fieldValue(bean: clienteInstance, field: "nome")}</td>
+                                        <g:if test="${clienteInstance.tipoPessoa instanceof PessoaFisica}">                                        
+                                            <td>${fieldValue(bean: clienteInstance.tipoPessoa, field: "cpf")}</td>
+                                            
+                                            <td>-</td>
+                                            
+                                            <td>-</td>
+                                        </g:if>
+                                        <g:else>
+                                            <td>-</td>
                                         
+                                            <td>${fieldValue(bean: clienteInstance.tipoPessoa, field: "cnpj")}</td>
+                                        
+                                            <td>${fieldValue(bean: clienteInstance.tipoPessoa, field: "inscricaoEstadual")}</td>
+                                        </g:else>
                                         <td>${fieldValue(bean: clienteInstance, field: "email")}</td>
                                         
                                         <td>${fieldValue(bean: clienteInstance, field: "telefone")}</td>
                                         
-                                        <td>${fieldValue(bean: clienteInstance, field: "celular")}</td>
+                                        <td>${fieldValue(bean: clienteInstance, field: "celular")}</td>                                        
                                         
                                     </tr>
                                 </g:each>

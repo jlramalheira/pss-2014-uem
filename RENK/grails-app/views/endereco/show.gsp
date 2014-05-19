@@ -22,7 +22,7 @@
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
                                 ${flash.message}
                             </div>
-                        </g:if>
+                        </g:if>                        
                         <dl class="dl-horizontal property-list endereco">
                             
                             <g:if test="${enderecoInstance?.tipo}">
@@ -108,9 +108,14 @@
                         <g:form url="[resource:enderecoInstance, action:'delete']" method="DELETE">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${enderecoInstance}">
+                                <input type="hidden" name="fornecedor.id" value="${params.fornecedor?.id}"/>
+                                <input type="hidden" name="cliente.id" value="${params.cliente?.id}"/>
+                                <input type="hidden" name="enderecoInstance.id" value="${enderecoInstance?.id}"/>
+                                <%--<g:link class="btn btn-lg btn-primary"  action="edit" resource="${enderecoInstance}">
                                     <g:message code="default.button.edit.label" default="Edit" />
-                                </g:link>
+                                </g:link>--%>
+                                <g:actionSubmit class="btn btn-lg btn-primary" action="edit" 
+                                value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

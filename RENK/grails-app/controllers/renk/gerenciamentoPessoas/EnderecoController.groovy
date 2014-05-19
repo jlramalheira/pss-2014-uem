@@ -36,26 +36,32 @@ class EnderecoController {
         }
         
         enderecoInstance.save flush:true
-        
-        def fornecedor = Fornecedor.get(params.fornecedor.id)
-        if (fornecedor == null){
+        def pessoa
+        def controller
+        if (params.fornecedor.id) {
+            pessoa = Fornecedor.get(params.fornecedor.id)                        
+            controller = "fornecedor"
+        } else if (params.cliente.id) {
+            pessoa = Cliente.get(params.cliente.id)
+            controller = "cliente"
+        } 
+        if (pessoa == null){
             notFound()
             return
-        }
+        }        
+        pessoa.enderecos.add(enderecoInstance)
+        pessoa.save(flush:true)
         
-        fornecedor.enderecos.add(enderecoInstance)
-        fornecedor.save(flush:true)
-        
-        redirect(action:"show",controller:"fornecedor", id:fornecedor.id)
+        redirect(action:"show", controller:controller, id:pessoa.id)
         return
         
-//        request.withFormat {
-//            form multipartForm {
-//                flash.message = message(code: 'default.created.message', args: [message(code: 'enderecoInstance.label', default: 'Endereco'), enderecoInstance.id])
-//                redirect enderecoInstance
-//            }
-//            '*' { respond enderecoInstance, [status: CREATED] }
-//        }
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'default.created.message', args: [message(code: 'enderecoInstance.label', default: 'Endereco'), enderecoInstance.id])
+                redirect enderecoInstance
+            }
+                    '*' { respond enderecoInstance, [status: CREATED] }
+        }
     }
 
     def edit(Endereco enderecoInstance) {
@@ -75,6 +81,22 @@ class EnderecoController {
         }
 
         enderecoInstance.save flush:true
+        def pessoa
+        def controller
+        if (params.fornecedor.id) {
+            pessoa = Fornecedor.get(params.fornecedor.id)
+            controller = "fornecedor"
+        } else if (params.cliente.id) {
+            pessoa = Cliente.get(params.cliente.id)
+            controller = "cliente"
+        } 
+        if (pessoa == null){
+            notFound()
+            return
+        }                
+        
+        redirect(action:"show", controller:controller, id:pessoa.id)
+        return
 
         request.withFormat {
             form multipartForm {

@@ -18,24 +18,31 @@
                     <div id="show-pessoaFisica" class="scaffold-show" role="main">
                         <h1><g:message code="default.show.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
-                            <div class="message" role="status">${flash.message}</div>
+                            <div class="alert alert-info alert-dismissable" role="status">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                ${flash.message}
+                            </div>
                         </g:if>
-                        <ol class="property-list pessoaFisica">
+                        <dl class="dl-horizontal property-list pessoaFisica">
                             
                             <g:if test="${pessoaFisicaInstance?.cpf}">
-                                <li class="fieldcontain">
-                                    <span id="cpf-label" class="property-label"><g:message code="pessoaFisica.cpf.label" default="Cpf" /></span>
+                                <dt id="cpf-label" class="property-label">
+                                        <g:message code="pessoaFisica.cpf.label" default="Cpf" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="cpf-label">
                                     
-                                    <span class="property-value" aria-labelledby="cpf-label"><g:fieldValue bean="${pessoaFisicaInstance}" field="cpf"/></span>
+                                        <g:fieldValue bean="${pessoaFisicaInstance}" field="cpf"/>
                                     
-                                </li>
+                                </dd>
                             </g:if>
                             
-                        </ol>
+                        </dl>
                         <g:form url="[resource:pessoaFisicaInstance, action:'delete']" method="DELETE">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
-                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${pessoaFisicaInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                                <g:link class="btn btn-lg btn-primary"  action="edit" resource="${pessoaFisicaInstance}">
+                                    <g:message code="default.button.edit.label" default="Edit" />
+                                </g:link>
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
