@@ -1,14 +1,28 @@
 <div class="well well-sm">
-    <h1><g:message code="default.name" args="[entityName]" /></h1>
+        <h1>Opções de Compras</h1>
     <ul class="nav nav-pills nav-stacked">
         <li>
-            <g:link action="create">
-                <g:message code="default.new.label" args="[entityName]" />
+            <g:link action="create" controller="compra">
+                Nova Compra
             </g:link>
         </li>
         <li>
-            <g:link action="index">
-                <g:message code="default.list.label" args="[entityName]" />
+            <g:link action="index" controller="compra">
+                Compra listagem
+            </g:link>
+        </li>
+    </ul>
+
+    <h1>Opções de Solicitação de Compra</h1>
+    <ul class="nav nav-pills nav-stacked">
+        <li>
+            <g:link action="create" controller="solicitacaoCompra">
+                Nova solicitação de compra
+            </g:link>
+        </li>
+        <li>
+            <g:link action="index" controller="solicitacaoCompra">
+                Solicitação de compra listagem
             </g:link>
         </li>
     </ul>

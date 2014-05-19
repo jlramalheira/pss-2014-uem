@@ -45,6 +45,11 @@
                             <g:link controller="servico" action="index">
                                 Serviços
                             </g:link>
+                        <li>
+                            <g:link controller="relatorio" action="index">
+                                Relatórios
+                            </g:link>
+                        </li> 
                         </li>                     
                     </ul>
                     <ul class="nav navbar-nav navbar-right">

@@ -8,4 +8,8 @@ class Fornecedor extends Pessoa {
     static constraints = {
         pessoaJuridica(display:false)
     }
+    
+    String toString(){
+        "${nome}"
+    }
 }
