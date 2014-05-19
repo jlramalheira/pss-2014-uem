@@ -1,7 +1,6 @@
 <%@ page import="renk.gerenciamentoPessoas.Endereco" %>
 
 
-
     <div class="row">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'tipo', 'error')} required">
         <label for="tipo">

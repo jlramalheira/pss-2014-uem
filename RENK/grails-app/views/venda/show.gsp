@@ -25,13 +25,26 @@
                         </g:if>
                         <dl class="dl-horizontal property-list venda">
                             
+                            <g:if test="${vendaInstance?.pessoa}">
+                                <dt id="pessoa-label" class="property-label">
+                                        <g:message code="venda.pessoa.label" default="Pessoa" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="pessoa-label">
+                                    
+                                        <g:link controller="pessoa" action="show" id="${vendaInstance?.pessoa?.id}">
+                                            ${vendaInstance?.pessoa?.encodeAsHTML()}
+                                        </g:link>
+                                    
+                                </dd>
+                            </g:if>
+                            
                             <g:if test="${vendaInstance?.dataTransacao}">
                                 <dt id="dataTransacao-label" class="property-label">
                                         <g:message code="venda.dataTransacao.label" default="Data Transacao" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="dataTransacao-label">
                                     
-                                        <g:formatDate date="${vendaInstance?.dataTransacao}" />
+                                        <g:formatDate date="${vendaInstance?.dataTransacao}" format="dd/MM/yyyy" />
                                     
                                 </dd>
                             </g:if>
@@ -64,22 +77,217 @@
                                 </dt>
                                 <dd class="property-value" aria-labelledby="status-label">
                                     
-                                        <g:fieldValue bean="${vendaInstance}" field="status"/>
+                                    <g:if test="${vendaInstance.isEmAberto()}">
+                                        <span class="label label-warning">
+                                        ${vendaInstance.getStatusStr()}
+                                        </span>
+                                    </g:if>
+                                    <g:if test="${vendaInstance.isCancelada()}">
+                                        <span class="label label-danger">${vendaInstance.getStatusStr()}</span>
+                                    </g:if>
+                                    <g:if test="${vendaInstance.isFinalizada()}">
+                                        <span class="label label-success">${vendaInstance.getStatusStr()}</span>
+                                    </g:if>
                                     
                                 </dd>
-                            </g:if>
-                            
+                            </g:if>                           
                         </dl>
+                        
+                        
+                        <div class="row margin-top-sm">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <table class="table table-hover table-striped table-responsive">
+                                    <caption class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+                                            <h2 class="margin-top-zero">Lista de Produtos</h2>
+                                        </div>
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Produto
+                                            </th>
+                                            <th>
+                                                Preço do produto
+                                            </th>
+                                            <th>
+                                                Quantidade
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2">
+                                                Total
+                                            </th>
+                                            <th>
+                                                15
+                                            </th>
+                                            <th>
+                                                R$ 300,00
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row margin-top-sm">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <table class="table table-hover table-striped table-responsive">
+                                    <caption class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+                                            <h2 class="margin-top-zero">Lista de Serviços</h2>
+                                        </div>
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Serviço
+                                            </th>
+                                            <th>
+                                                Preço do Serviço
+                                            </th>
+                                            <th>
+                                                Quantidade
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Serviço Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Serviço Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2">
+                                                Total
+                                            </th>
+                                            <th>
+                                                15
+                                            </th>
+                                            <th>
+                                                R$ 300,00
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                        
+                        
+                        
                         <g:form url="[resource:vendaInstance, action:'delete']" method="DELETE">
-                            <fieldset class="buttons">
+                            <g:if test="${vendaInstance.isEmAberto()}">
+                            <fieldset class="buttons">                                
                                 <legend>Opções</legend>
                                 <g:link class="btn btn-lg btn-primary"  action="edit" resource="${vendaInstance}">
                                     <g:message code="default.button.edit.label" default="Edit" />
                                 </g:link>
-                                <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
+                                <g:actionSubmit class="btn btn-lg btn-success" action="finalizer" 
+                                value="${message(code: 'default.button.complete.label', default: 'Finalizar')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <g:actionSubmit class="btn btn-lg btn-danger" action="cancel" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </fieldset>
+                            </g:if>
                         </g:form>
                     </div>
                 </section>

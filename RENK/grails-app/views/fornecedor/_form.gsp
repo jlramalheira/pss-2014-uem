@@ -67,10 +67,6 @@
 
     <div class="row">
     <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance, field: 'enderecos', 'error')} ">
-        <label for="enderecos">
-            <g:message code="fornecedor.enderecos.label" default="Enderecos" />
-            
-        </label>
         
 <ul class="one-to-many">
 <g:each in="${fornecedorInstance?.enderecos?}" var="e">

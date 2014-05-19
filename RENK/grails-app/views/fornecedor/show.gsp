@@ -84,6 +84,8 @@
                                 </dd>
                             </g:if>                            
                         </dl>
+                        
+                        
                         <g:link controller="endereco" action="create" class="btn btn-default"
                             params="['fornecedor.id': fornecedorInstance?.id]">
                             ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}

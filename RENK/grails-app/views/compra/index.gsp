@@ -27,7 +27,7 @@
                             <thead>
                                 <tr>
                                     
-                                    <th><g:message code="compra.pessoa.label" default="Pessoa" /></th>
+                                    <th><g:message code="compra.pessoa.label" default="Fornecedor" /></th>
                                         
                                         <g:sortableColumn property="dataTransacao" title="${message(code: 'compra.dataTransacao.label', default: 'Data Transacao')}" />
                                         
@@ -43,15 +43,30 @@
                                 <g:each in="${compraInstanceList}" status="i" var="compraInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${compraInstance.id}">${fieldValue(bean: compraInstance, field: "pessoa")}</g:link></td>
+                                        <td><g:link action="show" id="${compraInstance.id}">
+                                            Fornecedor ${fieldValue(bean: compraInstance, field: "pessoa")}
+                                        </g:link></td>
                                         
-                                        <td><g:formatDate date="${compraInstance.dataTransacao}" /></td>
+                                        <td><g:formatDate date="${compraInstance.dataTransacao}" format="dd/MM/yyyy" /></td>
                                         
                                         <td>${fieldValue(bean: compraInstance, field: "quantidadeTotal")}</td>
                                         
                                         <td>${fieldValue(bean: compraInstance, field: "valorTotal")}</td>
                                         
-                                        <td>${fieldValue(bean: compraInstance, field: "status")}</td>
+                                        <td>
+                                            <g:if test="${compraInstance.isEmAberto()}">
+                                            <span class="label label-warning">${compraInstance.getStatusStr()}</span>
+                                            </g:if>
+                                            <g:if test="${compraInstance.isCancelada()}">
+                                            <span class="label label-danger">${compraInstance.getStatusStr()}</span>
+                                            </g:if>
+                                            <g:if test="${compraInstance.isFinalizada()}">
+                                            <span class="label label-info">${compraInstance.getStatusStr()}</span>
+                                            </g:if>
+                                            <g:if test="${compraInstance.isRecebida()}">
+                                            <span class="label label-success">${compraInstance.getStatusStr()}</span>
+                                            </g:if>                                        
+                                        </td>
                                         
                                     </tr>
                                 </g:each>

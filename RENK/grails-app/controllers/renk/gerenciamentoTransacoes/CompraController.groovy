@@ -21,7 +21,6 @@ class CompraController {
 
     def create() {
         def compra = new Compra(params)
-        compra.setAberta()
         respond compra
     }
 
@@ -89,6 +88,69 @@ class CompraController {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'Compra.label', default: 'Compra'), compraInstance.id])
                 redirect action:"index", method:"GET"
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def finalizer(Compra compraInstance) {
+
+        if (compraInstance == null) {
+            notFound()
+            return
+        }
+        
+        compraInstance.setFinalizada()
+        
+        compraInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Compra finalizada', args: [message(code: 'compra.label', default: 'compra'), compraInstance.id])
+                redirect compraInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def cancel(Compra compraInstance) {
+
+        if (compraInstance == null) {
+            notFound()
+            return
+        }
+
+        compraInstance.setCancelada()
+        
+        compraInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Compra cancelada', args: [message(code: 'compra.label', default: 'compra'), compraInstance.id])
+                redirect compraInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def receive(Compra compraInstance) {
+
+        if (compraInstance == null) {
+            notFound()
+            return
+        }
+
+        compraInstance.setRecebida()
+        
+        compraInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Compra recebida', args: [message(code: 'compra.label', default: 'compra'), compraInstance.id])
+                redirect compraInstance
             }
             '*'{ render status: NO_CONTENT }
         }
