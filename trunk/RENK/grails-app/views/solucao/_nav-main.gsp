@@ -10,7 +10,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="${createLink(uri: '/')}">
+                    <a class="navbar-brand" href="${createLink(uri: '/inicio')}">
                        <strong>RENK</strong>
                     </a>
                 </div>

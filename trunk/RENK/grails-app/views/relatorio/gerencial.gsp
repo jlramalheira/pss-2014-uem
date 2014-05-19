@@ -60,8 +60,8 @@
                                     <input type="date" class="form-control" id="data-inicio">
                                 </div>
                                 <div class="form-group">
-                                    <label for="data-inicio">Até</label>
-                                    <input type="date" class="form-control" id="data-inicio">
+                                    <label for="data-fim">Até</label>
+                                    <input type="date" class="form-control" id="data-fim">
                                 </div>
                             </div>
 
