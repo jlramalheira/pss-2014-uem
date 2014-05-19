@@ -80,6 +80,16 @@
                                 </dd>
                             </g:if>
                             <g:if test="${produtoInstance}">
+                                <dt id="valor-label" class="property-label">
+                                        <g:message code="produto.saldo.label" default="Saldo" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="saldo-label">
+                                    
+                                        <g:fieldValue bean="${produtoInstance}" field="saldo"/>
+                                    
+                                </dd>
+                            </g:if>
+                            <g:if test="${produtoInstance}">
                                 <g:if test="${produtoInstance.ativo}">
                                     <dt id="valor-label" class="property-label">
                                             <g:message code="produto.ativo.label" default="Status" />

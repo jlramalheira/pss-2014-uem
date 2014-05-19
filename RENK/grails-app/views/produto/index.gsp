@@ -36,6 +36,7 @@
                                         <g:sortableColumn property="estoqueDesejavel" title="${message(code: 'produto.estoqueDesejavel.label', default: 'Estoque Desejavel')}" />
                                         
                                         <g:sortableColumn property="valor" title="${message(code: 'produto.valor.label', default: 'Valor')}" />
+                                        <g:sortableColumn property="saldo" title="${message(code: 'produto.saldo.label', default: 'Saldo')}" />
                                         <g:sortableColumn property="ativo" title="${message(code: 'produto.ativo.label', default: 'Status')}" />
                                         
                                 </tr>
@@ -53,6 +54,7 @@
                                         <td>${fieldValue(bean: produtoInstance, field: "estoqueDesejavel")}</td>
                                         
                                         <td>${fieldValue(bean: produtoInstance, field: "valor")}</td>
+                                        <td>${fieldValue(bean: produtoInstance, field: "saldo")}</td>
                                         <td>
                                             <g:if test="${produtoInstance.ativo}">
                                                 <span class="label label-success">Ativo</span>

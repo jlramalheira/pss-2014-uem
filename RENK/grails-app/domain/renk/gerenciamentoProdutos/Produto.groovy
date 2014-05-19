@@ -8,7 +8,7 @@ class Produto {
     int estoqueDesejavel
     double valor
     boolean ativo = true
-    int saldo
+    int saldo = 0
     
     static constraints = {
         nome(blank: false)
