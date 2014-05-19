@@ -105,7 +105,7 @@
                             </g:if>
                             
                         </dl>
-                        <g:form url="[resource:enderecoInstance, action:'delete']" method="DELETE">
+                        <g:form url="[resource:enderecoInstance, action:'edit']" method="PUT">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
                                 <input type="hidden" name="fornecedor.id" value="${params.fornecedor?.id}"/>
@@ -116,11 +116,13 @@
                                 </g:link>--%>
                                 <g:actionSubmit class="btn btn-lg btn-primary" action="edit" 
                                 value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
+                        </g:form>
+                        <g:form url="[resource:enderecoInstance, action:'delete']" method="DELETE">
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                            </fieldset>
                         </g:form>
+                            </fieldset>
                     </div>
                 </section>
             </div>

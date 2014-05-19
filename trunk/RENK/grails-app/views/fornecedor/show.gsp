@@ -35,7 +35,29 @@
 
                                 </dd>
                             </g:if>
+                            
+                            <g:if test="${fornecedorInstance?.pessoaJuridica?.cnpj}">
+                                    
+                                <dt id="cnpj-label" class="property-label">
+                                        <g:message code="pessoaJuridica.cnpj.label" default="CNPJ" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="cnpj-label">
 
+                                        <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="cnpj"/>
+
+                                </dd>
+                            </g:if>
+                            <g:if test="${fornecedorInstance?.inscricaoEstadual}">
+
+                                <dt id="inscricaoEstadual-label" class="property-label">
+                                        <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscrição Estadual" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="inscricaoEstadual-label">
+
+                                        <g:fieldValue bean="${fornecedorInstance.pessoaJuridica}" field="inscricaoEstadual"/>
+
+                                </dd>
+                            </g:if>
                             <g:if test="${fornecedorInstance?.email}">
                                 <dt id="email-label" class="property-label">
                                 <g:message code="fornecedor.email.label" default="Email" />
@@ -76,7 +98,8 @@
                                 <dd class="property-value" aria-labelledby="enderecos-label">
 
                                     <g:each in="${fornecedorInstance.enderecos}" var="e">
-                                        <g:link controller="endereco" action="show" id="${e.id}">
+                                        <g:link controller="endereco" action="show" id="${e.id}"
+                                            params="['cliente.id': clienteInstance?.id]">
                                             ${e?.encodeAsHTML()}
                                         </g:link>
                                         <br/>
