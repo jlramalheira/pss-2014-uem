@@ -91,6 +91,51 @@ class VendaController {
             '*'{ render status: NO_CONTENT }
         }
     }
+    
+    
+    @Transactional
+    def finalizer(Venda vendaInstance) {
+
+        if (vendaInstance == null) {
+            notFound()
+            return
+        }
+        
+        vendaInstance.setFinalizada()
+        
+        vendaInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Venda finalizada', args: [message(code: 'compra.label', default: 'compra'), vendaInstance.id])
+                redirect vendaInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    @Transactional
+    def cancel(Venda vendaInstance) {
+
+        if (vendaInstance == null) {
+            notFound()
+            return
+        }
+
+        vendaInstance.setCancelada()
+        
+        vendaInstance.save flush:true
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = message(code: 'Venda cancelada', args: [message(code: 'compra.label', default: 'compra'), vendaInstance.id])
+                redirect vendaInstance
+            }
+            '*'{ render status: NO_CONTENT }
+        }
+    }
+    
+    
 
     protected void notFound() {
         request.withFormat {

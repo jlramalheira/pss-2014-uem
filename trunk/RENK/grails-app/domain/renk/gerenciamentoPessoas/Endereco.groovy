@@ -25,4 +25,9 @@ class Endereco {
         cep()
         pessoa(nullable: true, display: false)
     }
+    
+    String toString(){
+        "${logradouro}, ${numero}, ${bairro} - ${complemento}\n ${cep}, ${cidade}"
+    }
+    
 }

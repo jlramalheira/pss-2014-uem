@@ -27,6 +27,8 @@
                             <thead>
                                 <tr>
                                     
+                                    <th><g:message code="venda.pessoa.label" default="Cliente" /></th>
+                                        
                                         <g:sortableColumn property="dataTransacao" title="${message(code: 'venda.dataTransacao.label', default: 'Data Transacao')}" />
                                         
                                         <g:sortableColumn property="quantidadeTotal" title="${message(code: 'venda.quantidadeTotal.label', default: 'Quantidade Total')}" />
@@ -41,13 +43,28 @@
                                 <g:each in="${vendaInstanceList}" status="i" var="vendaInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${vendaInstance.id}">${fieldValue(bean: vendaInstance, field: "dataTransacao")}</g:link></td>
+                                        <td><g:link action="show" id="${vendaInstance.id}">
+                                            Cliente ${fieldValue(bean: vendaInstance, field: "pessoa")}
+                                        </g:link></td>
+                                        
+                                        <td><g:formatDate date="${vendaInstance.dataTransacao}" format="dd/MM/yyyy"  /></td>
                                         
                                         <td>${fieldValue(bean: vendaInstance, field: "quantidadeTotal")}</td>
                                         
                                         <td>${fieldValue(bean: vendaInstance, field: "valorTotal")}</td>
                                         
-                                        <td>${fieldValue(bean: vendaInstance, field: "status")}</td>
+                                        <td><g:if test="${vendaInstance.isEmAberto()}">
+                                        <span class="label label-warning">
+                                        ${vendaInstance.getStatusStr()}
+                                        </span>
+                                    </g:if>
+                                    <g:if test="${vendaInstance.isCancelada()}">
+                                        <span class="label label-danger">${vendaInstance.getStatusStr()}</span>
+                                    </g:if>
+                                    <g:if test="${vendaInstance.isFinalizada()}">
+                                        <span class="label label-success">${vendaInstance.getStatusStr()}</span>
+                                    </g:if>
+                                        </td>
                                         
                                     </tr>
                                 </g:each>

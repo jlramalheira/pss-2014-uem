@@ -28,6 +28,7 @@
                                 </g:hasErrors>
                                 <g:form url="[resource:enderecoInstance, action:'save']"
                                     >
+                                    <input type="hidden" name="fornecedor.id" value="${params.fornecedor.id}"/>
                                     <fieldset class="form">
                                     <g:render template="form"/>
                                     </fieldset>

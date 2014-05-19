@@ -24,79 +24,190 @@
                             </div>
                         </g:if>
                         <dl class="dl-horizontal property-list compra">
-                            
+
                             <g:if test="${compraInstance?.pessoa}">
                                 <dt id="pessoa-label" class="property-label">
-                                        <g:message code="compra.pessoa.label" default="Pessoa" />
+                                <g:message code="compra.pessoa.label" default="Pessoa" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="pessoa-label">
-                                    
-                                        <g:link controller="pessoa" action="show" id="${compraInstance?.pessoa?.id}">
-                                            ${compraInstance?.pessoa?.encodeAsHTML()}
-                                        </g:link>
-                                    
+
+                                    <g:link controller="fornecedor" action="show" id="${compraInstance?.pessoa?.id}">
+                                        ${compraInstance?.pessoa?.encodeAsHTML()}
+                                    </g:link>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${compraInstance?.dataTransacao}">
                                 <dt id="dataTransacao-label" class="property-label">
-                                        <g:message code="compra.dataTransacao.label" default="Data Transacao" />
+                                <g:message code="compra.dataTransacao.label" default="Data Transacao" />
                                 </dt>
-                                <dd class="property-value" aria-labelledby="dataTransacao-label">
-                                    
-                                        <g:formatDate date="${compraInstance?.dataTransacao}" />
-                                    
+                                <dd class="property-value" aria-labelledby="dataTransacao-label">                                    
+                                    <g:formatDate date="${compraInstance?.dataTransacao}"  format="dd/MM/yyyy"/>                                    
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${compraInstance?.quantidadeTotal}">
                                 <dt id="quantidadeTotal-label" class="property-label">
-                                        <g:message code="compra.quantidadeTotal.label" default="Quantidade Total" />
+                                <g:message code="compra.quantidadeTotal.label" default="Quantidade Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="quantidadeTotal-label">
-                                    
-                                        <g:fieldValue bean="${compraInstance}" field="quantidadeTotal"/>
-                                    
+
+                                    <g:fieldValue bean="${compraInstance}" field="quantidadeTotal"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${compraInstance?.valorTotal}">
                                 <dt id="valorTotal-label" class="property-label">
-                                        <g:message code="compra.valorTotal.label" default="Valor Total" />
+                                <g:message code="compra.valorTotal.label" default="Valor Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="valorTotal-label">
-                                    
-                                        <g:fieldValue bean="${compraInstance}" field="valorTotal"/>
-                                    
+
+                                    <g:fieldValue bean="${compraInstance}" field="valorTotal"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${compraInstance?.status}">
                                 <dt id="status-label" class="property-label">
-                                        <g:message code="compra.status.label" default="Status" />
+                                <g:message code="compra.status.label" default="Status" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="status-label">
-                                    
-                                        <g:fieldValue bean="${compraInstance}" field="status"/>
-                                    
+                                    <g:if test="${compraInstance.isEmAberto()}">
+                                        <span class="label label-warning">
+                                        ${compraInstance.getStatusStr()}
+                                        </span>
+                                    </g:if>
+                                    <g:if test="${compraInstance.isCancelada()}">
+                                        <span class="label label-danger">${compraInstance.getStatusStr()}</span>
+                                    </g:if>
+                                    <g:if test="${compraInstance.isFinalizada()}">
+                                        <span class="label label-info">${compraInstance.getStatusStr()}</span>
+                                    </g:if>
+                                    <g:if test="${compraInstance.isRecebida()}">
+                                        <span class="label label-success">${compraInstance.getStatusStr()}</span>
+                                    </g:if>
+                                    <%--<g:fieldValue bean="${compraInstance}" field="status"/>--%>
                                 </dd>
                             </g:if>
-                            
+
                         </dl>
-                        <g:form url="[resource:compraInstance, action:'delete']" method="DELETE">
+
+
+                        <div class="row margin-top-sm">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <table class="table table-hover table-striped table-responsive">
+                                    <caption class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+                                            <h2 class="margin-top-zero">Lista de Produtos</h2>
+                                        </div>
+                                    </caption>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Produto
+                                            </th>
+                                            <th>
+                                                Preço do produto
+                                            </th>
+                                            <th>
+                                                Quantidade
+                                            </th>
+                                            <th>
+                                                Total
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#">Produto Sample</a>
+                                            </td>
+                                            <td>
+                                                R$ 20,00
+                                            </td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>
+                                                R$ 100,00
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="2">
+                                                Total
+                                            </th>
+                                            <th>
+                                                15
+                                            </th>
+                                            <th>
+                                                R$ 300,00
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <g:form url="[resource:compraInstance, action:'delete']" method="DELETE">
+                        <g:if test="${compraInstance.isEmAberto()}">
                             <fieldset class="buttons">
                                 <legend>Opções</legend>
                                 <g:link class="btn btn-lg btn-primary"  action="edit" resource="${compraInstance}">
                                     <g:message code="default.button.edit.label" default="Edit" />
                                 </g:link>
-                                <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                                <g:actionSubmit class="btn btn-lg btn-info" action="finalizer" 
+                                value="${message(code: 'default.button.complete.label', default: 'Finalizar')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <g:actionSubmit class="btn btn-lg btn-success" action="receive" 
+                                value="${message(code: 'default.button.complete.label', default: 'Receber')}"
+                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                
+                                <g:actionSubmit class="btn btn-lg btn-danger" action="cancel" 
+                                value="${message(code: 'default.button.cancel.label', default: 'Cancelar')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </fieldset>
-                        </g:form>
-                    </div>
-                </section>
+                        </g:if>
+                    </g:form>
             </div>
-        </div>
-    </body>
+        </section>
+    </div>
+</div>
+</body>
 </html>
