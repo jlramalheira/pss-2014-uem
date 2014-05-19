@@ -4,6 +4,7 @@ package renk.gerenciamentoSolucao
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import renk.gerenciamentoServicos.OrdemServico
 
 @Transactional(readOnly = true)
 class SolucaoController {
@@ -33,6 +34,10 @@ class SolucaoController {
         if (solucaoInstance.hasErrors()) {
             respond solucaoInstance.errors, view:'create'
             return
+        }
+        
+        if (params.idOrdem){
+            solucaoInstance.setOrdemServico(OrdemServico.get(Integer.parseInt(params.idOrdem)))
         }
 
         solucaoInstance.save flush:true

@@ -30,4 +30,8 @@ class Servico {
     boolean isAtivo(){
         return ativo
     }
+    
+    String toString(){
+        return nome
+    }
 }

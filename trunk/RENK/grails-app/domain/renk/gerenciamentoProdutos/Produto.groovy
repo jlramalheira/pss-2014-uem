@@ -27,4 +27,8 @@ class Produto {
     void setAtivo(){
         ativo = true
     }
+    
+    String toString(){
+        return nome
+    }
 }

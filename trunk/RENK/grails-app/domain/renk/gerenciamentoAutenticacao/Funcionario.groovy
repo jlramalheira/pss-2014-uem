@@ -7,6 +7,10 @@ class Funcionario {
     
     static constraints = {
         nome(display: false)
-        perfil()
+        perfil(nullable: true)
+    }
+    
+    String toString(){
+        return nome
     }
 }
