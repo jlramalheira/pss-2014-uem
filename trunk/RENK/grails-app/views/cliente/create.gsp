@@ -24,26 +24,44 @@
                                 <g:eachError bean="${clienteInstance}" var="error">
                                     <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                                     </g:eachError>
-                                    </ul>
-                                </g:hasErrors>
-                                <g:form url="[resource:clienteInstance, action:'save']"
-                                    >
-                                    <fieldset class="form">
-                                    <g:render template="form"/>
-                                    </fieldset>
-                                    <fieldset class="buttons">
-                                        <g:submitButton name="create" class="btn btn-lg btn-primary" 
-                                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-                                        <g:link controller="index"  resource="${clienteInstance}" 
-                                             class="btn btn-lg btn-danger">
-                                             Cancelar
-                                        </g:link>
-                                    </fieldset>
-                                </g:form>
-                                </div>
-                            </section>
-                        </div>
+                            </ul>
+                        </g:hasErrors>
+                        <g:form url="[resource:clienteInstance, action:'save']"
+                            >
+                            <fieldset class="form">
+                                <g:render template="form"/>
+                            </fieldset>
+                            <fieldset class="buttons">
+                                <g:submitButton name="create" class="btn btn-lg btn-primary" 
+                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                <g:link controller="index"  resource="${clienteInstance}" 
+                                    class="btn btn-lg btn-danger">
+                                    Cancelar
+                                </g:link>
+                            </fieldset>
+                        </g:form>
                     </div>
+                </section>
+            </div>
+        </div>
+        <script type="text/javascript">
+            window.onload = function() {                
+            if ($(':input[name="pessoaTipo"]:checked').val() === "fisica") {
+            $("#juridica").addClass("hidden");
+            } else {
+            $("#fisica").addClass("hidden");
+            }            
+            };    
 
-            </body>
-        </html>
+            function muda() {
+            if ($("#juridica").hasClass("hidden")) {            
+            $("#fisica").addClass("hidden");
+            $("#juridica").removeClass("hidden");
+            } else {
+            $("#juridica").addClass("hidden");
+            $("#fisica").removeClass("hidden");
+            }
+            };
+        </script>
+    </body>
+</html>

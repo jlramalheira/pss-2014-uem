@@ -53,10 +53,8 @@
                         </li>                   
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a href="#">RH</a>
-                        </li>                    
-                        <li><a href="#">Sair</a></li>                     
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/RENK">Sair</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
