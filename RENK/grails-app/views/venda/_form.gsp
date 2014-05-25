@@ -3,7 +3,7 @@
 
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: vendaInstance, field: 'pessoa', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: vendaInstance, field: 'pessoa', 'error')} ">
         <label for="pessoa">
             <g:message code="venda.pessoa.label" default="Pessoa" />
             

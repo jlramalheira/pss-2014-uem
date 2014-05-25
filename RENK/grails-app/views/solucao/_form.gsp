@@ -3,7 +3,7 @@
 
 <g:if test="${!params.idOrdem}">
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: solucaoInstance, field: 'ordemServico', 'error')}">
+  <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: solucaoInstance, field: 'ordemServico', 'error')}">
     <label for="ordemServico">
       <g:message code="solucao.ordemServico.label" default="Ordem Servico" />
       <span class="required-indicator">*</span>
@@ -17,7 +17,7 @@
 <g:hiddenField name="idOrdem" value="${params.idOrdem}" />
 </g:else>
 <div class="row">
-  <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: solucaoInstance, field: 'descricao', 'error')} ">
+  <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: solucaoInstance, field: 'descricao', 'error')} ">
     <label for="descricao">
       <g:message code="solucao.descricao.label" default="Descricao" />
 

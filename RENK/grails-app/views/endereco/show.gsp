@@ -24,89 +24,89 @@
                             </div>
                         </g:if>                        
                         <dl class="dl-horizontal property-list endereco">
-                            
+
                             <g:if test="${enderecoInstance?.tipo}">
                                 <dt id="tipo-label" class="property-label">
-                                        <g:message code="endereco.tipo.label" default="Tipo" />
+                                <g:message code="endereco.tipo.label" default="Tipo" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="tipo-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="tipo"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="tipo"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.logradouro}">
                                 <dt id="logradouro-label" class="property-label">
-                                        <g:message code="endereco.logradouro.label" default="Logradouro" />
+                                <g:message code="endereco.logradouro.label" default="Logradouro" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="logradouro-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="logradouro"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="logradouro"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.numero}">
                                 <dt id="numero-label" class="property-label">
-                                        <g:message code="endereco.numero.label" default="Numero" />
+                                <g:message code="endereco.numero.label" default="Numero" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="numero-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="numero"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="numero"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.complemento}">
                                 <dt id="complemento-label" class="property-label">
-                                        <g:message code="endereco.complemento.label" default="Complemento" />
+                                <g:message code="endereco.complemento.label" default="Complemento" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="complemento-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="complemento"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="complemento"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.bairro}">
                                 <dt id="bairro-label" class="property-label">
-                                        <g:message code="endereco.bairro.label" default="Bairro" />
+                                <g:message code="endereco.bairro.label" default="Bairro" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="bairro-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="bairro"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="bairro"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.cep}">
                                 <dt id="cep-label" class="property-label">
-                                        <g:message code="endereco.cep.label" default="Cep" />
+                                <g:message code="endereco.cep.label" default="Cep" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="cep-label">
-                                    
-                                        <g:fieldValue bean="${enderecoInstance}" field="cep"/>
-                                    
+
+                                    <g:fieldValue bean="${enderecoInstance}" field="cep"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${enderecoInstance?.cidade}">
                                 <dt id="cidade-label" class="property-label">
-                                        <g:message code="endereco.cidade.label" default="Cidade" />
+                                <g:message code="endereco.cidade.label" default="Cidade" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="cidade-label">
-                                    
-                                        <g:link controller="cidade" action="show" id="${enderecoInstance?.cidade?.id}">
-                                            ${enderecoInstance?.cidade?.encodeAsHTML()}
-                                        </g:link>
-                                    
+
+                                    <g:link controller="cidade" action="show" id="${enderecoInstance?.cidade?.id}">
+                                        ${enderecoInstance?.cidade?.encodeAsHTML()}
+                                    </g:link>
+
                                 </dd>
                             </g:if>
-                            
+
                         </dl>
-                        <g:form url="[resource:enderecoInstance, action:'edit']" method="PUT">
-                            <fieldset class="buttons">
+                        <g:form url="[resource:enderecoInstance, action:'edit']" method="PUT" style="display: inline-block;">
+                            <fieldset>
                                 <legend>Opções</legend>
                                 <input type="hidden" name="fornecedor.id" value="${params.fornecedor?.id}"/>
                                 <input type="hidden" name="cliente.id" value="${params.cliente?.id}"/>
@@ -116,13 +116,19 @@
                                 </g:link>--%>
                                 <g:actionSubmit class="btn btn-lg btn-primary" action="edit" 
                                 value="${message(code: 'default.button.edit.label', default: 'Edit')}" />
+                            </fieldset>
                         </g:form>
-                        <g:form url="[resource:enderecoInstance, action:'delete']" method="DELETE">
+                        <g:form url="[resource:enderecoInstance, action:'delete']" method="DELETE" style="display: inline-block;">
+                            <fieldset>
+                                <input type="hidden" name="fornecedor.id" value="${params.fornecedor?.id}"/>
+                                <input type="hidden" name="cliente.id" value="${params.cliente?.id}"/>
+                                <input type="hidden" name="enderecoInstance.id" value="${enderecoInstance?.id}"/>
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="delete" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                        </g:form>
                             </fieldset>
+                        </g:form>
+
                     </div>
                 </section>
             </div>

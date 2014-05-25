@@ -1,6 +1,6 @@
 <%@ page import="renk.gerenciamentoPessoas.Fornecedor" %>
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance?.pessoaJuridica, field: 'tipoPessoa.cnpj', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-8 col-md-8 col-lg-8 ${hasErrors(bean: fornecedorInstance?.pessoaJuridica, field: 'tipoPessoa.cnpj', 'error')} ">
         <label for="cnpj">
             <g:message code="pessoaJuridica.cnpj.label" default="Cnpj" />
             <span class="required-indicator">*</span>
@@ -11,7 +11,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance?.pessoaJuridica, field: 'inscricaoEstadual', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: fornecedorInstance?.pessoaJuridica, field: 'inscricaoEstadual', 'error')} ">
         <label for="inscricaoEstadual">
             <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscricao Estadual" />
 
@@ -22,7 +22,7 @@
 
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: fornecedorInstance, field: 'nome', 'error')} required">
         <label for="nome">
             <g:message code="fornecedor.nome.label" default="Nome" />
             <span class="required-indicator">*</span>
@@ -33,7 +33,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance, field: 'email', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: fornecedorInstance, field: 'email', 'error')} ">
         <label for="email">
             <g:message code="fornecedor.email.label" default="Email" />
             
@@ -44,7 +44,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance, field: 'telefone', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: fornecedorInstance, field: 'telefone', 'error')} ">
         <label for="telefone">
             <g:message code="fornecedor.telefone.label" default="Telefone" />
             
@@ -55,7 +55,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: fornecedorInstance, field: 'celular', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: fornecedorInstance, field: 'celular', 'error')} ">
         <label for="celular">
             <g:message code="fornecedor.celular.label" default="Celular" />
             
