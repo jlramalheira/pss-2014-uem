@@ -3,7 +3,7 @@
 
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'tipo', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: enderecoInstance, field: 'tipo', 'error')} required">
         <label for="tipo">
             <g:message code="endereco.tipo.label" default="Tipo" />
             <span class="required-indicator">*</span>
@@ -25,7 +25,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'numero', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-2 col-md-2 col-lg-2 ${hasErrors(bean: enderecoInstance, field: 'numero', 'error')} ">
         <label for="numero">
             <g:message code="endereco.numero.label" default="Numero" />
             
@@ -36,7 +36,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'complemento', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: enderecoInstance, field: 'complemento', 'error')} ">
         <label for="complemento">
             <g:message code="endereco.complemento.label" default="Complemento" />
             
@@ -47,7 +47,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'bairro', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: enderecoInstance, field: 'bairro', 'error')} ">
         <label for="bairro">
             <g:message code="endereco.bairro.label" default="Bairro" />
             
@@ -58,7 +58,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'cep', 'error')} ">
+    <div class="form-group col-xs-3 col-sm-3 col-md-3 col-lg-3 ${hasErrors(bean: enderecoInstance, field: 'cep', 'error')} ">
         <label for="cep">
             <g:message code="endereco.cep.label" default="Cep" />
             
@@ -69,7 +69,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: enderecoInstance, field: 'cidade', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: enderecoInstance, field: 'cidade', 'error')} required">
         <label for="cidade">
             <g:message code="endereco.cidade.label" default="Cidade" />
             <span class="required-indicator">*</span>

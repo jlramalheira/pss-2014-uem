@@ -3,7 +3,7 @@
 
 
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: compraInstance, field: 'pessoa', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-8 col-md-8 col-lg-8 ${hasErrors(bean: compraInstance, field: 'pessoa', 'error')} required">
         <label for="pessoa">
             Fornecedor <%--<g:message code="compra.pessoa.label" default="Pessoa" />--%>
             <span class="required-indicator">*</span>

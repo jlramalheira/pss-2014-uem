@@ -57,7 +57,7 @@
                                         
                                         <td>
                                             <g:if test="${fornecedorInstance.isAtivo()}">
-                                                <span class="label label-primary">
+                                                <span class="label label-success">
                                                     Ativo
                                                 </span>
                                             </g:if>

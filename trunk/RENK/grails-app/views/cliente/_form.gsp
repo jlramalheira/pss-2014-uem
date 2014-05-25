@@ -19,7 +19,7 @@
 </div>
 <div id="fisica">
     <div class="row">
-        <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: clienteInstance?.tipoPessoa, field: 'cpf', 'error')} required">
+        <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: clienteInstance?.tipoPessoa, field: 'cpf', 'error')} required">
             <label for="cpf">
                 <g:message code="pessoaFisica.cpf.label" default="CPF" />
                 <span class="required-indicator">*</span>
@@ -53,7 +53,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: clienteInstance, field: 'nome', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-8 col-md-8 col-lg-8 ${hasErrors(bean: clienteInstance, field: 'nome', 'error')} required">
         <label for="nome">
             <g:message code="cliente.nome.label" default="Nome" />
 
@@ -64,7 +64,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: clienteInstance, field: 'email', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: clienteInstance, field: 'email', 'error')} ">
         <label for="email">
             <g:message code="cliente.email.label" default="Email" />
 
@@ -75,7 +75,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: clienteInstance, field: 'telefone', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: clienteInstance, field: 'telefone', 'error')} ">
         <label for="telefone">
             <g:message code="cliente.telefone.label" default="Telefone" />
 
@@ -86,7 +86,7 @@
 </div>
 
 <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: clienteInstance, field: 'celular', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4 ${hasErrors(bean: clienteInstance, field: 'celular', 'error')} ">
         <label for="celular">
             <g:message code="cliente.celular.label" default="Celular" />
 

@@ -116,6 +116,21 @@ class EnderecoController {
         }
 
         enderecoInstance.delete flush:true
+        
+        def pessoa
+        def controller
+        println(params)
+        if (params.fornecedor.id) {
+            pessoa = Fornecedor.get(params.fornecedor.id)
+            controller = "fornecedor"
+        } else if (params.cliente.id) {
+            pessoa = Cliente.get(params.cliente.id)
+            controller = "cliente"
+        }               
+        
+        redirect(action:"show", controller:controller, id:pessoa.id)
+        return
+        
 
         request.withFormat {
             form multipartForm {

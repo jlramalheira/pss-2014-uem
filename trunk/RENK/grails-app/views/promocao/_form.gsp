@@ -3,7 +3,7 @@
 
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: promocaoInstance, field: 'nome', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: promocaoInstance, field: 'nome', 'error')} required">
         <label for="nome">
             <g:message code="promocao.nome.label" default="Nome" />
             <span class="required-indicator">*</span>
@@ -33,9 +33,8 @@
         <g:datePicker name="dataFim" precision="day"  value="${promocaoInstance?.dataFim}"  />
 
     </div>
-      <div class="row margin-top-sm">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <table class="table table-hover table-striped table-responsive">
+    
+    <table class="table table-hover table-striped table-responsive">
             <caption class="row">
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
                     <h2 class="margin-top-zero">Lista de Produtos</h2>
@@ -181,7 +180,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
 </div>
 </div>
 

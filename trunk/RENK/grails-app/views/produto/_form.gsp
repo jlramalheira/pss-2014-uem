@@ -3,7 +3,7 @@
 
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'nome', 'error')} required">
+    <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: produtoInstance, field: 'nome', 'error')} required">
         <label for="nome">
             <g:message code="produto.nome.label" default="Nome" />
             <span class="required-indicator">*</span>
@@ -14,7 +14,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'descricao', 'error')} ">
+    <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10 ${hasErrors(bean: produtoInstance, field: 'descricao', 'error')} ">
         <label for="descricao">
             <g:message code="produto.descricao.label" default="Descricao" />
             
@@ -25,7 +25,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'estoqueMinimo', 'error')} required">
+    <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3 ${hasErrors(bean: produtoInstance, field: 'estoqueMinimo', 'error')} required">
         <label for="estoqueMinimo">
             <g:message code="produto.estoqueMinimo.label" default="Estoque Minimo" />
             <span class="required-indicator">*</span>
@@ -36,7 +36,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'estoqueDesejavel', 'error')} required">
+    <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3 ${hasErrors(bean: produtoInstance, field: 'estoqueDesejavel', 'error')} required">
         <label for="estoqueDesejavel">
             <g:message code="produto.estoqueDesejavel.label" default="Estoque Desejavel" />
             <span class="required-indicator">*</span>
@@ -47,7 +47,7 @@
 </div>
 
     <div class="row">
-    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: produtoInstance, field: 'valor', 'error')} required">
+    <div class="form-group col-xs-6 col-sm-3 col-md-3 col-lg-3 ${hasErrors(bean: produtoInstance, field: 'valor', 'error')} required">
         <label for="valor">
             <g:message code="produto.valor.label" default="Valor" />
             <span class="required-indicator">*</span>

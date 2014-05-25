@@ -30,7 +30,7 @@
                             </dt>
                             <dd>
                                 <g:if test="${fornecedorInstance.isAtivo()}">
-                                    <span class="label label-primary">
+                                    <span class="label label-success">
                                         Ativo
                                     </span>
                                 </g:if>
@@ -115,7 +115,7 @@
 
                                     <g:each in="${fornecedorInstance.enderecos}" var="e">
                                         <g:link controller="endereco" action="show" id="${e.id}"
-                                            params="['cliente.id': clienteInstance?.id]">
+                                            params="['fornecedor.id': fornecedorInstance?.id]">
                                             ${e?.encodeAsHTML()}
                                         </g:link>
                                         <br/>
