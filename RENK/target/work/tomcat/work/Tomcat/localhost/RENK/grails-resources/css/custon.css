@@ -50,6 +50,10 @@ body{
     width: 15%;
 }
 
+.form-more-options{
+    display: none;
+}
+
 /* FOOTER 
    ---------------------------------------------------------------------------*/
 .main-footer{

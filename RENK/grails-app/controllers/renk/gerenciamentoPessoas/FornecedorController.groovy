@@ -12,7 +12,38 @@ class FornecedorController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Fornecedor.list(params), model:[fornecedorInstanceCount: Fornecedor.count()]
+        
+        def c = Fornecedor.createCriteria()
+        def results = c.list {
+            if(params.nome){
+                like("nome", "%"+params.nome+"%")
+            }
+            if(params.pessoaJuridica.cnpj){
+                pessoaJuridica{
+                    like("cnpj", "%"+params.pessoaJuridica.cnpj+"%")
+                }                
+            }
+            if(params.pessoaJuridica.inscricaoEstadual){
+                pessoaJuridica{
+                    like("inscricaoEstadual", "%"+params.inscricaoEstadual.cnpj+"%")
+                }                
+            }
+            if(params.email){
+                like("email", "%"+params.email+"%")   
+            }
+            if(params.telefone){
+                like("telefone", "%"+params.telefone+"%")    
+            }
+            if(params.celular){
+                like("celular", "%"+params.celular+"%")    
+            }
+        }
+        
+        if(results.size() == 0){
+            request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
+        }
+        
+        respond results, model:[fornecedorInstanceCount: Fornecedor.count()]
     }
 
     def show(Fornecedor fornecedorInstance) {
