@@ -16,7 +16,7 @@
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div id="edit-fornecedor" class="scaffold-edit" role="main">
-                       <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
+                        <h1><g:message code="default.edit.label" args="[entityName]" /></h1>
                         <g:if test="${flash.message}">
                             <div class="message" role="status">${flash.message}</div>
                         </g:if>
@@ -25,30 +25,30 @@
                                 <g:eachError bean="${fornecedorInstance}" var="error">
                                     <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                                     </g:eachError>
-                                    </ul>
-                                </g:hasErrors>
-                                <g:form url="[resource:fornecedorInstance, action:'update']"
-                                    method="PUT" >
-                                    <g:hiddenField name="version" value="${fornecedorInstance?.version}" />
-                                    <fieldset class="form">
-                                        <g:render template="form"/>
-                                        <g:link controller="endereco" action="create" class="btn btn-default"
-                                        params="['fornecedor.id': fornecedorInstance?.id]">
-                                            ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
-                                        </g:link>
-                                    </fieldset>
-                                    <fieldset class="buttons">
-                                        <g:actionSubmit class="btn btn-lg btn-primary" action="update" 
-                                        value="${message(code: 'default.button.update.label', default: 'Update')}" />
-                                        <g:link controller="show"  resource="${fornecedorInstance}" 
-                                             class="btn btn-lg btn-danger">
-                                             Cancelar
-                                        </g:link>
-                                    </fieldset>
-                                </g:form>
-                                </div>                    
+                            </ul>
+                        </g:hasErrors>
+                        <g:form url="[resource:fornecedorInstance, action:'update']"
+                            method="PUT" >
+                            <g:hiddenField name="version" value="${fornecedorInstance?.version}" />
+                            <fieldset class="form">
+                                <g:render template="form"/>
+                                <g:link controller="endereco" action="create" class="btn btn-default"
+                                    params="['fornecedor.id': fornecedorInstance?.id]">
+                                    ${message(code: 'default.add.label', args: [message(code: 'endereco.label', default: 'Endereco')])}
+                                </g:link>
+                            </fieldset>
+                            <fieldset class="buttons">
+                                <g:actionSubmit class="btn btn-lg btn-primary" action="update" 
+                                value="${message(code: 'default.button.update.label', default: 'Update')}" />
+                                <g:link controller="show"  resource="${fornecedorInstance}" 
+                                    class="btn btn-lg btn-danger">
+                                    Cancelar
+                                </g:link>
+                            </fieldset>
+                        </g:form>
+                    </div>                    
                 </section>
             </div>
         </div>
-</body>
+    </body>
 </html>

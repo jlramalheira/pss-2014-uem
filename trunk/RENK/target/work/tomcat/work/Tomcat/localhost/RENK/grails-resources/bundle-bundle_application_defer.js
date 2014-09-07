@@ -15,10 +15,14 @@ $(document).ready(function() {
     $(window).resize(function() {
         drawChart();
     });
+    
+    $('[data-toggle]').on('click',function(){
+        var target = $(this).attr('data-toggle');
+        $(target).toggle(300);
+        $(this).toggleClass('active');
+    });
+    
 });
-
-
-
 
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
