@@ -45,7 +45,8 @@
                                             <g:message code="produto.status.label" default="Status" />
 
                                         </label>
-                                        <g:select name="status" from="['Ativo','Inativo']" value="${params.status}"/>
+                                        <g:select name="status" from="['Ativo','Inativo']" value="${params.ativo}"
+                                                  noSelection="['':' ']"/>
 
                                     </div>
                                 </div>
