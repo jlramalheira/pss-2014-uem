@@ -21,19 +21,19 @@ class ProdutoController {
             if(params.descricao){
                 like("descricao", "%"+params.descricao+"%")   
             }
-//            if(params.status?.equalsIgnoreCase("Ativo")){
-//                like("status", true)    
-//            }
-//            if(params.status?.equalsIgnoreCase("Inativo")){
-//                like("status",false)    
-//            }
+            if(params.status?.equalsIgnoreCase("Ativo")){
+                eq("ativo", true)    
+            }
+            if(params.status?.equalsIgnoreCase("Inativo")){
+                eq("ativo",false)    
+            }
         }
         
         if(results.size() == 0){
             request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
         }
         
-        respond Produto.list(params), model:[produtoInstanceCount: Produto.count()]
+        respond results, model:[produtoInstanceCount: Produto.count()]
     }
 
     def show(Produto produtoInstance) {
