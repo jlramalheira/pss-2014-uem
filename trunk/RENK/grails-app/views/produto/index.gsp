@@ -17,6 +17,47 @@
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <div id="list-produto" role="main">
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
+                        <g:form url="[resource:produtoInstance, action:'index']" method="GET"
+                            class="well well-lg">
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                    <label for="nome">
+                                        <g:message code="produto.nome" default="Nome" />
+                                    </label>
+                                    <g:textField name="nome" value="${params.nome}"class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="form-more-options" id="produto-search">
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-8 col-md-8 col-lg-8">
+                                        <label for="descricao">
+                                            <g:message code="produto.descricao" default="Descricao" />
+                                        </label>
+                                        <g:textField name="descricao" value="${params.descricao}"class="form-control" />
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                        <label for="telefone">
+                                            <g:message code="produto.status.label" default="Status" />
+
+                                        </label>
+                                        <g:select name="status" from="['Ativo','Inativo']" value="${params.status}"/>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <g:actionSubmit class="btn btn-lg btn-primary" action="index" 
+                                value="${message(code: 'default.button.search.label', default: 'Search')}" />
+                                <button type="button" class="btn btn-lg btn-default" data-toggle="#produto-search">
+                                    Mais opções
+                                </button>
+                            </div>
+                        </g:form>
                         <g:if test="${flash.message}">
                         <div  class="alert alert-info alert-dismissable" role="status">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

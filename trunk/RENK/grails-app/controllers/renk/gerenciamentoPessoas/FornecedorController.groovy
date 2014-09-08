@@ -18,12 +18,12 @@ class FornecedorController {
             if(params.nome){
                 like("nome", "%"+params.nome+"%")
             }
-            if(params.pessoaJuridica.cnpj){
+            if(params.pessoaJuridica?.cnpj){
                 pessoaJuridica{
                     like("cnpj", "%"+params.pessoaJuridica.cnpj+"%")
                 }                
             }
-            if(params.pessoaJuridica.inscricaoEstadual){
+            if(params.pessoaJuridica?.inscricaoEstadual){
                 pessoaJuridica{
                     like("inscricaoEstadual", "%"+params.inscricaoEstadual.cnpj+"%")
                 }                

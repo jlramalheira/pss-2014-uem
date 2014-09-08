@@ -34,7 +34,7 @@
                                         <label for="cnpj">
                                             <g:message code="pessoaJuridica.cnpj.label" default="Cnpj" />
                                         </label>
-                                        <g:textField name="pessoaJuridica.cnpj" value="${params.pessoaJuridica.cnpj}"class="form-control" />
+                                        <g:textField name="pessoaJuridica.cnpj" value="${params.pessoaJuridica?.cnpj}"class="form-control" />
 
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                             <g:message code="pessoaJuridica.inscricaoEstadual.label" default="Inscricao Estadual" />
 
                                         </label>
-                                        <g:textField name="pessoaJuridica.inscricaoEstadual" value="${params.pessoaJuridica.inscricaoEstadual}"class="form-control" />
+                                        <g:textField name="pessoaJuridica.inscricaoEstadual" value="${params.pessoaJuridica?.inscricaoEstadual}"class="form-control" />
                                     </div>
                                 </div>
 

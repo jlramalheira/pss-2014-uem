@@ -12,6 +12,27 @@ class ProdutoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
+        def c = Produto.createCriteria()
+        def results = c.list {
+            if(params.nome){
+                like("nome", "%"+params.nome+"%")
+            }
+            
+            if(params.descricao){
+                like("descricao", "%"+params.descricao+"%")   
+            }
+//            if(params.status?.equalsIgnoreCase("Ativo")){
+//                like("status", true)    
+//            }
+//            if(params.status?.equalsIgnoreCase("Inativo")){
+//                like("status",false)    
+//            }
+        }
+        
+        if(results.size() == 0){
+            request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
+        }
+        
         respond Produto.list(params), model:[produtoInstanceCount: Produto.count()]
     }
 
