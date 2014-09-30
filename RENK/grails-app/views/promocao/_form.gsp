@@ -60,11 +60,7 @@
                                             Produto
                                             <span class="required-indicator">*</span>
                                         </label>
-                                        <select class="form-control" name="produto">
-                                            <option value="1">Produto 1</option>
-                                            <option value="2">Produto 2</option>
-                                            <option value="3">Produto 3</option>
-                                        </select>
+                                        <g:select class="form-control" id="produto" name="produto.id" from="${renk.gerenciamentoProdutos.Produto.findAllByAtivo(true)}" optionKey="id" required="" value="${produtoInstance?.id}" class="many-to-one"/>
                                     </div>
                                 </div>
                                 <div class="row">
