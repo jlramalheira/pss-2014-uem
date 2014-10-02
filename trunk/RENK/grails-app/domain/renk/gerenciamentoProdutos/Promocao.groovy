@@ -1,6 +1,12 @@
 package renk.gerenciamentoProdutos
 
+import java.util.ArrayList
+import java.util.List
+
 class Promocao {
+    static hasMany = [itens: ItemPromocao]
+    List<ItemPromocao> itens = new ArrayList<ItemPromocao>()
+    
     String nome
     Date dataInicio = new Date()
     Date dataFim = new Date()
@@ -20,5 +26,21 @@ class Promocao {
             return true
         }
         return false
+    }
+
+    boolean addProduto(Produto produto, double desconto){
+        if (ItemPromocao.findByPromocaoAndProduto(this,produto)){
+            return false
+        }               
+        
+        ItemPromocao item = new ItemPromocao()
+        
+        item.produto = produto
+        item.desconto = desconto
+        item.promocao = this
+        
+        this.itens.add(item)
+        
+        return true
     }
 }

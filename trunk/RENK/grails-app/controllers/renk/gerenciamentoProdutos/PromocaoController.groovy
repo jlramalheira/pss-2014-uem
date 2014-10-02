@@ -4,6 +4,7 @@ package renk.gerenciamentoProdutos
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import renk.gerenciamentoProdutos.*;
 
 @Transactional(readOnly = true)
 class PromocaoController {
@@ -47,7 +48,8 @@ class PromocaoController {
     }
 
     def edit(Promocao promocaoInstance) {
-        respond promocaoInstance
+        def produtos = Produto.findAllByAtivo(true)
+        respond promocaoInstance, model:[produtos: produtos]
     }
 
     @Transactional
@@ -91,6 +93,23 @@ class PromocaoController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+    
+    def addProduct(Promocao promocaoInstance){
+        if (promocaoInstance == null){
+            notFound()
+            return
+        }        
+        
+        Produto produto = Produto.get(params.produto.id)
+        def desconto = 10
+        
+        promocaoInstance.addProduto(produto,desconto)
+        
+        promocaoInstance.save flush:true
+        
+        //TODO ir para o edit com o promocaoInstance por parametro
+        redirect(action:"edit", model:[promocaoInstance: promocaoInstance])
     }
 
     protected void notFound() {
