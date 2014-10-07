@@ -95,6 +95,7 @@ class PromocaoController {
         }
     }
     
+    @Transactional
     def addProduct(Promocao promocaoInstance){
         if (promocaoInstance == null){
             notFound()
@@ -109,7 +110,7 @@ class PromocaoController {
         promocaoInstance.save flush:true
         
         //TODO ir para o edit com o promocaoInstance por parametro
-        redirect(action:"edit", model:[promocaoInstance: promocaoInstance])
+        redirect(action:"edit", id: promocaoInstance.id)
     }
 
     protected void notFound() {
