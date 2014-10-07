@@ -1,4 +1,4 @@
-<%@ page import="renk.gerenciamentoProdutos.Promocao" %>
+<%@ page import="renk.gerenciamentoProdutos.*" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -62,7 +62,14 @@
                 </tr>
               </thead>
               <tbody>
-              
+              <g:each in="${promocaoInstance.itens}" status="i" var="produtoInstance">
+                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                  <td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "produto")}</g:link></td>
+              <td></td>
+              <td></td>
+              <td></td>
+                </tr>
+              </g:each>
               </tbody>
             </table>
           </div>
