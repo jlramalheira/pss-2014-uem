@@ -43,4 +43,23 @@ class Promocao {
         
         return true
     }
+    
+    ItemPromocao getItemByProduct(Produto produto){
+        for (ItemPromocao item : this.itens){
+            if (item.produto.id == produto.id){
+                return item
+            }
+        }
+        return null
+    }
+    
+    boolean removeProduto(ItemPromocao item){
+        if (item){
+            if (this.itens.remove(item)){
+                return true
+            }
+        }
+        
+        return false
+    }
 }
