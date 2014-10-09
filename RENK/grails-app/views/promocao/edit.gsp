@@ -56,18 +56,22 @@
                   <th>
                     Desconto
                   </th>
-                  <th colspan="2">
+                  <th>
                     Preço com desconto
+                  </th>
+                  <th>
+
                   </th>
                 </tr>
               </thead>
               <tbody>
-              <g:each in="${promocaoInstance.itens}" status="i" var="produtoInstance">
-                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                  <td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "produto")}</g:link></td>
-              <td></td>
-              <td></td>
-              <td></td>
+              <g:each in="${promocaoInstance.itens}" status="i" var="itemPromocaoInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                  <td>${fieldValue(bean: itemPromocaoInstance, field: "produto")}</td>
+                  <td>${itemPromocaoInstance.produto.valor}</td>
+                  <td>${itemPromocaoInstance.desconto}%</td>
+                  <td>${itemPromocaoInstance.valorComDesconto()}</td>
+                  <td><g:link controller="promocao" action="removeProduct" id="${promocaoInstance.id}" params="[itemId: itemPromocaoInstance.id]" class="btn btn-sm btn-danger" >Remover</g:link></td>
                 </tr>
               </g:each>
               </tbody>
@@ -110,7 +114,7 @@
                       Desconto
                       <span class="required-indicator">*</span>
                     </label>
-                    <input type="number" name="desconto" class="form-control"/>
+                    <input type="number" name="desconto" value="0" class="form-control"/>
                   </div>
                 </div>
 

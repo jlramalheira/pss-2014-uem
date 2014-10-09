@@ -41,7 +41,8 @@ class PromocaoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
-                redirect promocaoInstance
+                //redirect promocaoInstance
+                redirect(action:"edit", id: promocaoInstance.id)
             }
             '*' { respond promocaoInstance, [status: CREATED] }
         }
@@ -103,13 +104,42 @@ class PromocaoController {
         }        
         
         Produto produto = Produto.get(params.produto.id)
-        def desconto = 10
+        def desconto = Double.parseDouble(params.desconto)
         
-        promocaoInstance.addProduto(produto,desconto)
+        if (promocaoInstance.addProduto(produto,desconto)){
+            promocaoInstance.save flush:true
+            flash.message = message(code: 'Produto adicionado', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+            promocaoInstance.save flush:true
+        } else {
+            flash.message = message(code: 'Produto já consta nesta promocao', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+        }
+        
+        
+        
+        redirect(action:"edit", id: promocaoInstance.id)
+    }
+    
+    @Transactional
+    def removeProduct(Promocao promocaoInstance){
+        if (promocaoInstance == null){
+            notFound()
+            return
+        }        
+        
+        ItemPromocao item = ItemPromocao.get(params.itemId)
+        
+        if (promocaoInstance.removeProduto(item)){
+            flash.message = message(code: 'Produto removido', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+            promocaoInstance.save flush:true
+        }else {
+            flash.message = message(code: 'Falha ao remover produto', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+        }
+        
+        item.delete(flush:true) 
+        
         
         promocaoInstance.save flush:true
         
-        //TODO ir para o edit com o promocaoInstance por parametro
         redirect(action:"edit", id: promocaoInstance.id)
     }
 

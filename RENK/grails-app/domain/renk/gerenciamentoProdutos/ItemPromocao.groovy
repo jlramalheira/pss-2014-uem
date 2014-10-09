@@ -8,4 +8,8 @@ class ItemPromocao {
     static constraints = {
 
     }
+    
+    double valorComDesconto(){
+        return (this.produto.valor - this.produto.valor*(this.desconto/100)).round(2)
+    }
 }

@@ -128,52 +128,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        <a href="#">Produto Sample</a>
-                    </td>
-                    <td>
-                        R$ 20,00
-                    </td>
-                    <td>
-                        5%
-                    </td>
-                    <td>
-                        R$ 19,00
-                    </td>
-
+                <g:each in="${promocaoInstance.itens}" status="i" var="itemPromocaoInstance">
+                <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+                  <td>${fieldValue(bean: itemPromocaoInstance, field: "produto")}</td>
+                  <td>${itemPromocaoInstance.produto.valor}</td>
+                  <td>${itemPromocaoInstance.desconto}%</td>
+                  <td>${itemPromocaoInstance.valorComDesconto()}</td>
                 </tr>
-                <tr>
-                    <td>
-                        <a href="#">Produto Sample</a>
-                    </td>
-                    <td>
-                        R$ 20,00
-                    </td>
-                    <td>
-                        10%
-                    </td>
-                    <td>
-                        R$ 18,00
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-                        <a href="#">Produto Sample</a>
-                    </td>
-                    <td>
-                        R$ 20,00
-                    </td>
-                    <td>
-                        15%
-                    </td>
-                    <td>
-                        R$ 17,00
-                    </td>
-
-
-                </tr>
+              </g:each>
             </tbody>
         </table>
     </div>
