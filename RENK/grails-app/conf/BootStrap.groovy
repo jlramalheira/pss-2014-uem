@@ -48,15 +48,15 @@ class BootStrap {
         Funcionario f2 = new Funcionario(nome: 'Maria Verde')
         f2.save()
         
-        Produto prod = new Produto(nome: 'Monitor AOC 19.5', descricao: 'Monitor full HD', estoqueMinimo: 1, estoqueDesejavel: 3, valor: 399.90, ativo: true, saldo: 2)
+        Produto prod = new Produto(codigoBarras: '7897725632514', nome: 'Monitor AOC 19.5', descricao: 'Monitor full HD', estoqueMinimo: 1, estoqueDesejavel: 3, valorCusto: 350.00, valorVenda: 399.90, valor: 399.90, ativo: true, saldo: 2)
         prod.save()
-        Produto prod1 = new Produto(nome: 'Mouse s/ fio', descricao: 'Mouse 1600DPI', estoqueMinimo: 3, estoqueDesejavel: 5, valor: 59.90, ativo: true, saldo: 4)
+        Produto prod1 = new Produto(codigoBarras: '7897725632615', nome: 'Mouse s/ fio', descricao: 'Mouse 1600DPI', estoqueMinimo: 3, estoqueDesejavel: 5,valorCusto: 40.00,  valorVenda: 59.90, valor: 59.90, ativo: true, saldo: 4)
         prod1.save()
-        Produto prod2 = new Produto(nome: 'Teclado Satellite', descricao: 'Normas ABNT-2', estoqueMinimo: 2, estoqueDesejavel: 4, valor: 49.90, ativo: true, saldo: 2)
+        Produto prod2 = new Produto(codigoBarras: '7897725965874', nome: 'Teclado Satellite', descricao: 'Normas ABNT-2', estoqueMinimo: 2, estoqueDesejavel: 4, valorCusto: 25.00, valorVenda: 49.90, valor: 49.90, ativo: true, saldo: 2)
         prod2.save()
-        Produto prod3 = new Produto(nome: 'Cartucho HP60 Preto', descricao: 'Compativel', estoqueMinimo: 4, estoqueDesejavel: 7, valor: 39.90, ativo: true, saldo: 7)
+        Produto prod3 = new Produto(codigoBarras: '7897725632523', nome: 'Cartucho HP60 Preto', descricao: 'Compativel', estoqueMinimo: 4, estoqueDesejavel: 7, valorCusto: 19.90, valorVenda: 39.90, valor: 39.90, ativo: true, saldo: 7)
         prod3.save()
-        Produto prod4 = new Produto(nome: 'Extensor USB', descricao: '', estoqueMinimo: 1, estoqueDesejavel: 2, valor: 19.90, ativo: false, saldo: 0)
+        Produto prod4 = new Produto(codigoBarras: '7897777885566', nome: 'Extensor USB', descricao: '', estoqueMinimo: 1, estoqueDesejavel: 2, valorCusto: 9.90, valorVenda: 19.90, valor: 19.90 , ativo: false, saldo: 0)
         prod4.save()
         
     }

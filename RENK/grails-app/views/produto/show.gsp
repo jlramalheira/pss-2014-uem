@@ -24,6 +24,17 @@
                             </div>
                         </g:if>
                         <dl class="dl-horizontal property-list produto">
+                          
+                            <g:if test="${produtoInstance?.nome}">
+                                <dt id="nome-label" class="property-label">
+                                        <g:message code="produto.codigoBarras.label" default="Codigo de Barras" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="codigoBarras-label">
+                                    
+                                        <g:fieldValue bean="${produtoInstance}" field="codigoBarras"/>
+                                    
+                                </dd>
+                            </g:if>
                             
                             <g:if test="${produtoInstance?.nome}">
                                 <dt id="nome-label" class="property-label">
@@ -68,19 +79,28 @@
                                     
                                 </dd>
                             </g:if>
-                            
-                            <g:if test="${produtoInstance?.valor}">
-                                <dt id="valor-label" class="property-label">
-                                        <g:message code="produto.valor.label" default="Valor" />
+                            <g:if test="${produtoInstance?.valorCusto}">
+                                <dt id="valorCusto-label" class="property-label">
+                                        <g:message code="produto.valorCusto.label" default="valor Custo" />
                                 </dt>
-                                <dd class="property-value" aria-labelledby="valor-label">
+                                <dd class="property-value" aria-labelledby="valorCusto-label">
                                     
-                                        <g:fieldValue bean="${produtoInstance}" field="valor"/>
+                                        <g:fieldValue bean="${produtoInstance}" field="valorCusto"/>
+                                    
+                                </dd>
+                            </g:if>
+                            <g:if test="${produtoInstance?.valorVenda}">
+                                <dt id="valorVenda-label" class="property-label">
+                                        <g:message code="produto.valorVenda.label" default="Valor" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="valorVenda-label">
+                                    
+                                        <g:fieldValue bean="${produtoInstance}" field="valorVenda"/>
                                     
                                 </dd>
                             </g:if>
                             <g:if test="${produtoInstance}">
-                                <dt id="valor-label" class="property-label">
+                                <dt id="saldo-label" class="property-label">
                                         <g:message code="produto.saldo.label" default="Saldo" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="saldo-label">
@@ -91,18 +111,18 @@
                             </g:if>
                             <g:if test="${produtoInstance}">
                                 <g:if test="${produtoInstance.ativo}">
-                                    <dt id="valor-label" class="property-label">
+                                    <dt id="ativo-label" class="property-label">
                                             <g:message code="produto.ativo.label" default="Status" />
                                     </dt>
-                                    <dd class="property-value" aria-labelledby="valor-label">
+                                    <dd class="property-value" aria-labelledby="ativo-label">
                                             <span class="label label-success">Ativo</span>
                                     </dd>
                                 </g:if>
                               <g:else>
-                                    <dt id="valor-label" class="property-label">
+                                    <dt id="inativo-label" class="property-label">
                                             <g:message code="produto.ativo.label" default="Status" />
                                     </dt>
-                                    <dd class="property-value" aria-labelledby="valor-label">
+                                    <dd class="property-value" aria-labelledby="inativo-label">
                                             <span class="label label-danger">Inativo</span>
                                     </dd>
                               </g:else>
