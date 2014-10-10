@@ -14,6 +14,9 @@ class ProdutoController {
         params.max = Math.min(max ?: 10, 100)
         def c = Produto.createCriteria()
         def results = c.list {
+            if (params.codigoBarras){
+                like("codigoBarras", "%"+params.codigoBarras+"%")
+            }
             if(params.nome){
                 like("nome", "%"+params.nome+"%")
             }

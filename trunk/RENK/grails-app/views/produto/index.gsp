@@ -19,6 +19,16 @@
                         <h1><g:message code="default.list.label" args="[entityName]" /></h1>
                         <g:form url="[resource:produtoInstance, action:'index']" method="GET"
                             class="well well-lg">
+                          <div class="row">
+                                <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10">
+                                    <label for="nome">
+                                        <g:message code="produto.codigoBarras" default="Codigo de Barras" />
+                                    </label>
+                                    <g:textField name="codigoBarras" value="${params.codigoBarras}"class="form-control" />
+
+                                </div>
+                            </div>
+                            <div class="form-more-options" id="produto-search">
                             <div class="row">
                                 <div class="form-group col-xs-12 col-sm-10 col-md-10 col-lg-10">
                                     <label for="nome">
@@ -28,7 +38,6 @@
 
                                 </div>
                             </div>
-                            <div class="form-more-options" id="produto-search">
                                 <div class="row">
                                     <div class="form-group col-xs-12 col-sm-8 col-md-8 col-lg-8">
                                         <label for="descricao">
@@ -69,6 +78,7 @@
                             <thead>
                                 <tr>
                                     
+                                        <g:sortableColumn property="codigoBarras" title="${message(code: 'produto.codigoBarras.label', default: 'Codigo de Barras')}" />
                                         <g:sortableColumn property="nome" title="${message(code: 'produto.nome.label', default: 'Nome')}" />
                                         
                                         <g:sortableColumn property="descricao" title="${message(code: 'produto.descricao.label', default: 'Descricao')}" />
@@ -77,7 +87,8 @@
                                         
                                         <g:sortableColumn property="estoqueDesejavel" title="${message(code: 'produto.estoqueDesejavel.label', default: 'Estoque Desejavel')}" />
                                         
-                                        <g:sortableColumn property="valor" title="${message(code: 'produto.valor.label', default: 'Valor')}" />
+                                        <g:sortableColumn property="valorCusto" title="${message(code: 'produto.valorCusto.label', default: 'Valor Custo')}" />
+                                        <g:sortableColumn property="valorVenda" title="${message(code: 'produto.valorVenda.label', default: 'Valor Venda')}" />
                                         <g:sortableColumn property="saldo" title="${message(code: 'produto.saldo.label', default: 'Saldo')}" />
                                         <g:sortableColumn property="ativo" title="${message(code: 'produto.ativo.label', default: 'Status')}" />
                                         
@@ -87,7 +98,8 @@
                                 <g:each in="${produtoInstanceList}" status="i" var="produtoInstance">
                                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                                         
-                                        <td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "nome")}</g:link></td>
+                                        <td><g:link action="show" id="${produtoInstance.id}">${fieldValue(bean: produtoInstance, field: "codigoBarras")}</g:link></td>
+                                        <td>${fieldValue(bean: produtoInstance, field: "nome")}</td>
                                         
                                         <td>${fieldValue(bean: produtoInstance, field: "descricao")}</td>
                                         
@@ -95,7 +107,8 @@
                                         
                                         <td>${fieldValue(bean: produtoInstance, field: "estoqueDesejavel")}</td>
                                         
-                                        <td>${fieldValue(bean: produtoInstance, field: "valor")}</td>
+                                        <td>${fieldValue(bean: produtoInstance, field: "valorCusto")}</td>
+                                        <td>${fieldValue(bean: produtoInstance, field: "valorVenda")}</td>
                                         <td>${fieldValue(bean: produtoInstance, field: "saldo")}</td>
                                         <td>
                                             <g:if test="${produtoInstance.ativo}">
