@@ -137,10 +137,7 @@ class PromocaoController {
             promocaoInstance.save flush:true
         }else {
             flash.message = message(code: 'Falha ao remover produto', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
-        }
-        
-        item.delete(flush:true) 
-        
+        }        
         
         promocaoInstance.save flush:true
         

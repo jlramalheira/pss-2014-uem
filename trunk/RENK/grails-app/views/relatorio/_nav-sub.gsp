@@ -6,11 +6,7 @@
                 Relatórios Gerenciais
             </g:link>
         </li>
-        <li>
-            <g:link action="operacional">
-                Relatórios Operacioniais
-            </g:link>
-        </li>
+        
     </ul>
 
 
