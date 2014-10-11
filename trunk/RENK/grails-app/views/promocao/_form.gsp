@@ -30,7 +30,7 @@
             <g:message code="promocao.dataFim.label" default="Data Fim" />
             <span class="required-indicator">*</span>
         </label><br/>
-        <g:datePicker name="dataFim" precision="day"  value="${promocaoInstance?.dataFim}"  />
+        <g:datePicker name="dataFim" precision="day"  value="${promocaoInstance?.dataFim}" />
 
     </div>
     

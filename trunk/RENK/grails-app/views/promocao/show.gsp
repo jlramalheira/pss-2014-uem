@@ -133,7 +133,7 @@
                   <td>${fieldValue(bean: itemPromocaoInstance, field: "produto")}</td>
                   <td>${itemPromocaoInstance.produto.valor}</td>
                   <td>${itemPromocaoInstance.desconto}%</td>
-                  <td>${itemPromocaoInstance.valorComDesconto()}</td>
+                  <td>${itemPromocaoInstance.produto.valorVenda}</td>
                 </tr>
               </g:each>
             </tbody>

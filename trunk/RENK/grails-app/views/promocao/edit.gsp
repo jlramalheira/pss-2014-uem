@@ -70,7 +70,7 @@
                   <td>${fieldValue(bean: itemPromocaoInstance, field: "produto")}</td>
                   <td>${itemPromocaoInstance.produto.valor}</td>
                   <td>${itemPromocaoInstance.desconto}%</td>
-                  <td>${itemPromocaoInstance.valorComDesconto()}</td>
+                  <td>${itemPromocaoInstance.produto.valorVenda}</td>
                   <td><g:link controller="promocao" action="removeProduct" id="${promocaoInstance.id}" params="[itemId: itemPromocaoInstance.id]" class="btn btn-sm btn-danger" >Remover</g:link></td>
                 </tr>
               </g:each>

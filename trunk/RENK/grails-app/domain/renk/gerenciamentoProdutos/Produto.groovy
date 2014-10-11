@@ -34,6 +34,17 @@ class Produto {
         ativo = true
     }
     
+    void setDesconto(desconto){
+        this.valor = this.valorVenda
+        this.valorVenda = this.valor - (this.valor * (desconto/100))
+        this.save(flush:true)
+    }
+    
+    void restaureValor(){
+        this.valorVenda = this.valor
+        this.save(flush:true)
+    }        
+    
     String toString(){
         return nome
     }
