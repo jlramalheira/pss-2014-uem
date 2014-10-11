@@ -14,7 +14,16 @@ class SolicitacaoCompraController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond SolicitacaoCompra.list(params), model:[solicitacaoCompraInstanceCount: SolicitacaoCompra.count()]
+        
+        def solicitacoes = SolicitacaoCompra.list(params)
+        if (params.dataSolicitacaoInicio != null){
+            solicitacoes = SolicitacaoCompra.findAllByDataSolicitacaoBetween(params.dataSolicitacaoInicio, params.dataSolicitacaoFim)
+        }
+        if(solicitacoes.size() == 0){
+            request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
+        }
+        
+        respond solicitacoes, model:[solicitacaoCompraInstanceCount: SolicitacaoCompra.count()]
     }
 
     def show(SolicitacaoCompra solicitacaoCompraInstance) {
