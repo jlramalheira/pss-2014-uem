@@ -13,7 +13,15 @@ class PromocaoController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Promocao.list(params), model:[promocaoInstanceCount: Promocao.count()]
+        
+        def promocoes = Promocao.list(params)
+        if (params.nome != null){
+            promocoes = Promocao.findAllByNomeLikeAndDataInicioGreaterThanEqualsAndDataFimLessThanEquals("%"+params.nome+"%",params.dataInicio,params.dataFim)
+        }
+        if(promocoes.size() == 0){
+            request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
+        }
+        respond promocoes, model:[promocaoInstanceCount: Promocao.count()]
     }
 
     def show(Promocao promocaoInstance) {
