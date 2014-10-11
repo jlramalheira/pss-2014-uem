@@ -5,13 +5,8 @@ class ItemPromocao {
     Promocao promocao
     Produto produto
     double desconto
-    double valorOriginal
     
     static constraints = {
 
-    }
-    
-    double valorComDesconto(){
-        return (this.produto.valor).round(2)
     }
 }

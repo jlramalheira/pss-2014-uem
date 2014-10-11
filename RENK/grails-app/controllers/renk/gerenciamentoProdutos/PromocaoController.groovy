@@ -84,6 +84,7 @@ class PromocaoController {
             return
         }
 
+        promocaoInstance.restaureAllValuesOfProducts()
         promocaoInstance.finish()
         promocaoInstance.save flush:true
 
@@ -107,8 +108,11 @@ class PromocaoController {
         def desconto = Double.parseDouble(params.desconto)
         
         if (promocaoInstance.addProduto(produto,desconto)){
-            promocaoInstance.save flush:true
-            flash.message = message(code: 'Produto adicionado', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+            if (promocaoInstance.checkValues(produto)){
+                flash.message = message(code: 'Produto adicionado    ATENÇÃO: Valor do produto abaixo do preco de custo', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+            } else {
+                flash.message = message(code: 'Produto adicionado', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
+            }
             promocaoInstance.save flush:true
         } else {
             flash.message = message(code: 'Produto já consta nesta promocao', args: [message(code: 'promocaoInstance.label', default: 'Promocao'), promocaoInstance.id])
