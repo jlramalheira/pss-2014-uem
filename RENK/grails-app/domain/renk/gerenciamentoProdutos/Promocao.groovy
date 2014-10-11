@@ -41,6 +41,9 @@ class Promocao {
             item.desconto = desconto
             item.promocao = this
         
+            if (item.hasErrors()){
+                return false
+            }
             produto.setDesconto(desconto)
         
             this.itens.add(item)
@@ -63,6 +66,7 @@ class Promocao {
         if (item){
             if (this.itens.remove(item)){
                 item.produto.restaureValor()
+                item.delete(flush:true) 
                 return true
             }
         }

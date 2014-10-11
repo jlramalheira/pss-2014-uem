@@ -35,7 +35,6 @@ class Produto {
     }
     
     void setDesconto(desconto){
-        this.valor = this.valorVenda
         this.valorVenda = this.valor - (this.valor * (desconto/100))
         this.save(flush:true)
     }

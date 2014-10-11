@@ -105,7 +105,17 @@
                       Produto
                       <span class="required-indicator">*</span>
                     </label>
-                    <g:select class="form-control" id="produto" name="produto.id" from="${produtos}" optionKey="id" required="" value="${produtoInstance?.id}" class="many-to-one"/>
+                    <div class="controls">
+                      <select name="produto.id"
+                              class="input-lg required"
+                              data-type="select2">
+                        <g:each var="produto" in="${produtos}">
+                          <option value="${produto.id}">${produto.codigoBarras} - ${produto.nome}</option>                                
+                        </g:each>
+
+                      </select>
+                    </div>
+                    <!--<g:select class="form-control" id="produto" name="produto.id" from="${produtos}" optionKey="id" required="" value="${produtoInstance?.id}" class="many-to-one"/>-->
                   </div>
                 </div>
                 <div class="row">

@@ -4,6 +4,8 @@ package renk.gerenciamentoTransacoes
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import renk.gerenciamentoProdutos.*
+import renk.gerenciamentoPessoas.*
 
 @Transactional(readOnly = true)
 class SolicitacaoCompraController {
@@ -16,7 +18,8 @@ class SolicitacaoCompraController {
     }
 
     def show(SolicitacaoCompra solicitacaoCompraInstance) {
-        respond solicitacaoCompraInstance
+        def fornecedores = Fornecedor.findAllByAtivo(true)
+        respond solicitacaoCompraInstance, model:[fornecedores: fornecedores]
     }
 
     def create() {
@@ -40,14 +43,16 @@ class SolicitacaoCompraController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'solicitacaoCompraInstance.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
-                redirect solicitacaoCompraInstance
+                redirect(action:"edit", id: solicitacaoCompraInstance.id)
+                //redirect solicitacaoCompraInstance
             }
             '*' { respond solicitacaoCompraInstance, [status: CREATED] }
         }
     }
 
     def edit(SolicitacaoCompra solicitacaoCompraInstance) {
-        respond solicitacaoCompraInstance
+        def produtos = Produto.findAllByAtivo(true)
+        respond solicitacaoCompraInstance, model:[produtos: produtos]
     }
 
     @Transactional
@@ -81,17 +86,25 @@ class SolicitacaoCompraController {
             return
         }
         
-        solicitacaoCompraInstance.setConcluida()
-        
-        solicitacaoCompraInstance.save flush:true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'Solicitacao concluida', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
-                redirect solicitacaoCompraInstance
-            }
+        Compra compra = solicitacaoCompraInstance.transformeCompra()
+        if (compra){
+            solicitacaoCompraInstance.setConcluida()
+            solicitacaoCompraInstance.save flush:true
+            request.withFormat {
+                form multipartForm {
+                    flash.message = message(code: 'Solicitacao concluida', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
+                    redirect(controller:"compra",action:"edit", id: compra.id)
+                }
             '*'{ render status: NO_CONTENT }
+            }
+        } else {
+            flash.message = message(code: 'Falha ao concluir solicitacao', args: [message(code: 'SolicitacaoCompra.label', default: 'SolicitacaoCompra'), solicitacaoCompraInstance.id])
+            redirect(action:"show", id: solicitacaoCompraInstance.id)
         }
+        
+        
+
+        
     }
     
     @Transactional
@@ -113,6 +126,49 @@ class SolicitacaoCompraController {
             }
             '*'{ render status: NO_CONTENT }
         }
+    }
+    
+    @Transactional
+    def addProduct(SolicitacaoCompra solicitacaoCompraInstance){
+        if (solicitacaoCompraInstance == null){
+            notFound()
+            return
+        }
+        
+        Produto produto = Produto.get(params.produto.id)
+        int quantidade = Integer.parseInt(params.quantidade)
+        double valor = Double.parseDouble(params.preco)
+        
+        
+        if(solicitacaoCompraInstance.addProduto(produto,quantidade,valor)){
+            flash.message = message(code: 'Produto adicionado', args: [message(code: 'solicitacaoCompraInstance.label', default: 'Solicitacao de Compra'), solicitacaoCompraInstance.id])
+            solicitacaoCompraInstance.save flush:true
+        } else {
+            flash.message = message(code: 'Falha ao adicionar produto', args: [message(code: 'solicitacaoCompraInstance.label', default: 'Solicitacao de Compra'), solicitacaoCompraInstance.id])
+        }       
+        
+        redirect(action:"edit", id: solicitacaoCompraInstance.id)
+    }
+    
+    @Transactional
+    def removeProduct(SolicitacaoCompra solicitacaoCompraInstance){
+        if (solicitacaoCompraInstance == null){
+            notFound()
+            return
+        }        
+        
+        ItemSolicitacao item = ItemSolicitacao.get(params.itemId)
+        
+        if (solicitacaoCompraInstance.removeProduto(item)){
+            flash.message = message(code: 'Produto removido', args: [message(code: 'solicitacaoCompraInstance.label', default: 'Solicitacao de Compra'), solicitacaoCompraInstance.id])
+            solicitacaoCompraInstance.save flush:true
+        }else {
+            flash.message = message(code: 'Falha ao remover produto', args: [message(code: 'solicitacaoCompraInstance.label', default: 'Solicitacao de Compra'), solicitacaoCompraInstance.id])
+        }        
+        
+        solicitacaoCompraInstance.save flush:true
+        
+        redirect(action:"edit", id: solicitacaoCompraInstance.id)
     }
 
     protected void notFound() {
