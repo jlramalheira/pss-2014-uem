@@ -4,6 +4,7 @@ package renk.gerenciamentoTransacoes
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import renk.gerenciamentoProdutos.Produto
 
 @Transactional(readOnly = true)
 class CompraController {
@@ -19,9 +20,10 @@ class CompraController {
         respond compraInstance
     }
 
-    def create() {
+    def create() {    
         def compra = new Compra(params)
-        respond compra
+        def produtos = Produto.findAll()
+        respond compra,model:[produtos: produtos]
     }
 
     @Transactional
@@ -41,14 +43,15 @@ class CompraController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'compraInstance.label', default: 'Compra'), compraInstance.id])
-                redirect compraInstance
+                redirect(action:"edit", id: compraInstance.id)
             }
             '*' { respond compraInstance, [status: CREATED] }
         }
     }
 
     def edit(Compra compraInstance) {
-        respond compraInstance
+        def produtos = Produto.findAllByAtivo(true)
+        respond compraInstance,model:[produtos: produtos]
     }
 
     @Transactional
@@ -72,6 +75,28 @@ class CompraController {
             }
             '*'{ respond compraInstance, [status: OK] }
         }
+    }
+    
+    @Transactional
+    def addProduct(Compra compraInstance){
+        if (compraInstance == null){
+            notFound()
+            return
+        }
+        
+        Produto produto = Produto.get(params.produto.id)
+        int quantidade = Integer.parseInt(params.quantidade)
+        double valor = Double.parseDouble(params.preco)
+        
+        
+        if(!compraInstance.addItemProduto(produto,quantidade,valor)){
+            flash.message = message(code: 'compra.erro.item')
+            redirect(action:"edit", id: compraInstance.id)
+        }
+        
+        compraInstance.save flush:true
+        
+        redirect(action:"edit", id: compraInstance.id)
     }
 
     @Transactional

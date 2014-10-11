@@ -1,10 +1,14 @@
 package renk.gerenciamentoTransacoes
 
+import renk.gerenciamentoProdutos.Produto
+
 class Compra extends Transacao{
     enum Status{
         EM_ABERTO, FINALIZADA, RECEBIDA, CANCELADA
     }
     Status status = Status.EM_ABERTO
+    static hasMany = [itens: ItemTransacao]
+    List<ItemTransacao> itens = new ArrayList<ItemTransacao>()
 
     static constraints = {
     }
@@ -60,4 +64,21 @@ class Compra extends Transacao{
     void setRecebida(){
         status = Status.RECEBIDA
     }
+    
+    boolean addItemProduto(Produto produto, int quantidade, double valor){
+        if (ItemTransacao.findByTransacaoAndProduto(this,produto)){
+            return false
+        }
+        
+        ItemTransacao item = new ItemTransacao(produto, this, quantidade, valor)
+        
+        if(item.hasErrors()){
+            return false
+        }
+        
+        this.itens.add(item)
+        
+        return true
+    }
+    
 }

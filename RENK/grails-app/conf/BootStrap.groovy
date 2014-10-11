@@ -1,7 +1,5 @@
 
-import renk.gerenciamentoPessoas.Cidade
-import renk.gerenciamentoPessoas.Pais
-import renk.gerenciamentoPessoas.UnidadeFederativa
+import renk.gerenciamentoPessoas.*
 import renk.gerenciamentoServicos.Servico
 import renk.gerenciamentoAutenticacao.Funcionario
 import renk.gerenciamentoProdutos.Produto
@@ -58,6 +56,8 @@ class BootStrap {
         prod3.save()
         Produto prod4 = new Produto(codigoBarras: '7897777885566', nome: 'Extensor USB', descricao: '', estoqueMinimo: 1, estoqueDesejavel: 2, valorCusto: 9.90, valorVenda: 19.90, valor: 19.90 , ativo: false, saldo: 0)
         prod4.save()
+        
+        
         
     }
     def destroy = {
