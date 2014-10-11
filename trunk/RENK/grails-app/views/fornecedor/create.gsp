@@ -24,26 +24,26 @@
                                 <g:eachError bean="${fornecedorInstance}" var="error">
                                     <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                                     </g:eachError>
-                                    </ul>
-                                </g:hasErrors>
-                                <g:form url="[resource:fornecedorInstance, action:'save']"
-                                    >
-                                    <fieldset class="form">
-                                    <g:render template="form"/>
-                                    </fieldset>
-                                    <fieldset class="buttons">
-                                        <g:submitButton name="create" class="btn btn-lg btn-primary" 
-                                        value="${message(code: 'default.button.create.label', default: 'Create')}"/>
-                                        <g:link controller="index"  resource="${fornecedorInstance}" 
-                                             class="btn btn-lg btn-danger">
-                                             Cancelar
-                                        </g:link>
-                                    </fieldset>
-                                </g:form>
-                                </div>
-                            </section>
-                        </div>
+                            </ul>
+                        </g:hasErrors>
+                        <g:form url="[resource:fornecedorInstance, action:'save']"
+                            >
+                            <fieldset class="form">
+                                <g:render template="form"/>
+                            </fieldset>
+                            <fieldset class="buttons">
+                                <g:submitButton name="create" class="btn btn-lg btn-primary" 
+                                value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+                                <g:link controller="index"  resource="${fornecedorInstance}" 
+                                    class="btn btn-lg btn-danger">
+                                    Cancelar
+                                </g:link>
+                            </fieldset>
+                        </g:form>
                     </div>
+                </section>
+            </div>
+        </div>
 
-            </body>
-        </html>
+    </body>
+</html>

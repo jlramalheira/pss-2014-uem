@@ -11,19 +11,23 @@ if (typeof jQuery !== 'undefined') {
 $(document).ready(function() {
     $('.form-group select').addClass("form-control");
 
-
     $(window).resize(function() {
         drawChart();
     });
-    
-    $('[data-toggle]').on('click',function(){
+
+    $('[data-toggle]').on('click', function() {
         var target = $(this).attr('data-toggle');
         $(target).toggle(300);
         $(this).toggleClass('active');
     });
-    
+
 });
 
+
+$('#new-item-form #produto').on('change', function() {
+    var id = $(this).val();
+    $('#new-item-form #preco').val(produtos[id]);
+});
 /*!
  * Bootstrap v3.1.1 (http://getbootstrap.com)
  * Copyright 2011-2014 Twitter, Inc.
