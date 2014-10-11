@@ -51,7 +51,7 @@
                 </nav>
                 <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
                     <h1>Relatório Gerencial</h1>
-                    <form class="well well-lg">
+                    <form class="well well-lg" action="gerencial" method="GET">
                         <div class="row">
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
                                 <h4>Período de Análise</h4>
@@ -75,31 +75,25 @@
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="entidade" value="Produto" />
+                                        <input type="radio" name="entidade" value="Servico" />
                                         Serviço
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="entidade" value="Produto" />
+                                        <input type="radio" name="entidade" value="Cliente" />
                                         Cliente
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="entidade" value="Produto" />
-                                        Funcionário
-                                    </label>
-                                </div>
-                                <div class="radio">
-                                    <label>
-                                        <input type="radio" name="entidade" value="Produto" />
+                                        <input type="radio" name="entidade" value="Receitas" />
                                         Receitas
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="entidade" value="Produto" />
+                                        <input type="radio" name="entidade" value="Despesas" />
                                         Despesas
                                     </label>
                                 </div> 
@@ -109,20 +103,20 @@
                                 <h4>Modelo</h4>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="modelo" value="Produto" />
+                                        <input type="radio" name="modelo" value="Mais" />
                                         Mais vendido
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label>
-                                        <input type="radio" name="modelo" value="Produto" />
+                                        <input type="radio" name="modelo" value="Menos" />
                                         Menos vendido
                                     </label>
                                 </div> 
                             </div>
                         </div>
 
-                        <button class="btn btn-lg btn-primary">
+                      <button class="btn btn-lg btn-primary" type="submit">
                             Gerar Relatório
                         </button>
                     </form>
