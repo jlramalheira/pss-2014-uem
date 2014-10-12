@@ -7,8 +7,8 @@ class Compra extends Transacao{
         EM_ABERTO, FINALIZADA, RECEBIDA, CANCELADA
     }
     Status status = Status.EM_ABERTO
-    static hasMany = [itens: ItemTransacao]
-    List<ItemTransacao> itens = new ArrayList<ItemTransacao>()
+    static hasMany = [itens: ItemCompra]
+    List<ItemCompra> itens = new ArrayList<ItemCompra>()
     int quantidadeTotal = 0;
     double valorTotal = 0;
 
@@ -70,11 +70,11 @@ class Compra extends Transacao{
     }
     
     boolean addItemProduto(Produto produto, int quantidade){
-        if (ItemTransacao.findByTransacaoAndProduto(this,produto)){
+        if (ItemCompra.findByCompraAndProduto(this,produto)){
             return false
         }
         
-        ItemTransacao item = new ItemTransacao(produto, this, quantidade)
+        ItemCompra item = new ItemCompra(produto, this, quantidade)
         
         if(item.hasErrors()){
             return false
@@ -87,7 +87,7 @@ class Compra extends Transacao{
         return true
     }
     
-    boolean removeItemProduto(ItemTransacao item){
+    boolean removeItemProduto(ItemCompra item){
         if(this.itens.remove(item)){
             this.quantidadeTotal -= item.quantidade
             this.valorTotal -= item.total

@@ -60,10 +60,13 @@ class BootStrap {
         PessoaJuridica pessoaJuridica1 = new PessoaJuridica(cnpj: '12345689012340')
         PessoaJuridica pessoaJuridica2 = new PessoaJuridica(cnpj: '12345689012341')
         PessoaJuridica pessoaJuridica3 = new PessoaJuridica(cnpj: '12345689012342')
+        PessoaJuridica pessoaJuridica4 = new PessoaJuridica(cnpj: '12345689012343')
         
         pessoaJuridica1.save()
         pessoaJuridica2.save()
         pessoaJuridica3.save()
+        pessoaJuridica4.save()
+       
         
         Fornecedor forn1 = new Fornecedor(nome: 'Fornecedor 1', email: 'fornecedor1@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', pessoaJuridica: pessoaJuridica1)
         Fornecedor forn2 = new Fornecedor(nome: 'Fornecedor 2', email: 'fornecedor2@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', pessoaJuridica: pessoaJuridica2)
@@ -73,6 +76,18 @@ class BootStrap {
         forn2.save()
         forn3.save()
         
+        TipoPessoa pessoa1 = new PessoaFisica(cnpj: '25845126958')
+        TipoPessoa pessoa2 = new PessoaFisica(cnpj: '25845126959')
+        pessoa1.save()
+        pessoa2.save()
+        
+        Cliente cliente1 = new Cliente(nome: 'Joana Banana', email: 'joanabanana@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', tipoPessoa: pessoa1)
+        Cliente cliente2 = new Cliente(nome: 'Beijex Empreendimentos', email: 'beijex@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', tipoPessoa: pessoaJuridica4)
+        Cliente cliente3 = new Cliente(nome: 'Carlos Bonafonte', email: 'carlosbonafonte@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', tipoPessoa: pessoa2)
+        
+        cliente1.save()
+        cliente2.save()
+        cliente3.save()
     }
     def destroy = {
     }
