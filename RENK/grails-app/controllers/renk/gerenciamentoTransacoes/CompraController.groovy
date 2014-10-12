@@ -104,7 +104,7 @@ class CompraController {
             return
         }
         
-        ItemTransacao item = ItemTransacao.findById(params.itemId)
+        ItemCompra item = ItemCompra.findById(params.itemId)
         compraInstance.removeItemProduto(item)
         
         if(item){
