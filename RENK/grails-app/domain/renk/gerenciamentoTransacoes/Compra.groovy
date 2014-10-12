@@ -9,8 +9,12 @@ class Compra extends Transacao{
     Status status = Status.EM_ABERTO
     static hasMany = [itens: ItemTransacao]
     List<ItemTransacao> itens = new ArrayList<ItemTransacao>()
+    int quantidadeTotal = 0;
+    double valorTotal = 0;
 
     static constraints = {
+        quantidadeTotal(min: 0)
+        valorTotal(min:0d)
     }
     
     String getStatusStr(){
@@ -65,20 +69,32 @@ class Compra extends Transacao{
         status = Status.RECEBIDA
     }
     
-    boolean addItemProduto(Produto produto, int quantidade, double valor){
+    boolean addItemProduto(Produto produto, int quantidade){
         if (ItemTransacao.findByTransacaoAndProduto(this,produto)){
             return false
         }
         
-        ItemTransacao item = new ItemTransacao(produto, this, quantidade, valor)
+        ItemTransacao item = new ItemTransacao(produto, this, quantidade)
         
         if(item.hasErrors()){
             return false
         }
         
         this.itens.add(item)
+        this.quantidadeTotal += item.quantidade
+        this.valorTotal += item.total
         
         return true
+    }
+    
+    boolean removeItemProduto(ItemTransacao item){
+        if(this.itens.remove(item)){
+            this.quantidadeTotal -= item.quantidade
+            this.valorTotal -= item.total
+            return true
+        }else{
+            return false
+        }
     }
     
 }

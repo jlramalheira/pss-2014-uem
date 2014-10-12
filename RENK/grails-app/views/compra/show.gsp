@@ -63,9 +63,7 @@
                                 <g:message code="compra.valorTotal.label" default="Valor Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="valorTotal-label">
-
-                                    <g:fieldValue bean="${compraInstance}" field="valorTotal"/>
-
+                                    R$ ${formatNumber(number: compraInstance?.valorTotal, format: '##0.00')}
                                 </dd>
                             </g:if>
 
@@ -76,7 +74,7 @@
                                 <dd class="property-value" aria-labelledby="status-label">
                                     <g:if test="${compraInstance.isEmAberto()}">
                                         <span class="label label-warning">
-                                        ${compraInstance.getStatusStr()}
+                                            ${compraInstance.getStatusStr()}
                                         </span>
                                     </g:if>
                                     <g:if test="${compraInstance.isCancelada()}">
@@ -120,49 +118,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-
-                                        </tr>
+                                        <g:each in="${compraInstance?.itens}" status="i" var="itemInstance">
+                                            <tr>
+                                                <td>${fieldValue(bean: itemInstance.produto, field: "nome")}</td>
+                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorCusto"), format: '##0.00')}</td>
+                                                <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
+                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
+                                            </tr>
+                                        </g:each>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -170,10 +133,10 @@
                                                 Total
                                             </th>
                                             <th>
-                                                15
+                                                ${compraInstance?.quantidadeTotal}
                                             </th>
-                                            <th>
-                                                R$ 300,00
+                                            <th colspan="2">
+                                                R$ ${formatNumber(number: compraInstance?.valorTotal, format: '##0.00')}
                                             </th>
                                         </tr>
                                     </tfoot>
@@ -198,7 +161,7 @@
                                 <g:actionSubmit class="btn btn-lg btn-success" action="receive" 
                                 value="${message(code: 'default.button.complete.label', default: 'Receber')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                                
+
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="cancel" 
                                 value="${message(code: 'default.button.cancel.label', default: 'Cancelar')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />

@@ -57,7 +57,21 @@ class BootStrap {
         Produto prod4 = new Produto(codigoBarras: '7897777885566', nome: 'Extensor USB', descricao: '', estoqueMinimo: 1, estoqueDesejavel: 2, valorCusto: 9.90, valorVenda: 19.90, valor: 19.90 , ativo: false, saldo: 0)
         prod4.save()
         
+        PessoaJuridica pessoaJuridica1 = new PessoaJuridica(cnpj: '12345689012340')
+        PessoaJuridica pessoaJuridica2 = new PessoaJuridica(cnpj: '12345689012341')
+        PessoaJuridica pessoaJuridica3 = new PessoaJuridica(cnpj: '12345689012342')
         
+        pessoaJuridica1.save()
+        pessoaJuridica2.save()
+        pessoaJuridica3.save()
+        
+        Fornecedor forn1 = new Fornecedor(nome: 'Fornecedor 1', email: 'fornecedor1@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', pessoaJuridica: pessoaJuridica1)
+        Fornecedor forn2 = new Fornecedor(nome: 'Fornecedor 2', email: 'fornecedor2@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', pessoaJuridica: pessoaJuridica2)
+        Fornecedor forn3 = new Fornecedor(nome: 'Fornecedor 3', email: 'fornecedor3@email.com', telefone: '44 0000 0000', celular: '44 9999 9999', pessoaJuridica: pessoaJuridica3)
+        
+        forn1.save()
+        forn2.save()
+        forn3.save()
         
     }
     def destroy = {
