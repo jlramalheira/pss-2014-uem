@@ -1,11 +1,11 @@
 package renk.gerenciamentoTransacoes
 
-import renk.gerenciamentoProdutos.Produto
+import renk.gerenciamentoServicos.Servico
 
-class ItemTransacao {
-    static belongsTo = [Transacao,Produto]
+class ItemTransacaoServico {
+    static belongsTo = [Transacao,Servico]
     Transacao transacao
-    Produto produto
+    Servico servico
     int quantidade
     double total
     
@@ -13,7 +13,7 @@ class ItemTransacao {
         quantidade(min:0)
     }
     
-    ItemTransacao(Produto produto, Transacao transacao, int quantidade){
+    ItemTransacaoServico(Servico servico, Transacao transacao, int quantidade){
         this.transacao = transacao
         this.produto = produto
         this.quantidade = quantidade

@@ -70,9 +70,9 @@
                                             <g:each in="${compraInstance?.itens}" status="i" var="itemInstance">
                                                 <tr>
                                                     <td>${fieldValue(bean: itemInstance.produto, field: "nome")}</td>
-                                                    <td>${fieldValue(bean: itemInstance.produto, field: "valor")}</td>
+                                                    <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorCusto"), format: '##0.00')}</td>
                                                     <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
-                                                    <td>${fieldValue(bean: itemInstance, field: "total")}</td>
+                                                    <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
                                                     <td class="text-right">
                                                         <g:link controller="compra" action="removeProduct" 
                                                         id="${compraInstance.id}" params="[itemId: itemInstance.id]" class="btn btn-sm btn-danger" >
@@ -88,10 +88,10 @@
                                                     Total
                                                 </th>
                                                 <th>
-                                                    15
+                                                    ${compraInstance?.quantidadeTotal}
                                                 </th>
                                                 <th colspan="2">
-                                                    R$ 300,00
+                                                    R$ ${formatNumber(number: compraInstance?.valorTotal, format: '##0.00')}
                                                 </th>
                                             </tr>
                                         </tfoot>
@@ -144,15 +144,6 @@
                                                     <input type="number" name="quantidade" class="form-control" value="1" min="1"/>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: compraInstance, field: 'valorTotal', 'error')} required">
-                                                    <label for="valorTotal">
-                                                        Valor
-                                                        <span class="required-indicator">*</span>
-                                                    </label>
-                                                    <input type="number" name="preco" id="preco" class="form-control" value="${produtos.toArray()[0].valor}" min="0" step="0.01"/>
-                                                </div>
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
@@ -167,11 +158,5 @@
                 </section>
             </div>
         </div>
-        <script type="text/javascript">
-            produtos = new Array();
-            <g:each in="${produtos}" status="i" var="produto">
-            produtos['${produto.id}'] = "${produto.valor}"
-            </g:each>
-        </script>
     </body>    
 </html>

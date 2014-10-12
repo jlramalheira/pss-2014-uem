@@ -86,12 +86,29 @@ class CompraController {
         
         Produto produto = Produto.get(params.produto.id)
         int quantidade = Integer.parseInt(params.quantidade)
-        double valor = Double.parseDouble(params.preco)
         
         
-        if(!compraInstance.addItemProduto(produto,quantidade,valor)){
+        if(!compraInstance.addItemProduto(produto,quantidade)){
             flash.message = message(code: 'compra.erro.item')
-            redirect(action:"edit", id: compraInstance.id)
+        }
+        
+        compraInstance.save flush:true
+        
+        redirect(action:"edit", id: compraInstance.id)
+    }
+    
+    @Transactional
+    def removeProduct(Compra compraInstance){
+        if (compraInstance == null){
+            notFound()
+            return
+        }
+        
+        ItemTransacao item = ItemTransacao.findById(params.itemId)
+        compraInstance.removeItemProduto(item)
+        
+        if(item){
+            item.delete flush:true
         }
         
         compraInstance.save flush:true

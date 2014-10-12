@@ -51,7 +51,7 @@
                                         
                                         <td>${fieldValue(bean: compraInstance, field: "quantidadeTotal")}</td>
                                         
-                                        <td>${fieldValue(bean: compraInstance, field: "valorTotal")}</td>
+                                        <td>R$ ${formatNumber(number:fieldValue(bean: compraInstance, field: "valorTotal"), format: '##0.00')}</td>
                                         
                                         <td>
                                             <g:if test="${compraInstance.isEmAberto()}">
