@@ -141,7 +141,7 @@ class Venda extends Transacao{
     }
     
     void incrementServicos(){
-        for(ItemVendaServico item : this.itensProduto){
+        for(ItemVendaServico item : this.itensServico){
             item.servico.quantidadeRealizado += item.quantidade
             item.servico.save(flush: true)
         }

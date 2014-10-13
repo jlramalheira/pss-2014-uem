@@ -70,14 +70,14 @@
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="entidade" value="Receitas" />
-                  Receitas
+                  <input type="radio" name="entidade" value="Venda" />
+                  Vendas
                 </label>
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="entidade" value="Despesas" />
-                  Despesas
+                  <input type="radio" name="entidade" value="Compra" />
+                  Compras
                 </label>
               </div> 
             </div>
@@ -124,6 +124,31 @@
                   Menos realizado
                 </label>
               </div>
+            </div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="opcaoVendaCompra">
+              <h4>Modelo</h4>
+              <div class="row">
+                  <div class="form-group form-group-data col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="dataInicio">
+                      <g:message code="dataInicio.label" default="De" />
+
+                    </label><br/>
+                    <g:datePicker name="dataInicio" precision="day"  value="${params.dataInicio}" default="none" noSelection="['': '']" />
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group form-group-data col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="dataFim">
+                      <g:message code="dataFim.label" default="Até" />
+
+                    </label><br/>
+                    <g:datePicker name="dataFim" precision="day"  value="${params.dataFim}" default="none" noSelection="['': '']" />
+
+                  </div>
+                </div>
             </div>
           </div>
 
