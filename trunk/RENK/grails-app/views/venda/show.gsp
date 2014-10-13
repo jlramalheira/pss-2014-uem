@@ -65,8 +65,17 @@
                                 <g:message code="venda.valorTotal.label" default="Valor Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="valorTotal-label">
-                                     R$ ${formatNumber(number: vendaInstance?.valorTotal, format: '##0.00')}
+                                    R$ ${formatNumber(number: vendaInstance?.valorTotal, format: '##0.00')}
 
+                                </dd>
+                            </g:if>
+                            
+                            <g:if test="${vendaInstance?.pagamento}">
+                                <dt id="valorTotal-label" class="property-label">
+                                <g:message code="venda.Pagamento.label" default="Pagamento" />
+                                </dt>
+                                <dd class="property-value" aria-labelledby="pagamento-label">
+                                    ${vendaInstance?.pagamento}
                                 </dd>
                             </g:if>
 
@@ -209,9 +218,9 @@
                                 <g:link class="btn btn-lg btn-primary"  action="edit" resource="${vendaInstance}">
                                     <g:message code="default.button.edit.label" default="Edit" />
                                 </g:link>
-                                <g:actionSubmit class="btn btn-lg btn-success" action="finalizer" 
-                                value="${message(code: 'default.button.complete.label', default: 'Finalizar')}"
-                                onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                                <button type="button" class="btn btn-lg btn-success" data-toggle="modal" data-target="#modal-finalizar-venda">
+                                    Finalizar
+                                </button>
                                 <g:actionSubmit class="btn btn-lg btn-danger" action="cancel" 
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
@@ -220,6 +229,43 @@
                     </g:form>
             </div>
         </section>
+
+        <div class="modal fade" id="modal-finalizar-venda" tabindex="-1" role="dialog" aria-labelledby="#modal-finalizar-solicitacao-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h3 class="modal-title" id="modal-novo-produto-label">
+                            Novo item de produto
+                        </h3>
+                    </div>
+                    <g:form url="[resource:vendaInstance, action:'finalizer']">
+                        <div class="modal-body text-left">
+                            <div class="row">
+                                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: solicitacaoCompraInstance, field: 'produto', 'error')} required">
+                                    <label for="fornecedor">
+                                        Pagamento
+                                        <span class="required-indicator">*</span>
+                                    </label>
+                                    <select class="form-control" name="pagamento">
+                                        <option value="Dinheiro">Dinheiro</option>
+                                        <option value="Cartão de débito">Cartão de débito</option>
+                                        <option value="Cartão de crédito">Cartão de crédito</option>
+                                        <option value="Cheque">Cheque</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <g:actionSubmit class="btn btn-primary" action="finalizer" 
+                            value="${message(code: 'default.button.complete.label', default: 'Finalizar')}"
+                            onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
+                        </div>
+                    </g:form>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 </body>
