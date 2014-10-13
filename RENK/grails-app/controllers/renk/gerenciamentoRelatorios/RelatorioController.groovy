@@ -91,18 +91,25 @@ class RelatorioController {
                 titulo = "Grafico de servico"
             }
         }else if (params.entidade == "Venda"){
-            def dias = Venda.executeQuery("select v.dataTransacao from Venda v where v.dataTransacao BETWEEN "+params.dataInicio+" AND "+params.dataFim+" order by v.dataTransacao ASC LIMIT 5")
-            def precos = Venda.executeQuery("select v.valorTotal from Venda v where v.dataTransacao BETWEEN "+params.dataInicio+" AND "+params.dataFim+" order by v.dataTransacao ASC LIMIT 5")
-            for (int i = 0; i < dias.size() ; i++){
-                DateFormat df = new SimpleDateFormat("dd/MM/yyyy")
-                dados[i] = df.format(dias.get(i))
-                valores[i] = precos.get(i)
+            def vendas = Venda.findAllByDataTransacaoBetween(params.dataInicio, params.dataFim)
+            DateFormat dfp = new SimpleDateFormat("dd/MM/yyyy")
+            for (int i = 0; i < vendas.size() ; i++){
+                dados[i] = dfp.format(vendas.get(i).dataTransacao)
+                valores[i] = vendas.get(i).valorTotal
                 total += valores[i]
             }
             texto = "Relatório vendas"
             titulo = "Grafico de vendas"
         }else if (params.entidade == "Compra"){
-                        
+            def compras = Compra.findAllByDataTransacaoBetween(params.dataInicio, params.dataFim)
+            DateFormat dfp = new SimpleDateFormat("dd/MM/yyyy")
+            for (int i = 0; i < compras.size() ; i++){
+                dados[i] = dfp.format(compras.get(i).dataTransacao)
+                valores[i] = compras.get(i).valorTotal
+                total += valores[i]
+            }
+            texto = "Relatório compras"
+            titulo = "Grafico de compras"            
         }
         redirect(action: "index",params: [relatorio: true, valores: valores, dados: dados, total: total.round(2), entidade: params.entidade, texto: texto, titulo: titulo])
     }

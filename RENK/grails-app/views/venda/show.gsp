@@ -121,7 +121,7 @@
                                         <g:each in="${vendaInstance?.itensProduto}" status="i" var="itemInstance">
                                             <tr>
                                                 <td>${fieldValue(bean: itemInstance.produto, field: "nome")}</td>
-                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorCusto"), format: '##0.00')}</td>
+                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorVenda"), format: '##0.00')}</td>
                                                 <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
                                                 <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
                                             </tr>

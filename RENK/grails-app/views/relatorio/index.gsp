@@ -135,7 +135,7 @@
                       <g:message code="dataInicio.label" default="De" />
 
                     </label><br/>
-                    <g:datePicker name="dataInicio" precision="day"  value="${params.dataInicio}" default="none" noSelection="['': '']" />
+                    <g:datePicker name="dataInicio" precision="day"  value="${params.dataInicio}" default="${new Date()}" />
 
                   </div>
                 </div>
@@ -145,7 +145,7 @@
                       <g:message code="dataFim.label" default="Até" />
 
                     </label><br/>
-                    <g:datePicker name="dataFim" precision="day"  value="${params.dataFim}" default="none" noSelection="['': '']" />
+                    <g:datePicker name="dataFim" precision="day"  value="${params.dataFim}" default="${new Date()}" />
 
                   </div>
                 </div>
