@@ -17,6 +17,6 @@ class ItemVendaProduto {
         this.venda = venda
         this.produto = produto
         this.quantidade = quantidade
-        this.total = produto.valorCusto * quantidade
+        this.total = produto.valorVenda * quantidade
     }
 }

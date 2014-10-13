@@ -24,62 +24,61 @@
                             </div>
                         </g:if>
                         <dl class="dl-horizontal property-list venda">
-                            
+
                             <g:if test="${vendaInstance?.pessoa}">
                                 <dt id="pessoa-label" class="property-label">
-                                        <g:message code="venda.pessoa.label" default="Pessoa" />
+                                <g:message code="venda.pessoa.label" default="Pessoa" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="pessoa-label">
-                                    
-                                        <g:link controller="pessoa" action="show" id="${vendaInstance?.pessoa?.id}">
-                                            ${vendaInstance?.pessoa?.encodeAsHTML()}
-                                        </g:link>
-                                    
+
+                                    <g:link controller="pessoa" action="show" id="${vendaInstance?.pessoa?.id}">
+                                        ${vendaInstance?.pessoa?.encodeAsHTML()}
+                                    </g:link>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${vendaInstance?.dataTransacao}">
                                 <dt id="dataTransacao-label" class="property-label">
-                                        <g:message code="venda.dataTransacao.label" default="Data Transacao" />
+                                <g:message code="venda.dataTransacao.label" default="Data Transacao" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="dataTransacao-label">
-                                    
-                                        <g:formatDate date="${vendaInstance?.dataTransacao}" format="dd/MM/yyyy" />
-                                    
+
+                                    <g:formatDate date="${vendaInstance?.dataTransacao}" format="dd/MM/yyyy" />
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${vendaInstance?.quantidadeTotal}">
                                 <dt id="quantidadeTotal-label" class="property-label">
-                                        <g:message code="venda.quantidadeTotal.label" default="Quantidade Total" />
+                                <g:message code="venda.quantidadeTotal.label" default="Quantidade Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="quantidadeTotal-label">
-                                    
-                                        <g:fieldValue bean="${vendaInstance}" field="quantidadeTotal"/>
-                                    
+
+                                    <g:fieldValue bean="${vendaInstance}" field="quantidadeTotal"/>
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${vendaInstance?.valorTotal}">
                                 <dt id="valorTotal-label" class="property-label">
-                                        <g:message code="venda.valorTotal.label" default="Valor Total" />
+                                <g:message code="venda.valorTotal.label" default="Valor Total" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="valorTotal-label">
-                                    
-                                        <g:fieldValue bean="${vendaInstance}" field="valorTotal"/>
-                                    
+                                     R$ ${formatNumber(number: vendaInstance?.valorTotal, format: '##0.00')}
+
                                 </dd>
                             </g:if>
-                            
+
                             <g:if test="${vendaInstance?.status}">
                                 <dt id="status-label" class="property-label">
-                                        <g:message code="venda.status.label" default="Status" />
+                                <g:message code="venda.status.label" default="Status" />
                                 </dt>
                                 <dd class="property-value" aria-labelledby="status-label">
-                                    
+
                                     <g:if test="${vendaInstance.isEmAberto()}">
                                         <span class="label label-warning">
-                                        ${vendaInstance.getStatusStr()}
+                                            ${vendaInstance.getStatusStr()}
                                         </span>
                                     </g:if>
                                     <g:if test="${vendaInstance.isCancelada()}">
@@ -88,12 +87,12 @@
                                     <g:if test="${vendaInstance.isFinalizada()}">
                                         <span class="label label-success">${vendaInstance.getStatusStr()}</span>
                                     </g:if>
-                                    
+
                                 </dd>
                             </g:if>                           
                         </dl>
-                        
-                        
+
+
                         <div class="row margin-top-sm">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <table class="table table-hover table-striped table-responsive">
@@ -119,49 +118,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-
-                                        </tr>
+                                        <g:each in="${vendaInstance?.itensProduto}" status="i" var="itemInstance">
+                                            <tr>
+                                                <td>${fieldValue(bean: itemInstance.produto, field: "nome")}</td>
+                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorCusto"), format: '##0.00')}</td>
+                                                <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
+                                                <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
+                                            </tr>
+                                        </g:each>
                                     </tbody>
                                     <tfoot>
                                         <tr>
@@ -169,10 +133,10 @@
                                                 Total
                                             </th>
                                             <th>
-                                                15
+                                                ${vendaInstance?.quantidadeTotalProdutos}
                                             </th>
-                                            <th>
-                                                R$ 300,00
+                                            <th colspan="2">
+                                                R$ ${formatNumber(number: vendaInstance?.valorTotalProdutos, format: '##0.00')}
                                             </th>
                                         </tr>
                                     </tfoot>
@@ -180,101 +144,66 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row margin-top-sm">
-                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                <table class="table table-hover table-striped table-responsive">
-                                    <caption class="row">
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
-                                            <h2 class="margin-top-zero">Lista de Serviços</h2>
-                                        </div>
-                                    </caption>
-                                    <thead>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <table class="table table-hover table-striped table-responsive">
+                                <caption class="row">
+                                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+                                        <h2 class="margin-top-zero">Lista de Serviços</h2>
+                                    </div>
+                                </caption>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Serviço
+                                        </th>
+                                        <th>
+                                            Preço do Serviço
+                                        </th>
+                                        <th>
+                                            Quantidade
+                                        </th>
+                                        <th>
+                                            Total
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <g:each in="${vendaInstance?.itensServico}" status="i" var="itemInstance">
                                         <tr>
-                                            <th>
-                                                Serviço
-                                            </th>
-                                            <th>
-                                                Preço do Serviço
-                                            </th>
-                                            <th>
-                                                Quantidade
-                                            </th>
-                                            <th>
-                                                Total
-                                            </th>
+                                            <td>${fieldValue(bean: itemInstance.servico, field: "nome")}</td>
+                                            <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.servico, field: "valor"), format: '##0.00')}</td>
+                                            <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
+                                            <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Serviço Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Serviço Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#">Produto Sample</a>
-                                            </td>
-                                            <td>
-                                                R$ 20,00
-                                            </td>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                R$ 100,00
-                                            </td>
-
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th colspan="2">
-                                                Total
-                                            </th>
-                                            <th>
-                                                15
-                                            </th>
-                                            <th>
-                                                R$ 300,00
-                                            </th>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
+                                    </g:each>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th colspan="2">
+                                            Total
+                                        </th>
+                                        <th>
+                                            ${vendaInstance?.quantidadeTotalServicos}
+                                        </th>
+                                        <th colspan="2">
+                                            R$ ${formatNumber(number: vendaInstance?.valorTotalServicos, format: '##0.00')}
+                                        </th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
+                    </div>
 
-                        
-                        
-                        
-                        
-                        
-                        
-                        <g:form url="[resource:vendaInstance, action:'delete']" method="DELETE">
-                            <g:if test="${vendaInstance.isEmAberto()}">
+
+
+
+
+
+
+                    <g:form url="[resource:vendaInstance, action:'delete']" method="DELETE">
+                        <g:if test="${vendaInstance.isEmAberto()}">
                             <fieldset class="buttons">                                
                                 <legend>Opções</legend>
                                 <g:link class="btn btn-lg btn-primary"  action="edit" resource="${vendaInstance}">
@@ -287,11 +216,11 @@
                                 value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
                             </fieldset>
-                            </g:if>
-                        </g:form>
-                    </div>
-                </section>
+                        </g:if>
+                    </g:form>
             </div>
-        </div>
-    </body>
+        </section>
+    </div>
+</div>
+</body>
 </html>
