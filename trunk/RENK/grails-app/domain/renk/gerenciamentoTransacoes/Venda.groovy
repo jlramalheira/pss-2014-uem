@@ -77,7 +77,7 @@ class Venda extends Transacao{
             return false
         }
         
-        this.itens.add(item)
+        this.itensProduto.add(item)
         
         this.quantidadeTotalProdutos += item.quantidade
         this.valorTotalProdutos += item.total
@@ -89,7 +89,7 @@ class Venda extends Transacao{
     }
     
     boolean removeItemProduto(ItemVendaProduto item){
-        if(this.itens.remove(item)){
+        if(this.itensProduto.remove(item)){
             this.quantidadeTotalProdutos -= item.quantidade
             this.valorTotalProdutos -= item.total
             this.quantidadeTotal -= item.quantidade
@@ -111,7 +111,7 @@ class Venda extends Transacao{
             return false
         }
         
-        this.itens.add(item)
+        this.itensServico.add(item)
         this.quantidadeTotalServicos += item.quantidade
         this.valorTotalServicos += item.total
         this.quantidadeTotal += item.quantidade
@@ -121,7 +121,7 @@ class Venda extends Transacao{
     }
     
     boolean removeItemServico(ItemVendaServico item){
-        if(this.itens.remove(item)){
+        if(this.itensServico.remove(item)){
             this.quantidadeTotalServicos -= item.quantidade
             this.valorTotalServicos -= item.total
             this.quantidadeTotal -= item.quantidade

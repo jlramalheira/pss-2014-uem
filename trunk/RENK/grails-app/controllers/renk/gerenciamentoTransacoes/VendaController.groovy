@@ -4,6 +4,8 @@ package renk.gerenciamentoTransacoes
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import renk.gerenciamentoProdutos.Produto
+import renk.gerenciamentoServicos.Servico
 
 @Transactional(readOnly = true)
 class VendaController {
@@ -40,14 +42,16 @@ class VendaController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'vendaInstance.label', default: 'Venda'), vendaInstance.id])
-                redirect vendaInstance
+                redirect(action:"edit", id: vendaInstance.id)
             }
             '*' { respond vendaInstance, [status: CREATED] }
         }
     }
 
     def edit(Venda vendaInstance) {
-        respond vendaInstance
+        def produtos = Produto.findAllByAtivo(true)
+        def servicos = Servico.findAllByAtivo(true)
+        respond vendaInstance,model:[produtos: produtos,servicos: servicos]
     }
 
     @Transactional
@@ -71,6 +75,86 @@ class VendaController {
             }
             '*'{ respond vendaInstance, [status: OK] }
         }
+    }
+    
+    @Transactional
+    def addProduct(Venda vendaInstance){
+        if (vendaInstance == null){
+            notFound()
+            return
+        }
+        
+        Produto produto = Produto.get(params.produto.id)
+        int quantidade = Integer.parseInt(params.quantidade)
+        
+        if(quantidade > produto.saldo ){
+            flash.message = message(code: 'compra.erro.item.semestoque')
+        }else{
+            if(!vendaInstance.addItemProduto(produto,quantidade)){
+                flash.message = message(code: 'compra.erro.item')
+            }
+            vendaInstance.save flush:true
+        }
+        
+        redirect(action:"edit", id: vendaInstance.id)
+    }
+    
+    @Transactional
+    def removeProduct(Venda vendaInstance){
+        if (vendaInstance == null){
+            notFound()
+            return
+        }
+        
+        ItemVendaProduto item = ItemVendaProduto.findById(params.itemId)
+        vendaInstance.removeItemProduto(item)
+        
+        if(item){
+            item.delete flush:true
+        }
+        
+        vendaInstance.save flush:true
+        
+        redirect(action:"edit", id: vendaInstance.id)
+    }
+    
+    @Transactional
+    def addService(Venda vendaInstance){
+        if (vendaInstance == null){
+            notFound()
+            return
+        }
+        
+        Servico servico = Servico.get(params.servico.id)
+        int quantidade = Integer.parseInt(params.quantidade)
+        
+        
+        if(!vendaInstance.addItemServico(servico,quantidade)){
+            flash.message = message(code: 'compra.erro.item')
+        }
+        
+        vendaInstance.save flush:true
+        
+        redirect(action:"edit", id: vendaInstance.id)
+    }
+    
+    @Transactional
+    def removeService(Venda vendaInstance){
+        if (vendaInstance == null){
+            notFound()
+            return
+        }
+        
+        ItemVendaServico item = ItemVendaServico.findById(params.itemId)
+        vendaInstance.removeItemServico(item)
+        
+        if(item){
+            item.delete flush:true
+        }
+        
+        vendaInstance.save flush:true
+        
+        redirect(action:"edit", id: vendaInstance.id)
     }
 
     @Transactional
@@ -102,6 +186,8 @@ class VendaController {
         }
         
         vendaInstance.setFinalizada()
+        
+        for()
         
         vendaInstance.save flush:true
 
