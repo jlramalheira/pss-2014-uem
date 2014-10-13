@@ -21,9 +21,12 @@ class Venda extends Transacao{
     int quantidadeTotal = 0
     double valorTotal = 0
     
+    String pagamento
+    
     static constraints = {
         quantidadeTotal(min: 0)
         valorTotal(min:0d)
+        pagamento(nullable: true)
     }
     
     boolean isEmAberto(){
