@@ -12,6 +12,8 @@ class Produto {
     double valorVenda
     boolean ativo = true
     int saldo = 0
+    int quantidadeComprado = 0
+    int quantidadeVendido = 0
     
     static constraints = {
         nome(blank: false)

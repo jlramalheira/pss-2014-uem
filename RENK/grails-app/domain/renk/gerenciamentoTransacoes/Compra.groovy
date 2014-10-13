@@ -97,4 +97,12 @@ class Compra extends Transacao{
         }
     }
     
+    void updateSaldoOfProducts(){
+        for (ItemCompra item : this.itens){
+            item.produto.saldo += item.quantidade
+            item.produto.quantidadeComprado += item.quantidade
+            item.produto.save(flush:true)
+        }
+    }
+    
 }

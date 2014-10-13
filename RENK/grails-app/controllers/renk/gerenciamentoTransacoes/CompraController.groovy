@@ -144,6 +144,7 @@ class CompraController {
         }
         
         compraInstance.setFinalizada()
+        compraInstance.updateSaldoOfProducts()
         
         compraInstance.save flush:true
 
