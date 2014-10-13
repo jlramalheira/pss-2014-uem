@@ -16,11 +16,19 @@ class RelatorioController {
     @Transactional
     def gerencial(){
         def produtos = null
+        def valores = new ArrayList()
+        def dados = new ArrayList()
         if (params.entidade == "Produto"){
-            produtos = Produto.executeQuery("select p.nome from Produto p , Venda v where p.nome like \'% %\'")
-            
+            if (params.modelo == "mais-comprado"){
+                produtos = Produto.findAll("from Produto p where p.ativo = 1 order by p.quantidadeComprado DESC LIMIT 5",
+                    [max: 5, offset: 0])
+                for (Produto produto: produtos){
+                    dados.add(produto.nome)
+                    valores.add(produto.quantidadeComprado)
+                }                
+            }            
         }
-        redirect(action: "index",params: [produtos: produtos])
+        redirect(action: "index",params: [relatorio: true, dados: dados, valores: valores, texto: "Relatorio de produto mais comprado", titulo: "Grafico de compra de produtos"])
     }
     
     def operacional(){
