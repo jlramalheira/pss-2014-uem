@@ -9,6 +9,7 @@ class Servico {
         int minutos
         double valor
         boolean ativo = true
+        int quantidadeRealizado = 0
         
     static constraints = {
         nome(blank: false)

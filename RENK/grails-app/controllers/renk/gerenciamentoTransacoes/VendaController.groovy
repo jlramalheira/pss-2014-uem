@@ -187,12 +187,8 @@ class VendaController {
         
         vendaInstance.setFinalizada()
         
-        for(item in vendaInstance.itensProduto){
-            Produto p = item.produto
-            p.saldo -= item.quantidade
-            p.quantidadeVendido += item.quantidade
-            p.save()
-        }
+        vendaInstance.updateSaldoOfProducts()
+        vendaInstance.incrementServicos()
         
         vendaInstance.save flush:true
 

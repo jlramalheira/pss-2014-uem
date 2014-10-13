@@ -52,7 +52,8 @@ class SolicitacaoCompra {
         compra.setEmAberto()
         compra.save(flush: true)
         for (ItemSolicitacao item: this.itens){
-            compra.addItemProduto(item.produto, item.quantidade, item.valor)
+            //compra.addItemProduto(item.produto, item.quantidade, item.valor)
+            compra.addItemProduto(item.produto, item.quantidade)
         }
         
         if (compra.hasErrors()){

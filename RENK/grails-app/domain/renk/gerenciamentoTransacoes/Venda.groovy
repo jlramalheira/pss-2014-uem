@@ -131,4 +131,19 @@ class Venda extends Transacao{
             return false
         }
     }
+    
+    void updateSaldoOfProducts(){
+        for(ItemVendaProduto item : this.itensProduto){
+            item.produto.saldo -= item.quantidade
+            item.produto.quantidadeVendido += item.quantidade
+            item.produto.save(flush: true)
+        }
+    }
+    
+    void incrementServicos(){
+        for(ItemVendaServico item : this.itensProduto){
+            item.servico.quantidadeRealizado += item.quantidade
+            item.servico.save(flush: true)
+        }
+    }
 }

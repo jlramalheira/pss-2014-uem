@@ -6,6 +6,7 @@
     <meta name="layout" content="main">
     <title>Relatórios Gerenciais</title>
 
+    <g:if test="${params.relatorio}">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
@@ -25,7 +26,9 @@
         data.addColumn('string', 'Produto');
         data.addColumn('number', 'Vendas');
         data.addRows([
-                  ['1', 1]
+                  <g:each in="${0..(params.dados.size()-2)}" status="i" var="it">
+                  ['${params.dados[it]}', ${params.valores[it]}],
+                  </g:each>
         ]);
 
         // Set chart options
@@ -38,6 +41,7 @@
         chart.draw(data, options);
         }
     </script>
+    </g:if>
   </head>
   <body>
   <g:render template="nav-main"/>
@@ -50,18 +54,6 @@
         <h1>Relatório Gerencial</h1>
         <form class="well well-lg" action="gerencial" method="GET">
           <div class="row">
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-              <h4>Período de Análise</h4>
-              <div class="form-group">
-                <label for="data-inicio">De</label>
-                <input type="date" class="form-control" id="data-inicio">
-              </div>
-              <div class="form-group">
-                <label for="data-fim">Até</label>
-                <input type="date" class="form-control" id="data-fim">
-              </div>
-            </div>
-
             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <h4>Entidade</h4>
               <div class="radio">
@@ -78,12 +70,6 @@
               </div>
               <div class="radio">
                 <label>
-                  <input type="radio" name="entidade" value="Cliente" />
-                  Cliente
-                </label>
-              </div>
-              <div class="radio">
-                <label>
                   <input type="radio" name="entidade" value="Receitas" />
                   Receitas
                 </label>
@@ -96,7 +82,7 @@
               </div> 
             </div>
 
-            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="opcaoProduto">
               <h4>Modelo</h4>
               <div class="radio">
                 <label>
@@ -123,6 +109,22 @@
                 </label>
               </div> 
             </div>
+            
+            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4" id="opcaoServico">
+              <h4>Modelo</h4>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="modelo" value="mais-realizado" />
+                  Mais realizado
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="modelo" value="menos-realizado" />
+                  Menos realizado
+                </label>
+              </div>
+            </div>
           </div>
 
           <button class="btn btn-lg btn-primary" type="submit">
@@ -141,36 +143,29 @@
               <table class="table table-hover table-striped table-responsive">
                 <thead>
                   <tr>
-                    <th>Produto</th>
-                    <th>Preço</th>
-                    <th>Vendas</th>
-                    <th>Bruto</th>
+                    <th>${params.entidade}</th>
+                    <th>Quantidade</th>
                   </tr>
                 </thead>
                 <tbody>
+                  <g:each in="${0..(params.dados.size()-2)}" status="i" var="it">
                   <tr>
                     <td>
-                      <a href="#">Produto Exemplo 1</a>
+                      ${params.dados[it]}
                     </td>
                     <td>
-                      25,00
-                    </td>
-                    <td>
-                      874
-                    </td>
-                    <td>
-                      21.850,00
+                      ${params.valores[it]}
                     </td>
                   </tr>
-
+                  </g:each>
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th colspan="3">
+                    <th>
                       Total
                     </th>
                     <th>
-                      47.225,00
+                      ${params.total}
                     </th>
                   </tr>
                 </tfoot>
