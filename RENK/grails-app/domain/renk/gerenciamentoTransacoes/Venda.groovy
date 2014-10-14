@@ -70,11 +70,17 @@ class Venda extends Transacao{
     }
     
     boolean addItemProduto(Produto produto, int quantidade){
-        if (ItemVendaProduto.findByVendaAndProduto(this,produto)){
-            return false
+        ItemVendaProduto item = new ItemVendaProduto(produto, this, quantidade)
+        
+        for(ItemVendaProduto itemNaLista: this.itensProduto){
+            if(itemNaLista.produto.id == produto.id){
+                return false
+            }
         }
         
-        ItemVendaProduto item = new ItemVendaProduto(produto, this, quantidade)
+        if(quantidade < 0){
+            return false
+        }
         
         if(item.hasErrors()){
             return false
@@ -103,24 +109,31 @@ class Venda extends Transacao{
         }
     }
     
+    ItemVendaServico getItemByServico(Servico servico){
+        for (ItemVendaServico item : this.itensServico){
+            if (item.servico.id == servico.id){
+                return item
+            }
+        }
+        return null
+    }
+    
     boolean addItemServico(Servico servico, int quantidade){
-        if (ItemVendaServico.findByVendaAndServico(this,servico)){
-            return false
+        boolean retorno = true
+        if (this.getItemByServico(servico)){
+            retorno = false
+        } else if (quantidade > 0){
+            ItemVendaServico item = new ItemVendaServico(servico, this, quantidade)
+            if (item.hasErrors()){
+                retorno = false
+            } else {
+                this.itensServico.add(item)
+                retorno = true
+            }
+        } else {
+            retorno = false
         }
-        
-        ItemVendaServico item = new ItemVendaServico(servico, this, quantidade)
-        
-        if(item.hasErrors()){
-            return false
-        }
-        
-        this.itensServico.add(item)
-        this.quantidadeTotalServicos += item.quantidade
-        this.valorTotalServicos += item.total
-        this.quantidadeTotal += item.quantidade
-        this.valorTotal += item.total
-        
-        return true
+        return retorno
     }
     
     boolean removeItemServico(ItemVendaServico item){

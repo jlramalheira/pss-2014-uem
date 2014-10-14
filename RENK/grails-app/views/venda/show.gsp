@@ -236,7 +236,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         <h3 class="modal-title" id="modal-novo-produto-label">
-                            Novo item de produto
+                            Finalizar venda
                         </h3>
                     </div>
                     <g:form url="[resource:vendaInstance, action:'finalizer']">
@@ -244,7 +244,7 @@
                             <div class="row">
                                 <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ${hasErrors(bean: solicitacaoCompraInstance, field: 'produto', 'error')} required">
                                     <label for="fornecedor">
-                                        Pagamento
+                                        Selecione o método de pagamento
                                         <span class="required-indicator">*</span>
                                     </label>
                                     <select class="form-control" name="pagamento">
