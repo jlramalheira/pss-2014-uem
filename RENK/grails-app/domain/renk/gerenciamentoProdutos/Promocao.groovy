@@ -31,7 +31,7 @@ class Promocao {
     }
 
     boolean addProduto(Produto produto, double desconto){
-        if (ItemPromocao.findByPromocaoAndProduto(this,produto)){
+        if (this.getItemByProduct(produto)){
             return false
         } else if (desconto >= 0 && desconto <= 100){               
         

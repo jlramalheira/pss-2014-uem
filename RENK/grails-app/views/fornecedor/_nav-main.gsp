@@ -50,7 +50,11 @@
                                 Relatórios
                             </g:link>
                         </li> 
-                        </li>                     
+                        <li>
+                            <g:link controller="ajuda" action="index">
+                              Ajuda
+                            </g:link>
+                        </li>                    
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="/RENK">Sair</a></li>
