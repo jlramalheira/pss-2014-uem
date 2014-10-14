@@ -72,7 +72,7 @@
                                                     <td>${fieldValue(bean: itemInstance.produto, field: "nome")}</td>
                                                     <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance.produto, field: "valorCusto"), format: '##0.00')}</td>
                                                     <td>${fieldValue(bean: itemInstance, field: "quantidade")}</td>
-                                                    <td>R$ ${formatNumber(number: fieldValue(bean: itemInstance, field: "total"), format: '##0.00')}</td>
+                                                    <td>R$ ${fieldValue(bean: itemInstance, field: "total")}</td>
                                                     <td class="text-right">
                                                         <g:link controller="compra" action="removeProduct" 
                                                         id="${compraInstance.id}" params="[itemId: itemInstance.id]" class="btn btn-sm btn-danger" >

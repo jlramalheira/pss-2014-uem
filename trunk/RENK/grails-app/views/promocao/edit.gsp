@@ -114,7 +114,7 @@
                       Desconto
                       <span class="required-indicator">*</span>
                     </label>
-                    <input type="number" name="desconto" value="0" class="form-control"/>
+                    <input type="number" name="desconto" min="1" max="100" value="5" class="form-control"/>
                   </div>
                 </div>
 

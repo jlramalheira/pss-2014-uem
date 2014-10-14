@@ -138,7 +138,7 @@ ${solicitacaoCompraInstance.getValorTotal()}
                       <input type="number" name="quantidade" class="form-control" value="1" min="1"/>
                     </div>
                   </div>
-                  <div class="row">
+                  <!--<div class="row">
                     <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6 ${hasErrors(bean: compraInstance, field: 'preco', 'error')} required">
                       <label for="preco">
                         Valor
@@ -147,6 +147,7 @@ ${solicitacaoCompraInstance.getValorTotal()}
                       <input type="number" name="preco" id="preco" class="form-control" value="${produtos.toArray()[0].valorCusto}" min="0" step="0.01"/>
                     </div>
                   </div>
+                  -->
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>

@@ -31,27 +31,27 @@ class Promocao {
     }
 
     boolean addProduto(Produto produto, double desconto){
+        boolean retorno = true
         if (this.getItemByProduct(produto)){
-            return false
-        } else if (desconto >= 0 && desconto <= 100){               
-        
+            retorno = false
+        } else if (desconto > 0 && desconto <= 100){
             ItemPromocao item = new ItemPromocao()
-        
             item.produto = produto
             item.desconto = desconto
             item.promocao = this
-        
             if (item.hasErrors()){
-                return false
+                retorno = false
+            } else {
+                produto.setDesconto(desconto)
+                this.itens.add(item)
+                retorno = true
             }
-            produto.setDesconto(desconto)
-        
-            this.itens.add(item)
-        
-            return true
+        } else {
+            retorno = false
         }
-        return false        
-    }
+        return retorno
+    }       
+    
     
     ItemPromocao getItemByProduct(Produto produto){
         for (ItemPromocao item : this.itens){

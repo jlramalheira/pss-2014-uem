@@ -146,10 +146,9 @@ class SolicitacaoCompraController {
         
         Produto produto = Produto.get(params.produto.id)
         int quantidade = Integer.parseInt(params.quantidade)
-        double valor = Double.parseDouble(params.preco)
         
         
-        if(solicitacaoCompraInstance.addProduto(produto,quantidade,valor)){
+        if(solicitacaoCompraInstance.addProduto(produto,quantidade)){
             flash.message = message(code: 'Produto adicionado', args: [message(code: 'solicitacaoCompraInstance.label', default: 'Solicitacao de Compra'), solicitacaoCompraInstance.id])
             solicitacaoCompraInstance.save flush:true
         } else {
