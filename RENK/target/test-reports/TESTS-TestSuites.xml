@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="0" name="PromocaoSpec" package="renk" tests="5" time="1.495" timestamp="2014-10-14T01:27:55">
+  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="0" name="PromocaoSpec" package="renk" tests="5" time="1.458" timestamp="2014-10-14T04:39:29">
       <properties />
 
-      <testcase classname="renk.PromocaoSpec" name="testeCheckValues" time="1.244" />
+      <testcase classname="renk.PromocaoSpec" name="testeCheckValues" time="1.112" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeFinish" time="0.029" />
+      <testcase classname="renk.PromocaoSpec" name="testeFinish" time="0.048" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeAddProduto" time="0.075" />
+      <testcase classname="renk.PromocaoSpec" name="testeAddProduto" time="0.091" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeConstraints" time="0.034" />
+      <testcase classname="renk.PromocaoSpec" name="testeConstraints" time="0.06" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeRemoveProduto" time="0.107" />
+      <testcase classname="renk.PromocaoSpec" name="testeRemoveProduto" time="0.141" />
 
       <system-out><![CDATA[--Output from testeCheckValues--
 --Output from testeFinish--
@@ -25,6 +25,26 @@
 --Output from testeAddProduto--
 --Output from testeConstraints--
 --Output from testeRemoveProduto--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="1" name="TesteCaixaBrancaAddPromocaoSpec" package="renk" tests="3" time="0.268" timestamp="2014-10-14T04:39:30">
+      <properties />
+
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho1" time="0.096" />
+
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho3" time="0.093" />
+
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho4" time="0.078" />
+
+      <system-out><![CDATA[--Output from testeCaminho1--
+--Output from testeCaminho3--
+--Output from testeCaminho4--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testeCaminho1--
+--Output from testeCaminho3--
+--Output from testeCaminho4--
 ]]></system-err>
 
   </testsuite>

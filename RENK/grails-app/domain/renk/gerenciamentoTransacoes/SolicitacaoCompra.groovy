@@ -17,7 +17,7 @@ class SolicitacaoCompra {
         status(nullable: true)
     }
     
-    boolean addProduto(Produto produto, int quantidade, double valor){
+    boolean addProduto(Produto produto, int quantidade){
         if (ItemSolicitacao.findBySolicitacaoCompraAndProduto(this,produto)){
             return false
         } 
@@ -25,8 +25,7 @@ class SolicitacaoCompra {
         item.solicitacaoCompra = this
         item.produto = produto
         item.quantidade = quantidade
-        item.valor = valor
-        item.total = quantidade*valor
+        item.total = quantidade*produto.valorCusto
             
         if (item.hasErrors()){
             return false
