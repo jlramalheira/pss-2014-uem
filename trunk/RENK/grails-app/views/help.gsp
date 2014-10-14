@@ -108,7 +108,15 @@
     </nav>
     <section class="content col-xs-12 col-sm-9 col-md-9 col-lg-9">
       <div id="help-promocao" class="scaffold-show" role="main">
-        <h1>Escolha uma opção no menu a esquerda</h1>
+        <h3>A forma mais rápida de solucionar a sua dúvida é através do guia ao lado esquerdo</h3>
+        <br/>
+        <h3>Fale Conosco</h3>
+
+        Caso você tenha uma dúvida sobre uma funcionalidade específica, que não esteja listada
+        entre as sessões ao lado
+        <br/>
+        Evie um e-mail para: <a href="mailto:duvida@brarsolutions.com" >duvida@brarsolutions.com</a><br/>
+        Ou ligue para <a href="tel:+554400000000" >(44) XXXX-XXXX</a> (das 6h às 18h) 
       </div>
     </section>
   </div>
