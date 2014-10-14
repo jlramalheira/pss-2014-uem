@@ -31,7 +31,7 @@ class PromocaoSpec extends GrailsUnitTestCase {
         promocao.dataInicio = new Date()
         promocao.dataFim = new Date().plus(7)
         promocao.finish()
-        assertTrue promocao.ativa == false        
+        assertTrue promocao.ativa == false
     }
     
     void testeAddProduto() {
