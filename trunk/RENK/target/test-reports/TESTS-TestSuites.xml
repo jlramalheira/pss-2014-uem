@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="0" name="PromocaoSpec" package="renk" tests="5" time="1.458" timestamp="2014-10-14T04:39:29">
+  <testsuite errors="0" failures="0" hostname="max-Aspire-5750" id="0" name="PromocaoSpec" package="renk" tests="5" time="0.844" timestamp="2014-10-14T06:50:03">
       <properties />
 
-      <testcase classname="renk.PromocaoSpec" name="testeCheckValues" time="1.112" />
+      <testcase classname="renk.PromocaoSpec" name="testeCheckValues" time="0.231" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeFinish" time="0.048" />
+      <testcase classname="renk.PromocaoSpec" name="testeFinish" time="0.135" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeAddProduto" time="0.091" />
+      <testcase classname="renk.PromocaoSpec" name="testeAddProduto" time="0.202" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeConstraints" time="0.06" />
+      <testcase classname="renk.PromocaoSpec" name="testeConstraints" time="0.071" />
 
-      <testcase classname="renk.PromocaoSpec" name="testeRemoveProduto" time="0.141" />
+      <testcase classname="renk.PromocaoSpec" name="testeRemoveProduto" time="0.202" />
 
       <system-out><![CDATA[--Output from testeCheckValues--
 --Output from testeFinish--
@@ -28,14 +28,14 @@
 ]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="1" name="TesteCaixaBrancaAddPromocaoSpec" package="renk" tests="3" time="0.268" timestamp="2014-10-14T04:39:30">
+  <testsuite errors="0" failures="0" hostname="max-Aspire-5750" id="1" name="TesteCaixaBrancaAddPromocaoSpec" package="renk" tests="3" time="9.63" timestamp="2014-10-14T06:49:53">
       <properties />
 
-      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho1" time="0.096" />
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho1" time="9.253" />
 
-      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho3" time="0.093" />
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho3" time="0.169" />
 
-      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho4" time="0.078" />
+      <testcase classname="renk.TesteCaixaBrancaAddPromocaoSpec" name="testeCaminho4" time="0.198" />
 
       <system-out><![CDATA[--Output from testeCaminho1--
 --Output from testeCaminho3--
@@ -45,6 +45,54 @@
       <system-err><![CDATA[--Output from testeCaminho1--
 --Output from testeCaminho3--
 --Output from testeCaminho4--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="max-Aspire-5750" id="2" name="TesteCaixaBrancaAddServicoSpec" package="renk" tests="3" time="2.995" timestamp="2014-10-14T06:50:04">
+      <properties />
+
+      <testcase classname="renk.TesteCaixaBrancaAddServicoSpec" name="testeCaminho1" time="2.145" />
+
+      <testcase classname="renk.TesteCaixaBrancaAddServicoSpec" name="testeCaminho2" time="0.508" />
+
+      <testcase classname="renk.TesteCaixaBrancaAddServicoSpec" name="testeCaminho3" time="0.314" />
+
+      <system-out><![CDATA[--Output from testeCaminho1--
+--Output from testeCaminho2--
+--Output from testeCaminho3--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testeCaminho1--
+--Output from testeCaminho2--
+--Output from testeCaminho3--
+]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="max-Aspire-5750" id="3" name="VendaSpec" package="renk" tests="5" time="1.251" timestamp="2014-10-14T06:50:07">
+      <properties />
+
+      <testcase classname="renk.VendaSpec" name="testAddItemProduto" time="0.411" />
+
+      <testcase classname="renk.VendaSpec" name="testRemoveItemProduto" time="0.255" />
+
+      <testcase classname="renk.VendaSpec" name="testAddItemServico" time="0.262" />
+
+      <testcase classname="renk.VendaSpec" name="testRemoveItemServico" time="0.145" />
+
+      <testcase classname="renk.VendaSpec" name="testConstraints" time="0.159" />
+
+      <system-out><![CDATA[--Output from testAddItemProduto--
+--Output from testRemoveItemProduto--
+--Output from testAddItemServico--
+--Output from testRemoveItemServico--
+--Output from testConstraints--
+]]></system-out>
+
+      <system-err><![CDATA[--Output from testAddItemProduto--
+--Output from testRemoveItemProduto--
+--Output from testAddItemServico--
+--Output from testRemoveItemServico--
+--Output from testConstraints--
 ]]></system-err>
 
   </testsuite>

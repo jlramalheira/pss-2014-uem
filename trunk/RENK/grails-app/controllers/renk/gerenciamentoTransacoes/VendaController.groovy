@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import renk.gerenciamentoProdutos.Produto
 import renk.gerenciamentoServicos.Servico
+import renk.gerenciamentoPessoas.*
 
 @Transactional(readOnly = true)
 class VendaController {
@@ -14,7 +15,17 @@ class VendaController {
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Venda.list(params), model:[vendaInstanceCount: Venda.count()]
+        
+        def results = Venda.list(params)
+        if (params.dataTransacaoInicio != null){
+            results = Venda.findAllByDataTransacaoBetween(params.dataTransacaoInicio, params.dataTransacaoFim)
+        }
+        
+        if(results.size() == 0){
+            request.message_info = message(code: 'default.search.notfound.message', default: 'Nada encontrado')
+        }
+        
+        respond results, model:[vendaInstanceCount: Venda.count()]
     }
 
     def show(Venda vendaInstance) {
@@ -215,6 +226,9 @@ class VendaController {
         }
     }
     
+    def help(){
+        render view:"help"
+    }
     
 
     protected void notFound() {
