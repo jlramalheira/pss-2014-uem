@@ -31,6 +31,10 @@ class PromocaoController {
     def create() {
         respond new Promocao(params)
     }
+    
+    def help(){
+        render view: 'promocaoHelp'
+    }
 
     @Transactional
     def save(Promocao promocaoInstance) {

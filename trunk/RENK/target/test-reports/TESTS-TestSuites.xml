@@ -1,18 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="1" failures="0" hostname="max-Aspire-5750" id="0" name="Filter" package="org.junit.runner.manipulation" tests="1" time="0.132" timestamp="2014-10-13T12:37:04">
+  <testsuite errors="0" failures="0" hostname="JOTA-PC" id="0" name="PromocaoSpec" package="renk" tests="5" time="1.495" timestamp="2014-10-14T01:27:55">
       <properties />
 
-      <testcase classname="org.junit.runner.manipulation.Filter" name="initializationError" time="0.129">
-          <error message="No tests found matching grails test target pattern filter from org.junit.runner.Request$1@6c1d201c" type="java.lang.Exception">java.lang.Exception: No tests found matching grails test target pattern filter from org.junit.runner.Request$1@6c1d201c
-</error>
+      <testcase classname="renk.PromocaoSpec" name="testeCheckValues" time="1.244" />
 
-      </testcase>
+      <testcase classname="renk.PromocaoSpec" name="testeFinish" time="0.029" />
 
-      <system-out><![CDATA[--Output from initializationError--
+      <testcase classname="renk.PromocaoSpec" name="testeAddProduto" time="0.075" />
+
+      <testcase classname="renk.PromocaoSpec" name="testeConstraints" time="0.034" />
+
+      <testcase classname="renk.PromocaoSpec" name="testeRemoveProduto" time="0.107" />
+
+      <system-out><![CDATA[--Output from testeCheckValues--
+--Output from testeFinish--
+--Output from testeAddProduto--
+--Output from testeConstraints--
+--Output from testeRemoveProduto--
 ]]></system-out>
 
-      <system-err><![CDATA[--Output from initializationError--
+      <system-err><![CDATA[--Output from testeCheckValues--
+--Output from testeFinish--
+--Output from testeAddProduto--
+--Output from testeConstraints--
+--Output from testeRemoveProduto--
 ]]></system-err>
 
   </testsuite>

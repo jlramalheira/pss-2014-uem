@@ -17,22 +17,7 @@ class VendaSpec extends Specification {
     def cleanup() {
     }
 
-    void testConstraints() {
-        mockDomain Venda
-        def venda = new Venda()
-        assertFalse usuario.validate()
-        def venda_ok = new Usuario(nome:"Joselino", login: "joca")
-        assertTrue usuario_ok.validate()
-    }
- 
-    void testUnicidade() {
-        mockDomain Usuario, []
-        def usuario1 = new Usuario(nome: "Joselino", login: "jose")
-        usuario1.save()
-        def usuario2 = new Usuario(nome:"Joselino", login:"joca")
-        assertFalse usuario2.validate() // já existe um Joselino!
- 
-    }
+
     
     void "test something"() {
     }
