@@ -28,3 +28,11 @@ $('#new-item-form #produto').on('change', function() {
     var id = $(this).val();
     $('#new-item-form #preco').val(produtos[id]);
 });
+
+$('.relatorio-tab').hide();
+
+$('.input-relatorio').on('click',function(){
+    var value = $(this).val();
+    $('.relatorio-tab').hide();
+    $('#'+value).show();
+});

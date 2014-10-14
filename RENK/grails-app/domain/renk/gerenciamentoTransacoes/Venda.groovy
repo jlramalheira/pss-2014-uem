@@ -149,4 +149,12 @@ class Venda extends Transacao{
             item.servico.save(flush: true)
         }
     }
+    
+    boolean finalizarVenda(){
+        this.setFinalizada()        
+        this.updateSaldoOfProducts()
+        this.incrementServicos()
+        return true
+    }
+    
 }
