@@ -179,19 +179,12 @@ class VendaController {
     
     @Transactional
     def finalizer(Venda vendaInstance) {
-
         if (vendaInstance == null) {
             notFound()
             return
-        }
-        
-        vendaInstance.setFinalizada()
-        
-        vendaInstance.updateSaldoOfProducts()
-        vendaInstance.incrementServicos()
-        
+        }        
+        vendaInstance.finalizarVenda()
         vendaInstance.save flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'Venda finalizada', args: [message(code: 'compra.label', default: 'compra'), vendaInstance.id])
